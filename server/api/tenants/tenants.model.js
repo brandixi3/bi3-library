@@ -5,8 +5,11 @@ var mongoose = require('mongoose'),
 
 var ThingSchema = new Schema({
   name: String,
-  info: String,
-  active: Boolean
+  isbn: String,
+  title: String,
+  author: String,
+  publisher: String,
+  catagory: String
 });
 
 module.exports = mongoose.model('Thing', ThingSchema);

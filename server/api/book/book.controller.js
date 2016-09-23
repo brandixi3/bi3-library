@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
-var TenantFacade = require('./tenants.facade');
+var TenantFacade = require('./book.facade');
 
 exports.index = function(req, res) {
     TenantFacade.findAll(function(err, tenants) {
