@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AnnAuthApp', [
+angular.module('Bi3DigLib', [
         'ngCookies',
         'ngResource',
         'ui.router',

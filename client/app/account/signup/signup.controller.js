@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AnnAuthApp')
+angular.module('Bi3DigLib')
     .controller('SignUpCtrl', function($scope, Auth, $location, $window) {
         $scope.user = {};
         $scope.errors = {};

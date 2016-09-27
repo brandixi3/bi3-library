@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AnnAuthApp')
+angular.module('Bi3DigLib')
   .config(function ($stateProvider) {
     $stateProvider
       .state('dashboard', {

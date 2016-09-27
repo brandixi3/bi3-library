@@ -21,6 +21,16 @@ exports.show = function(req, res) {
     });
 };
 
+exports.showByIsbn = function(req, res) {
+    TenantFacade.findByIsbn(req.params.isbn, function(err, tenant) {
+        if (err) {
+            return handleError(res, err); }
+        if (!tenant) {
+            return res.send(404); }
+        return res.json(tenant);
+    });
+};
+
 exports.save = function(req, res) {
     TenantFacade.create(req.body, function(err, tenant) {
         if (err) {

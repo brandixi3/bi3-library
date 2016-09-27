@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('AnnAuthApp')
+angular.module('Bi3DigLib')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',

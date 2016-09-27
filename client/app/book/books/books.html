@@ -1,0 +1,39 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div layout flex class="container books">
+    <div flex layout="column">
+        <div class="">
+            <h1>BOOKS</h1>
+        </div>
+        <div class="row col-xs-8 col-xs-offset-2">
+            <form class="form card-frame" name="form" novalidate>
+
+                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
+                  <tr>
+                    <th style="width:10%">ISBN</th>
+                    <th style="width:40%">TITLE</th>
+                    <th style="width:15%">AUTHOR</th>
+                    <th style="width:15%">PUBLISHER</th>
+                    <th style="width:10%">YEAR OF PUBLICATION</th>
+                    <th style="width:10%"></th>
+                  </tr>
+                  <tr ng-repeat="book in books">
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.publisher}}</td>
+                    <td>{{book.yearOfPublication}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <md-button class="md-primary md-raised" ng-click="viewBook(book.isbn)">
+                                    VIEW
+                                </md-button>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

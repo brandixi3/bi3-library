@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('AnnAuthApp')
-    .controller('BookCtrl', function($scope, Book, $location, $window) {
+angular.module('Bi3DigLib')
+    .controller('AddBookCtrl', function($scope, Book, $location, $window) {
         $scope.book = {};
         $scope.errors = {};
 
@@ -17,10 +17,9 @@ angular.module('AnnAuthApp')
                         catagory:$scope.book.cat,
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy
-                        
                     })
                     .then(function() { 
-                        $location.path('/');
+                        $location.path('/books');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;

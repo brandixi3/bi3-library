@@ -13,6 +13,11 @@ exports.findById = function(id, cb) {
     TenantModel.findById(id, cb);
 };
 
+// Get a single tenant by isbn
+exports.findByIsbn = function(isbn, cb) {
+    TenantModel.find({"isbn":isbn}, cb);
+};
+
 // Creates a new tenant in the DB.
 exports.create = function(item, cb) {
     TenantModel.create(item, cb);
