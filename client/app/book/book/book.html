@@ -5,9 +5,19 @@
             <h1>BOOK</h1>
         </div>
         <div class="row col-xs-8 col-xs-offset-2">
-             
-		{{book.isbn}}
-		
+            <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
+            
+			{{book.isbn}}
+
+			<div class="row">
+	            <div class="">
+	                <md-button class="md-primary md-raised" type="submit">
+	                    RESERVE
+	                </md-button>
+	            </div>
+	        </div>
+
+	        </form>
         </div>
     </div>
 </div>

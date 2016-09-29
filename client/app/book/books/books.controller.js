@@ -14,13 +14,6 @@ angular.module('Bi3DigLib')
             });
 
         $scope.viewBook = function(isbn) {
-            $location.path("/book/"+isbn)
-          /*Book.findByIsbn(bookId)
-            .then(function(res) {
-                console.log(res.data);
-            })
-            .catch(function(err) {
-                $scope.errors.other = err.message;
-            });*/
+            $location.path("/book/"+isbn);
         }
     });
