@@ -16,7 +16,9 @@ angular.module('Bi3DigLib')
                         publisher:$scope.book.pub,
                         catagory:$scope.book.cat,
                         yearOfPublication:$scope.book.year,
-                        totalCopies:$scope.book.tCopy
+                        totalCopies:$scope.book.tCopy,
+                        remainingCopies:$scope.book.tCopy,
+                        detail:$scope.book.about
                     })
                     .then(function() { 
                         $location.path('/books');

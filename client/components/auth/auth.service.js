@@ -71,17 +71,7 @@ angular.module('Bi3DigLib')
           }.bind(this)).$promise;
       },
 
-      /* createBook: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return Thing.save(user,
-          function(data) {
-            $cookieStore.put('token', data.token);
-            currentThing = Thing.get();
-            return cb(thing);
-          },
-         
-      },*/
+      
 
       /**
        * Change password

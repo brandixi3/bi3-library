@@ -1,8 +1,9 @@
+
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container">
     <div flex layout="column">
         <div class="">
-            <h1>ADD BOOK</h1>
+            <h1></h1>
         </div>
         <div class="row col-xs-4 col-xs-offset-4">
             <form class="form card-frame" name="form" ng-submit="add(form)" novalidate>
@@ -35,7 +36,15 @@
                     <label>Total Copies</label>
                     <input type="text" name="cat" ng-model="book.tCopy" required>
                 </md-input-container>
-                
+                <md-input-container flex>
+                    <label>About this book</label>
+                    <input type="text" name="about" ng-model="book.about" required>
+                </md-input-container>
+
+
+
+          
+
                 <div class="row">
                     <div class="col-sm-6">
                         <md-button class="md-primary md-raised" type="submit">

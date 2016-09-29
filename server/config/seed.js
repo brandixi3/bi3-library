@@ -1,7 +1,7 @@
-'use strict';
+//'use strict';
  
 /*var User = require('../api/user/user.model');*/
-var Book = require('../api/book/book.model');
+/*var Book = require('../api/book/book.model');*/
  
 /*User.find({}).remove(function() {
   User.create({
@@ -21,7 +21,7 @@ var Book = require('../api/book/book.model');
   );
 });*/
 
-Book.find({}).remove(function() {
+/*Book.find({}).remove(function() {
   Book.create({
     isbn: '1',
     title: 'abc',
@@ -44,4 +44,4 @@ Book.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-});
+});*/

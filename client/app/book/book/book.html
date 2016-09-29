@@ -2,12 +2,88 @@
 <div layout flex class="container">
     <div flex layout="column">
         <div class="">
-            <h1>BOOK</h1>
+            <h1></h1>
         </div>
         <div class="row col-xs-8 col-xs-offset-2">
-             
-		{{book.isbn}}
+        <table>  
+<tr>
+		<td>
+			<h2>{{book.title}}</h2>
+		    <br><img src={{book.image}}>
+                    
+		    </td><td style="width:20%"></td>
+		    <td>
+		    <table>
+		    
+
+		    <!--	<tr>
+		    		<td style="height:50%"><b>Title:</b>
+		    		<br>{{book.title}}<br/>
+					</td>   
+				</tr>-->
+				<tr>
+					<td  style="height:50%"><b>Author:</b>
+	      			<br>{{book.author}}
+	      			</td>
+	      		</tr>
+	      		<tr>
+					<td><b>Publisher:</b>
+	      			<br>{{book.publisher}}
+	      			</td>
+	      		</tr>
+	      		<tr>
+					<td><b>Category:</b>
+	      			<br>{{book.catagory}}
+	      			</td>
+	      		</tr>
+	      	</table>
+	      	  <div layout-gt-xs="row">
+      
+
+	      	</td>
+			     
+		</tr> 
+		<div>
+		<tr><td><h1></h1></td></tr>
+		<tr><td><b>About this book:</b>
+		<br>{{book.detail}}		
+		</td>
+		</tr>
+		</div>
+
+	  </table> 
+
+
+        <div class="row">
+       <!-- <b>About this book</b>-->
+
+		
+
+      <div flex-gt-xs class="col-sm-6">
+        <h4>Borrowed Date</h4>
+        <md-datepicker ng-model="BorrowedDate" md-placeholder="Enter date" disabled></md-datepicker>
+      </div>
+    
+    <div flex-gt-xs class="col-sm-6">
+        <h4>Return Date</h4>
+        <md-datepicker ng-model="ReturnDate" md-placeholder="Enter date"
+            md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+      </div>
+
+                    <div class="col-sm-6">
+                        <md-button class="md-primary md-raised" type="submit">
+                            Order
+                            </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <md-button class="md-primary md-raised" href="/books">
+                            Back
+                            </button>
+                    </div>
+                </div>
 		
         </div>
+
+        
     </div>
 </div>

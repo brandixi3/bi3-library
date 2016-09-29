@@ -16,7 +16,18 @@ angular.module('Bi3DigLib')
       Auth.logout();
       $location.path('/login');
     };
-
+    $scope.SignUp = function() {
+      $location.path('/signup');
+    };
+    $scope.login= function() {
+      $location.path('/login');
+    };
+    $scope.view = function() {
+      $location.path('/books');
+    };
+    $scope.addbook = function() {
+      $location.path('/addbook');
+    };
     $scope.isInclude = function(route) {
       return $location.path().indexOf(route) >= 0;
     };
