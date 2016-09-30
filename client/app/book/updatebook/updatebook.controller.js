@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('BooksCtrl', function($scope, Book, $location, $window) {
+    .controller('UpdateBookCtrl', function($scope, Book, $location, $window) {
         $scope.books = {};
         $scope.errors = {};
 
@@ -15,5 +15,8 @@ angular.module('Bi3DigLib')
 
         $scope.viewBook = function(isbn) {
             $location.path("/book/"+isbn);
+        }
+        $scope.updateBook = function(isbn) {
+            $location.path("/update/"+isbn);
         }
     });

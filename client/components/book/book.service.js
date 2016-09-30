@@ -15,11 +15,16 @@ angular.module('Bi3DigLib')
       function save(bookObj) { 
           return $http.post('/api/books/',bookObj);
       }
+
+      function lendBook(lendBookObj) { 
+          return $http.post('/api/books/lend/',lendBookObj);
+      }
       
       return {
         findOne:findOne,
         findByIsbn:findByIsbn,
         find:find,
-        save:save
+        save:save,
+        lendBook:lendBook
       };
 });

@@ -9,6 +9,7 @@ router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.get('/isbn/:isbn', controller.showByIsbn);
 router.post('/', controller.save);
+router.post('/lend/', controller.lend);
 
 
 module.exports = router;

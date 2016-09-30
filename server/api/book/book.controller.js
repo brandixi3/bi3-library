@@ -39,6 +39,14 @@ exports.save = function(req, res) {
     });
 };
 
+exports.lend = function(req, res) {
+    TenantFacade.lend(req.body, function(err, lend) {
+        if (err) {
+            return handleError(res, err); }
+        return res.json(201, lend);
+    });
+};
+
 exports.update = function(req, res) {
     if (req.body._id) { delete req.body._id; }
     TenantFacade.update(req.params.id, req.body, function(err, tenant) {
