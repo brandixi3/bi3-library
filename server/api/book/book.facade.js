@@ -30,12 +30,25 @@ exports.lend = function(item, cb) {
 };
 
 // Updates an existing tenant in the DB.
-exports.update = function(id, item, cb) {
+exports.update = function(isbn, item, cb) {
     if (item._id) { delete item._id; }
-    TenantModel.findById(id,function(err, tenant) {
+    TenantModel.findOne({"isbn":isbn}, function(err, tenant) {
+    console.log("item="+ JSON.stringify(item));
+    
+    console.log("tenant="+tenant);
+    
         var updated = _.merge(tenant, item);
         updated.save(function(err) {
             cb(err, tenant);
         });
     });
+  /*  TenantModel.findByIsbn(isbn,function(err, tenant) {
+        console.log("item="+ JSON.stringify(item));
+    
+    console.log("tenant="+tenant);
+        var updated = _.merge(tenant, item);
+        updated.save(function(err) {
+            cb(err, tenant);
+        });
+    });*/
 };

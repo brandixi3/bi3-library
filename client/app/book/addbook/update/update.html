@@ -1,0 +1,56 @@
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div layout flex class="container">
+    <div flex layout="column">
+        <div class="">
+            <h1> </h1>
+        </div>
+        <div class="row col-xs-4 col-xs-offset-4">
+            <form class="form card-frame" name="form" ng-submit="update(form)" novalidate>
+                <md-input-container flex>
+                    <label>ISBN</label>
+                   <input type="text" name="isbn"  ng-model="book.isbn"  ng-readonly="book.isbn">
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Title</label>
+                    <input type="text" name="title" ng-model="book.title" required>
+                </md-input-container>
+                 <md-input-container flex>
+                    <label>Author</label>
+                    <input type="text" name="author" ng-model="book.author" required>
+                </md-input-container>
+                 <md-input-container flex>
+                    <label>Publisher</label>
+                    <input type="text" name="pub" ng-model="book.publisher" >
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Category</label>
+                    <input type="text" name="cat" ng-model="book.catagory" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Year Of Publication</label>
+                    <input type="text" name="cat" ng-model="book.yearOfPublication" >
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Total Copies</label>
+                    <input type="text" name="cat" ng-model="book.totalCopies" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>About this book</label>
+                    <input type="text" name="about" ng-model="book.detail" required>
+                </md-input-container>
+          
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <md-button class="md-primary md-raised" type="submit">
+                            UPDATE
+                        </md-button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
