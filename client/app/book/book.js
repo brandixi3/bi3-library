@@ -30,7 +30,7 @@ angular.module('Bi3DigLib')
       })  
       .state('update', {
         url: '/update/:isbn',
-        templateUrl: 'app/book/addbook/update.html',
-        controller: 'AddBookCtrl'
+        templateUrl: 'app/book/addbook/update/update.html',
+        controller: 'UpdateCtrl'
       });    
   });

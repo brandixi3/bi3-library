@@ -49,11 +49,27 @@ exports.lend = function(req, res) {
 
 exports.update = function(req, res) {
     if (req.body._id) { delete req.body._id; }
-    TenantFacade.update(req.params.id, req.body, function(err, tenant) {
+    TenantFacade.update(req.params.isbn, req.body, function(err, tenant) {
         if (err) {
             return handleError(res, err); }
         return res.json(200, tenant);
     });
+};
+
+exports.change = function(req, res, next) {
+  var userId = req.user.isbn;
+  console.log(userId);
+ /* User.findByIsbn(userId, function (err, user) {
+    if (){
+      console.log(userId);
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });*/
 };
 
 function handleError(res, err) {
