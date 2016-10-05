@@ -19,4 +19,16 @@ angular.module('Bi3DigLib')
         $scope.updateBook = function(isbn) {
             $location.path("/update/"+isbn);
         }
+
+        $scope.delete = function(isbn) {
+            console.log("A");
+            Book.destroyBook(isbn)
+                .then(function() { 
+                    $location.path('/books');
+                })
+                .catch(function(err) {
+                    $scope.errors.other = err.message;
+                });
+            }
+        
     });

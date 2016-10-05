@@ -11,6 +11,6 @@ router.get('/isbn/:isbn', controller.showByIsbn);
 router.post('/', controller.save);
 router.post('/lend/', controller.lend);
 router.post('/update/:isbn', controller.update);
-
+router.post('/destroyBook/:isbn', controller.destroyBook);
 
 module.exports = router;

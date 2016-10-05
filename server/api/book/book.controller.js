@@ -56,21 +56,17 @@ exports.update = function(req, res) {
     });
 };
 
-exports.change = function(req, res, next) {
-  var userId = req.user.isbn;
-  console.log(userId);
- /* User.findByIsbn(userId, function (err, user) {
-    if (){
-      console.log(userId);
-      user.save(function(err) {
-        if (err) return validationError(res, err);
-        res.send(200);
-      });
-    } else {
-      res.send(403);
-    }
-  });*/
+
+
+exports.destroyBook = function(req, res) {
+    TenantFacade.destroyBook(req.params.isbn, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        return res.json(201, book);
+    });
 };
+
+
 
 function handleError(res, err) {
     return res.send(500, err);
