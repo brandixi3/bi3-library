@@ -19,6 +19,11 @@ exports.findByIsbn = function(isbn, cb) {
     TenantModel.find({$and :[{isbn:isbn} , {archieve: {$ne: true}}]}, cb);
 };
 
+// Get book orders by userId
+exports.findMyOrdersByUserId = function(userId, cb) {
+    LendModel.find({ userId: userId }, cb);
+};
+
 // Creates a new tenant in the DB.
 exports.create = function(item, cb) {
     TenantModel.create(item, cb);
@@ -33,30 +38,11 @@ exports.lend = function(item, cb) {
 exports.update = function(isbn, item, cb) {
     if (item._id) { delete item._id; }
     TenantModel.findOne({$and :[{isbn:isbn} , {archieve: {$ne: true}}] }, function(err, tenant) {
-    
         var updated = _.merge(tenant, item);
         updated.save(function(err) {
             cb(err, tenant);
         });
     });
-    /*exports.update = function(isbn, item, cb) {
-    if (item._id) { delete item._id; }
-    TenantModel.findOne({"isbn":isbn} , function(err, tenant) {
-    
-        var updated = _.merge(tenant, item);
-        updated.save(function(err) {
-            cb(err, tenant);
-        });
-    });/
-  /*  TenantModel.findByIsbn(isbn,function(err, tenant) {
-        console.log("item="+ JSON.stringify(item));
-    
-    console.log("tenant="+tenant);
-        var updated = _.merge(tenant, item);
-        updated.save(function(err) {
-            cb(err, tenant);
-        });
-    });*/
 };
 
 exports.destroyBook = function(isbn, cb) {
@@ -67,11 +53,3 @@ exports.destroyBook = function(isbn, cb) {
         });
     });
 };
-
-
-/*exports.destroy = function(req, res) {
-  User.findByIdAndRemove(req.params.id, function(err, user) {
-    if(err) return res.send(500, err);
-    return res.send(204);
-  });
-};*/

@@ -14,7 +14,7 @@ angular.module('Bi3DigLib')
                         password: $scope.user.password
                     })
                     .then(function() { 
-                        $location.path('/books');
+                        $location.path('/dashboard');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;

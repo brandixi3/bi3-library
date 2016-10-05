@@ -1,17 +1,17 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container">
     <div flex layout="column">
-        <div class="">
-            <h1></h1>
-        </div>
         <div class="row col-xs-8 col-xs-offset-2">
-
+			<div class="bg-info text-info">
+                <h2 style="padding:10px;">{{book.title}}</h2>
+            </div>
         <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
                             
         <table>  
 <tr>
 		<td>
-			<h2>{{book.title}}</h2>
+
+			
 		    <br><img src={{book.image}}>
                     
 		    </td><td style="width:20%"></td>
@@ -67,26 +67,24 @@
         <md-datepicker ng-model="BorrowedDate" md-placeholder="Enter date" disabled></md-datepicker>
       </div>
     
-    <div flex-gt-xs class="col-sm-6">
+      <div flex-gt-xs class="col-sm-6">
         <h4>Return Date</h4>
         <md-datepicker ng-model="ReturnDate" md-placeholder="Enter date"
             md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
       </div>
 
-                    <div class="col-sm-6">
-                        <md-button class="md-primary md-raised" type="submit">
-                            Order
-                            </button>
-                    </div>
-                    <div class="col-sm-6">
+		</br></br></br></br></br>
+      <div class="col-sm-6">
+        <md-button class="md-primary md-raised" type="submit">
+            Lend Book
+            </button>
+      </div>
+                    <!--div class="col-sm-6">
                         <md-button class="md-primary md-raised" href="/books">
-                            Back
+                            All Books
                             </button>
-                    </div>
+                    </div-->
                 </div>
-
-           
-
 	        </form>
         </div>
 

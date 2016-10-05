@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var LendbookSchema = new Schema({
+var lendbookSchema = new Schema({
   userId: Schema.Types.ObjectId,
   userName: String,
   userEmail: String,
@@ -21,4 +21,4 @@ var LendbookSchema = new Schema({
   fine: Number
 });
 
-module.exports = mongoose.model('Lendbook', LendbookSchema);
+module.exports = mongoose.model('lendbook', lendbookSchema);

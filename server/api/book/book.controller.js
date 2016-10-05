@@ -31,6 +31,16 @@ exports.showByIsbn = function(req, res) {
     });
 };
 
+exports.showMyOrdersByUserId = function(req, res) {
+    TenantFacade.findMyOrdersByUserId(req.params.userId, function(err, tenant) {
+        if (err) {
+            return handleError(res, err); }
+        if (!tenant) {
+            return res.send(404); }
+        return res.json(tenant);
+    });
+};
+
 exports.save = function(req, res) {
     TenantFacade.create(req.body, function(err, tenant) {
         if (err) {
@@ -56,8 +66,6 @@ exports.update = function(req, res) {
     });
 };
 
-
-
 exports.destroyBook = function(req, res) {
     TenantFacade.destroyBook(req.params.isbn, function(err, book) {
         if (err) {
@@ -65,8 +73,6 @@ exports.destroyBook = function(req, res) {
         return res.json(201, book);
     });
 };
-
-
 
 function handleError(res, err) {
     return res.send(500, err);

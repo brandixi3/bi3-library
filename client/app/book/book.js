@@ -32,5 +32,10 @@ angular.module('Bi3DigLib')
         url: '/update/:isbn',
         templateUrl: 'app/book/addbook/update/update.html',
         controller: 'UpdateCtrl'
+      })
+      .state('myorders', {
+        url: '/myorders',
+        templateUrl: 'app/book/myorders/myorders.html',
+        controller: 'MyOrdersCtrl'
       });    
   });

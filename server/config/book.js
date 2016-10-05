@@ -2,7 +2,7 @@
  
 var Thing = require('../api/tenants/tenants.model');
  
-Thing.find({}).remove(function() {
+/*Thing.find({}).remove(function() {
   Thing.create({
     name: 'Test Book',
     isbn: '12345ab5678herhf',
@@ -15,4 +15,4 @@ Thing.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
-});
+});*/

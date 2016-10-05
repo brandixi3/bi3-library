@@ -25,8 +25,14 @@ angular.module('Bi3DigLib')
     $scope.view = function() {
       $location.path('/books');
     };
+    $scope.adminView = function() {
+      $location.path('/updatebook');
+    };
     $scope.addbook = function() {
       $location.path('/addbook');
+    };
+    $scope.returnbook = function() {
+      $location.path('/myorders');
     };
     $scope.isInclude = function(route) {
       return $location.path().indexOf(route) >= 0;
