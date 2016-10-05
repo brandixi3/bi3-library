@@ -13,15 +13,16 @@ angular.module('Bi3DigLib')
           return $http.get('/api/books/'); 
       }
       function save(bookObj) { 
-          return $http.post('/api/books/',bookObj);
+          return $http.post('/api/books/', bookObj);
       }
-      function update(bookObj) { 
-        console.log("hdfsd");
-          return $http.post('/api/books/update/'+bookObj.isbn ,bookObj);
+      function update(bookObj) {
+          return $http.post('/api/books/update/'+bookObj.isbn, bookObj);
       }
-
       function lendBook(lendBookObj) { 
-          return $http.post('/api/books/lend/',lendBookObj);
+          return $http.post('/api/books/lend/', lendBookObj);
+      }
+      function getMyOrders(userId) {
+          return $http.get('/api/books/myorders/'+userId);
       }
       
       return {
@@ -30,6 +31,7 @@ angular.module('Bi3DigLib')
         find:find,
         save:save,
         lendBook:lendBook,
-        update:update
+        update:update,
+        getMyOrders:getMyOrders
       };
 });

@@ -32,7 +32,7 @@ angular.module('Bi3DigLib')
       $location.path('/addbook');
     };
     $scope.returnbook = function() {
-      $location.path('/returnbook');
+      $location.path('/myorders');
     };
     $scope.isInclude = function(route) {
       return $location.path().indexOf(route) >= 0;

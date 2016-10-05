@@ -19,6 +19,11 @@ exports.findByIsbn = function(isbn, cb) {
     TenantModel.find({"isbn":isbn}, cb);
 };
 
+// Get book orders by userId
+exports.findMyOrdersByUserId = function(userId, cb) {
+    LendModel.find({ userId: userId }, cb);
+};
+
 // Creates a new tenant in the DB.
 exports.create = function(item, cb) {
     TenantModel.create(item, cb);
@@ -33,22 +38,9 @@ exports.lend = function(item, cb) {
 exports.update = function(isbn, item, cb) {
     if (item._id) { delete item._id; }
     TenantModel.findOne({"isbn":isbn}, function(err, tenant) {
-    console.log("item="+ JSON.stringify(item));
-    
-    console.log("tenant="+tenant);
-    
         var updated = _.merge(tenant, item);
         updated.save(function(err) {
             cb(err, tenant);
         });
     });
-  /*  TenantModel.findByIsbn(isbn,function(err, tenant) {
-        console.log("item="+ JSON.stringify(item));
-    
-    console.log("tenant="+tenant);
-        var updated = _.merge(tenant, item);
-        updated.save(function(err) {
-            cb(err, tenant);
-        });
-    });*/
 };

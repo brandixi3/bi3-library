@@ -1,10 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container books">
     <div flex layout="column">
-        <div class="">
-            <h1></h1>
-        </div>
         <div class="row col-xs-8 col-xs-offset-2">
+            <div class="bg-info text-info">
+                <h2 style="padding:10px;">Books</h2>
+            </div>
             <form class="form card-frame" name="form" novalidate>
 
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">

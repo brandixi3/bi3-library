@@ -31,6 +31,16 @@ exports.showByIsbn = function(req, res) {
     });
 };
 
+exports.showMyOrdersByUserId = function(req, res) {
+    TenantFacade.findMyOrdersByUserId(req.params.userId, function(err, tenant) {
+        if (err) {
+            return handleError(res, err); }
+        if (!tenant) {
+            return res.send(404); }
+        return res.json(tenant);
+    });
+};
+
 exports.save = function(req, res) {
     TenantFacade.create(req.body, function(err, tenant) {
         if (err) {
@@ -54,22 +64,6 @@ exports.update = function(req, res) {
             return handleError(res, err); }
         return res.json(200, tenant);
     });
-};
-
-exports.change = function(req, res, next) {
-  var userId = req.user.isbn;
-  console.log(userId);
- /* User.findByIsbn(userId, function (err, user) {
-    if (){
-      console.log(userId);
-      user.save(function(err) {
-        if (err) return validationError(res, err);
-        res.send(200);
-      });
-    } else {
-      res.send(403);
-    }
-  });*/
 };
 
 function handleError(res, err) {
