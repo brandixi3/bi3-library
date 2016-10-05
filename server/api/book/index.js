@@ -14,5 +14,4 @@ router.post('/', auth.hasRole('admin'), controller.save);
 router.post('/lend/', controller.lend);
 router.post('/update/:isbn', auth.hasRole('admin'), controller.update);
 
-
 module.exports = router;
