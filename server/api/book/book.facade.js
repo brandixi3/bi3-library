@@ -35,6 +35,11 @@ exports.findPendingReturnBooks = function(cb) {
     LendModel.find({returned: {$ne: true}}, cb);
 };
 
+// Get book orders by userId
+exports.findReturnBooksHistory = function(cb) {
+    LendModel.find({returned: true}, cb);
+};
+
 // Creates a new book in the DB.
 exports.create = function(item, cb) {
     BookModel.create(item, cb);
@@ -66,8 +71,10 @@ exports.destroyBook = function(isbn, cb) {
 };
 
 exports.returnBook = function(item, cb) {
-    if (item._id) { delete item._id; }
-
+    if (item._id) { 
+        var itemId = item._id;
+        delete item._id; 
+    }
     async.waterfall([
         function createLend(cb) { 
             BookModel.findOne({isbn:item.bookIsbn}, function(err, book) {
@@ -78,8 +85,8 @@ exports.returnBook = function(item, cb) {
                 });
             });
         },
-        function updateRemainingCopies(cb, book) { 
-            LendModel.findOne({bookIsbn: item.bookIsbn , userId: item.userId, returned: {$ne: true}}, function(err, book) {
+        function updateRemainingCopies(book, cb) { 
+            LendModel.findOne({_id: itemId}, function(err, book) {
                 var updated = _.merge(book, item);
                 updated.returned = true;
                 updated.save(function(err) {
@@ -87,9 +94,9 @@ exports.returnBook = function(item, cb) {
                 });
             });
         }
-        ],function (err, book) {
-            cb(err, book);
-        });
+    ],function (err, book) {
+        cb(err, book);
+    });
 };
 
 

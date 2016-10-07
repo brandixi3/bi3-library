@@ -37,6 +37,9 @@ angular.module('Bi3DigLib')
       function returnBook(loanbookObj) {
           return $http.post('/api/books/returnbook/', loanbookObj);
       }
+      function getReturnHistoryList() {
+          return $http.get('/api/books/returnhistorylist/');
+      }
       
       return {
         findOne:findOne,
@@ -49,6 +52,7 @@ angular.module('Bi3DigLib')
         getMyOrders:getMyOrders,
         getReturnBookList:getReturnBookList,
         getOrdersHistory:getOrdersHistory,
-        returnBook:returnBook
+        returnBook:returnBook,
+        getReturnHistoryList:getReturnHistoryList
       };
 });
