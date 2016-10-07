@@ -21,7 +21,6 @@ angular.module('Bi3DigLib')
         }
 
         $scope.delete = function(isbn) {
-            console.log("A");
             Book.destroyBook(isbn)
                 .then(function() { 
                     $location.path('/books');

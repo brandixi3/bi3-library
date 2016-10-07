@@ -11,7 +11,7 @@ var BookSchema = new Schema({
   catagory: String,
   yearOfPublication: String,
   totalCopies: String,
-  remainingCopies: String,
+  remainingCopies: Number,
   detail:String,
   archieve:Boolean,
   image: { type: String,
