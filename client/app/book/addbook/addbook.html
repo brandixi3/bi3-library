@@ -26,10 +26,12 @@
                     <label>Publisher</label>
                     <input type="text" name="pub" ng-model="book.pub" >
                 </md-input-container>
-                <md-input-container flex>
-                    <label>Category</label>
-                    <input type="text" name="cat" ng-model="book.cat" required>
-                </md-input-container>
+                                                               
+                <label>Category</label>
+                 <md-select ng-model="selectedUser">                  
+                    <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
+                </md-select>
+
                 <md-input-container flex>
                     <label>Year Of Publication</label>
                     <input type="text" name="cat" ng-model="book.year" >
@@ -41,6 +43,10 @@
                 <md-input-container flex>
                     <label>About this book</label>
                     <input type="text" name="about" ng-model="book.about" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Image URL</label>
+                    <input type="text" name="image" ng-model="book.image" required>
                 </md-input-container>
           
 

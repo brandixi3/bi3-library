@@ -28,6 +28,7 @@ angular.module('Bi3DigLib')
       function getMyOrders(userId) {
           return $http.get('/api/books/myorders/'+userId);
       }
+
       function getOrdersHistory(userId) {
           return $http.get('/api/books/myordershistory/'+userId);
       }
@@ -40,7 +41,7 @@ angular.module('Bi3DigLib')
       function getReturnHistoryList() {
           return $http.get('/api/books/returnhistorylist/');
       }
-      
+
       return {
         findOne:findOne,
         findByIsbn:findByIsbn,
