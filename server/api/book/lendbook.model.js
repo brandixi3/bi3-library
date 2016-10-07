@@ -16,9 +16,11 @@ var lendbookSchema = new Schema({
   bookPublisher: String,
   bookCategory: String,
   bookYearOfPublication: String,
-  bookBorrowedDate: String,
-  bookReturnDate: String,
-  fine: Number
+  bookBorrowedDate: Date,
+  bookReturnDate: Date,
+  fine: Number,
+  returned:Boolean,
+  actualReturnDate: Date
 });
 
 module.exports = mongoose.model('lendbook', lendbookSchema);

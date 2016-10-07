@@ -1,56 +1,76 @@
 'use strict';
 
 var _ = require('lodash');
-var TenantFacade = require('./book.facade');
+var BookFacade = require('./book.facade');
 
 exports.index = function(req, res) {
-    TenantFacade.findAll(function(err, tenants) {
+    BookFacade.findAll(function(err, books) {
         if (err) {
             return handleError(res, err); }
-        return res.json(200, tenants);
+        return res.json(200, books);
     });
 };
 
 exports.show = function(req, res) {
-    TenantFacade.findById(req.params.id, function(err, tenant) {
+    BookFacade.findById(req.params.id, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        if (!tenant) {
+        if (!book) {
             return res.send(404); }
-        return res.json(tenant);
+        return res.json(book);
     });
 };
 
 exports.showByIsbn = function(req, res) {
-    TenantFacade.findByIsbn(req.params.isbn, function(err, tenant) {
+    BookFacade.findByIsbn(req.params.isbn, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        if (!tenant) {
+        if (!book) {
             return res.send(404); }
-        return res.json(tenant);
+        return res.json(book);
     });
 };
 
 exports.showMyOrdersByUserId = function(req, res) {
-    TenantFacade.findMyOrdersByUserId(req.params.userId, function(err, tenant) {
+    BookFacade.findMyOrdersByUserId(req.params.userId, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        if (!tenant) {
+        if (!book) {
             return res.send(404); }
-        return res.json(tenant);
+        return res.json(book);
+    });
+};
+
+exports.showOrdersHistoryByUserId = function(req, res) {
+    BookFacade.findOrdersHistoryByUserId(req.params.userId, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        if (!book) {
+            return res.send(404); }
+        return res.json(book);
+    });
+};
+
+exports.showPendingReturnBooks = function(req, res) {
+    BookFacade.findPendingReturnBooks(function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        if (!book) {
+            return res.send(404); }
+        return res.json(book);
     });
 };
 
 exports.save = function(req, res) {
-    TenantFacade.create(req.body, function(err, tenant) {
+    BookFacade.create(req.body, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        return res.json(201, tenant);
+        return res.json(201, book);
     });
 };
 
 exports.lend = function(req, res) {
-    TenantFacade.lend(req.body, function(err, lend) {
+    BookFacade.lend(req.body, function(err, lend) {
         if (err) {
             return handleError(res, err); }
         return res.json(201, lend);
@@ -59,15 +79,23 @@ exports.lend = function(req, res) {
 
 exports.update = function(req, res) {
     if (req.body._id) { delete req.body._id; }
-    TenantFacade.update(req.params.isbn, req.body, function(err, tenant) {
+    BookFacade.update(req.params.isbn, req.body, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        return res.json(200, tenant);
+        return res.json(200, book);
     });
 };
 
 exports.destroyBook = function(req, res) {
-    TenantFacade.destroyBook(req.params.isbn, function(err, book) {
+    BookFacade.destroyBook(req.params.isbn, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        return res.json(201, book);
+    });
+};
+
+exports.returnBook = function(req, res) {
+    BookFacade.returnBook(req.body, function(err, book) {
         if (err) {
             return handleError(res, err); }
         return res.json(201, book);

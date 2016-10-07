@@ -24,7 +24,7 @@ angular.module('Bi3DigLib')
         controller: 'LendBookCtrl'
       })
       .state('updatebook', {
-        url: '/updatebook',
+        url: '/bookadmin',
         templateUrl: 'app/book/updatebook/updatebook.html',
         controller: 'UpdateBookCtrl'
       })  
@@ -34,8 +34,13 @@ angular.module('Bi3DigLib')
         controller: 'UpdateCtrl'
       })
       .state('myorders', {
-        url: '/myorders',
+        url: '/myloans',
         templateUrl: 'app/book/myorders/myorders.html',
         controller: 'MyOrdersCtrl'
+      })
+      .state('returnbook', {
+        url: '/returnbook',
+        templateUrl: 'app/book/returnbook/returnbook.html',
+        controller: 'ReturnBookCtrl'
       });    
   });

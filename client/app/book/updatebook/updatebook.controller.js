@@ -23,16 +23,7 @@ angular.module('Bi3DigLib')
             $location.path("/update/"+isbn);
         }
 
-       /* $scope.delete = function(isbn) {
-            console.log("A");
-            Book.destroyBook(isbn)
-                .then(function() { 
-                    $location.path('/books');
-                })
-                .catch(function(err) {
-                    $scope.errors.other = err.message;
-                });
-            }*/
+
 
             
   $scope.showConfirm = function(ev,isbn) {
@@ -40,7 +31,7 @@ angular.module('Bi3DigLib')
     var confirm = $mdDialog.confirm()
           .title('Would you like to delete this book?'+isbn)
          // .textContent('All .')
-          .ariaLabel('Lucky day')
+          //.ariaLabel('Lucky day')
           .targetEvent(ev)
           .ok('Yes')
           .cancel('Cancel');
