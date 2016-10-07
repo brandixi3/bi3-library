@@ -15,6 +15,8 @@
                     <th style="width:15%">PUBLISHER</th>
                     <th style="width:10%">YEAR OF PUBLICATION</th>
                     <th style="width:10%"></th>
+                    <th style="width:10%"></th>
+                    <th style="width:10%"></th>
                   </tr>
                   <tr ng-repeat="book in books">
                     <td>{{book.isbn}}</td>
@@ -41,13 +43,22 @@
                         </div>
                     </td>
                     <td>
-                        <div class="row">
+                      <!--  <div class="row">
                            <div class="col-sm-6">
                                 <md-button class="md-primary md-raised" ng-click="delete(book.isbn)">
                                     DELETE
                                 </md-button>
                             </div> 
+                        </div>-->
+
+                        <div class="row">
+                           <div class="col-sm-6">
+                                <md-button class="md-primary md-raised" ng-click="showConfirm($event,book.isbn)" flex="100"  flex-gt-md="auto">
+                                        Delete
+                                </md-button>
+                            </div> 
                         </div>
+
                     </td>
                   </tr>
                 </table>

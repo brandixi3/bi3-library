@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var async = require('async');
 var TenantModel = require('./book.model');
 var LendModel = require('./lendbook.model');
 
@@ -31,7 +32,28 @@ exports.create = function(item, cb) {
 
 // Creates a new lend in the DB.
 exports.lend = function(item, cb) {
-    LendModel.create(item, cb);
+    async.waterfall([
+        function createLend(cb) { 
+            LendModel.create(item, function (err) {
+                cb(err);
+            });
+        },
+        function updateRemainingCopies(cb) {          
+            TenantModel.findOne({isbn:item.bookIsbn}, function(err, book) {
+             if(book.remainingCopies>0){   
+                book.remainingCopies--;
+            }
+            else{
+                book.remainingCopies=0;
+            }
+                book.save(function(err) {
+                    cb(err, book);
+                });
+            });  
+        }
+        ],function (err,book) {
+            cb(err,book);
+        });
 };
 
 // Updates an existing tenant in the DB.
@@ -53,3 +75,4 @@ exports.destroyBook = function(isbn, cb) {
         });
     });
 };
+

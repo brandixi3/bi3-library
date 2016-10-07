@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('UpdateBookCtrl', function($scope, Book, $location, $window) {
+    .controller('UpdateBookCtrl', function($scope, Book, $location, $window,$mdDialog,$mdMedia) {
         $scope.books = {};
         $scope.errors = {};
+        $scope.status = '  ';
+  $scope.customFullscreen = false;
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
         Book.find()
             .then(function(res) {
@@ -20,7 +23,7 @@ angular.module('Bi3DigLib')
             $location.path("/update/"+isbn);
         }
 
-        $scope.delete = function(isbn) {
+       /* $scope.delete = function(isbn) {
             console.log("A");
             Book.destroyBook(isbn)
                 .then(function() { 
@@ -29,6 +32,30 @@ angular.module('Bi3DigLib')
                 .catch(function(err) {
                     $scope.errors.other = err.message;
                 });
-            }
+            }*/
+
+            
+  $scope.showConfirm = function(ev,isbn) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+          .title('Would you like to delete this book?'+isbn)
+         // .textContent('All .')
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('Yes')
+          .cancel('Cancel');
+    $mdDialog.show(confirm).then(function() {
+      //$scope.status = 'You decided to get rid of your debt.';
+      Book.destroyBook(isbn)
+                .then(function() { 
+                    $location.path('/books');
+                })
+                .catch(function(err) {
+                    $scope.errors.other = err.message;
+                });
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
+  };
         
     });

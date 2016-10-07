@@ -5,20 +5,29 @@ angular.module('Bi3DigLib')
         $scope.book = {};
         $scope.errors = {};
 
+        $scope.catagory = [
+    { id: 1, name: 'Non-fiction' },
+    { id: 2, name: 'Fiction' },
+    { id: 3, name: 'Biographies' }
+  ];
+
+
+
         $scope.add = function(form) {
             $scope.submitted = true;
-
+            
             if (form.$valid) {
                 Book.save({
                         isbn:$scope.book.isbn,
                         title:$scope.book.title,
                         author:$scope.book.author,
                         publisher:$scope.book.pub,
-                        catagory:$scope.book.cat,
+                        catagory:$scope.selectedUser.name,
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,
-                        detail:$scope.book.about
+                        detail:$scope.book.about,
+                        image:$scope.book.image
                     })
                     .then(function() { 
                         $location.path('/books');

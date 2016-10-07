@@ -10,13 +10,13 @@ var BookSchema = new Schema({
   publisher: String,
   catagory: String,
   yearOfPublication: String,
-  totalCopies: String,
-  remainingCopies: String,
+  totalCopies: Number,
+  remainingCopies: Number,
   detail:String,
   archieve:Boolean,
-  image: { type: String,
-    default: 'http://www.usborne.com/images/catalogue/custom-pages/write-your-own/write-your-own-story-book.jpg'
-}
+  image:String
+    
+
 
 });
 
