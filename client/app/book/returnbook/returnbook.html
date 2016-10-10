@@ -10,7 +10,7 @@
                         Return Book
                     </div>
                     <div class="col-xs-1">
-                        <md-button class="md-warn md-raised btn-info" ng-click="returnBook(loanbook)">
+                        <md-button class="md-warn md-raised btn-info" ng-click="returnHistory()">
                             HISTORY
                         </md-button>
                     </div>
@@ -38,7 +38,7 @@
                     <td>{{loanbook.bookAuthor}}</td>
                     <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{loanbook.fine | number:2}}</td>
+                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
                     <td>
                         <div class="row">
                             <div class="">

@@ -5,26 +5,18 @@
 			<div class="bg-info text-info">
                 <h2 style="padding:5px 10px;">{{book.title}}</h2>
             </div>
-        <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
-                            
+        <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>                            
         <table>  
 <tr>
 		<td>
 
 			
-		    <br><img src={{book.image}} width="250" height="300">
+		    <br><img src="{{bookImgUrl}}" width="250" height="300">
 		    
                     
 		    </td><td style="width:20%"></td>
 		    <td>
 		    <table>
-		    
-
-		    <!--	<tr>
-		    		<td style="height:50%"><b>Title:</b>
-		    		<br>{{book.title}}<br/>
-					</td>   
-				</tr>-->
 				<tr>
 					<td  style="height:50%"><b>Author:</b>
 	      			<br>{{book.author}}

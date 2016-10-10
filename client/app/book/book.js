@@ -42,5 +42,10 @@ angular.module('Bi3DigLib')
         url: '/returnbook',
         templateUrl: 'app/book/returnbook/returnbook.html',
         controller: 'ReturnBookCtrl'
+      })
+      .state('returnhistory', {
+        url: '/returnhistory',
+        templateUrl: 'app/book/returnhistory/returnhistory.html',
+        controller: 'ReturnHistoryCtrl'
       });    
   });

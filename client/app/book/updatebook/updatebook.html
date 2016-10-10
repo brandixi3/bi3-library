@@ -6,7 +6,6 @@
                 <h2 style="padding:5px 10px;">Books</h2>
             </div>
             <form class="form card-frame" name="form" novalidate>
-
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table" >
                   <tr>
                     <th style="width:10%">ISBN</th>
@@ -27,39 +26,29 @@
                     <td>
                         <div class="row">
                             <div class="col-sm-6">
-                                <md-button class="md-primary md-raised" ng-click="viewBook(book.isbn)">
-                                    VIEW
-                                </md-button>
+                                <a href="#" class="btn btn-info" ng-click="viewBook(book.isbn)">
+                                  <span class="glyphicon glyphicon-book"></span> View
+                                </a>
                             </div>
                         </div>
                     </td>
                     <td>
                         <div class="row">
                            <div class="col-sm-6">
-                                <md-button class="md-primary md-raised" ng-click="updateBook(book.isbn)">
-                                    UPDATE
-                                </md-button>
+                                <a href="#" class="btn btn-warning" ng-click="updateBook(book.isbn)">
+                                  <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
                             </div> 
                         </div>
                     </td>
                     <td>
-                      <!--  <div class="row">
-                           <div class="col-sm-6">
-                                <md-button class="md-primary md-raised" ng-click="delete(book.isbn)">
-                                    DELETE
-                                </md-button>
-                            </div> 
-                        </div>-->
-
                         <div class="row">
                            <div class="col-sm-6">
-                           
-                                <md-button class="md-primary md-raised" ng-click="showConfirm($event,book.isbn)" flex="100"  flex-gt-md="auto">
-                                        Delete
-                                </md-button>
+                                <a href="#" class="btn btn-danger" ng-click="showConfirm($event,book.isbn)">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                                </a>
                             </div> 
                         </div>
-
                     </td>
                   </tr>
                 </table>

@@ -61,6 +61,16 @@ exports.showPendingReturnBooks = function(req, res) {
     });
 };
 
+exports.showReturnBooksHistory = function(req, res) {
+    BookFacade.findReturnBooksHistory(function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        if (!book) {
+            return res.send(404); }
+        return res.json(book);
+    });
+};
+
 exports.save = function(req, res) {
     BookFacade.create(req.body, function(err, book) {
         if (err) {

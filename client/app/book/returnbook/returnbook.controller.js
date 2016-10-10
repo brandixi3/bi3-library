@@ -13,6 +13,10 @@ angular.module('Bi3DigLib')
                 $scope.errors.other = err.message;
             });
 
+        $scope.returnHistory = function() {
+            $location.path("/returnhistory");
+        }
+
         $scope.returnBook = function(loanbookObj) {
             var dayDiff = Math.floor((new Date() - new Date(loanbookObj.bookReturnDate)) / (1000 * 60 * 60 * 24));
             var fine = parseFloat((dayDiff)*50).toFixed(2);
@@ -21,12 +25,20 @@ angular.module('Bi3DigLib')
             
             Book.returnBook(loanbookObj)
                 .then(function() { 
-                    
+                    $window.location.reload();
                 })
                 .catch(function(err) {
                     $scope.errors.other = err.message;
                 });
-            }
+        }
+
+        $scope.calculateFine = function(returnDate) {
+            var dayDiff = Math.floor((new Date() - new Date(returnDate)) / (1000 * 60 * 60 * 24));
+            var fine = parseFloat((dayDiff)*50).toFixed(2);
+              
+            return fine > 0 ? fine : ("N/A");
+              
+        }
               
         
         

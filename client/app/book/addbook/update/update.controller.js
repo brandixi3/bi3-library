@@ -3,22 +3,16 @@ angular.module('Bi3DigLib')
 
         $scope.book = {};
         $scope.errors = {};
-       $scope.catagory = [
-    { id: 1, name: 'Non-fiction' },
-    { id: 2, name: 'Fiction' },
-    { id: 3, name: 'Biographies' }
-
-  ];       
+        
+        $scope.catagory = [
+            { id: 1, name: 'Non-fiction' },
+            { id: 2, name: 'Fiction' },
+            { id: 3, name: 'Biographies' }
+        ];       
        
-
-            $scope.update = function(form) {
-
+        $scope.update = function(form) {
             $scope.submitted = true;
-//$location.path('/dashboard');
-           // if (form.$valid) {
-           	//alert($scope.book._id);
-            
-            //console.log($scope.selectedUser.name);
+
                 Book.update({
                 		_id:$scope.book._id,
                         isbn:$scope.book.isbn,
@@ -29,8 +23,7 @@ angular.module('Bi3DigLib')
                         yearOfPublication:$scope.book.yearOfPublication,
                         totalCopies:$scope.book.totalCopies, //1
                         remainingCopies:$scope.book.totalCopies - $scope.prevTotalCount  + $scope.book.remainingCopies, //1
-                        detail:$scope.book.detail,
-                        image:$scope.book.image
+                        detail:$scope.book.detail
                     })
                     .then(function() { 
                        
@@ -47,11 +40,10 @@ angular.module('Bi3DigLib')
                 $scope.selectedUser = res.data[0].catagory;
                 $scope.book.catagory = _.find($scope.catagory,function (item) {
                     return $scope.book.catagory === item.name; 
-                }); 
-                $scope.prevTotalCount = res.data[0].totalCopies; //3
+                });
+                $scope.prevTotalCount = res.data[0].totalCopies;
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;
             });
-
         });

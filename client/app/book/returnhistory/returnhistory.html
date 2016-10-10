@@ -1,0 +1,37 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div layout flex class="container">
+    <div flex layout="column">
+        
+        <div class="row col-xs-8 col-xs-offset-2">
+        <div class="bg-info text-info">
+            <h2 style="padding:5px 10px;">Return History</h2>
+        </div>
+            <form class="form card-frame" name="form" novalidate>
+                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
+                  <tr>
+                    <th style="width:15%">Name</th>
+                    <th style="width:15%">E-mail</th>
+                    <th style="width:10%">ISBN</th>
+                    <th style="width:20%">TITLE</th>
+                    <th style="width:10%">AUTHOR</th>
+                    <th style="width:10%">BORROWED DATE</th>
+                    <th style="width:10%">RETURN DATE</th>
+                    <th style="width:10%">ACTUAL RETURN DATE</th>
+                    <th style="width:10%">FINE (Rs.)</th>
+                  </tr>
+                  <tr ng-repeat="loanhistory in returnhistory">
+                    <td>{{loanhistory.userName}}</td>
+                    <td>{{loanhistory.userEmail}}</td>
+                    <td>{{loanhistory.bookIsbn}}</td>
+                    <td>{{loanhistory.bookTitle}}</td>
+                    <td>{{loanhistory.bookAuthor}}</td>
+                    <td>{{loanhistory.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{loanhistory.bookReturnDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{loanhistory.actualReturnDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{loanhistory.fine | number:2}}</td>
+                  </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

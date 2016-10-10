@@ -5,6 +5,7 @@ angular.module('Bi3DigLib')
 
         $scope.book = {};
         $scope.errors = {};
+        $scope.bookImgUrl = {};
         $scope.loggedInUser = {};
 
 
@@ -22,6 +23,7 @@ angular.module('Bi3DigLib')
         Book.findByIsbn($stateParams.isbn)
             .then(function(res) {
                 $scope.book = res.data[0];
+                $scope.bookImgUrl = 'http://images.amazon.com/images/P/' + $scope.book.isbn + '.jpg';
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;
@@ -55,14 +57,16 @@ angular.module('Bi3DigLib')
                         fine: 0.00
                     })
                     .then(function() { 
-                        $location.path('/books');
+                        if ($scope.loggedInUser.role == 'Admin') {
+                            $location.path('/bookadmin');
+                        } else {
+                            $location.path('/books');
+                        }
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
                     });
             }
         };
-
-        
 
     });
