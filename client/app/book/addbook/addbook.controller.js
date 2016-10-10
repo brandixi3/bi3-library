@@ -6,10 +6,10 @@ angular.module('Bi3DigLib')
         $scope.errors = {};
 
         $scope.catagory = [
-    { id: 1, name: 'Non-fiction' },
-    { id: 2, name: 'Fiction' },
-    { id: 3, name: 'Biographies' }
-  ];
+            { id: 1, name: 'Non-fiction' },
+            { id: 2, name: 'Fiction' },
+            { id: 3, name: 'Biographies' }
+        ];
 
 
 
@@ -26,8 +26,8 @@ angular.module('Bi3DigLib')
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,
-                        detail:$scope.book.about,
-                        image:$scope.book.image
+                        detail:$scope.book.about/*,
+                        image:$scope.book.image*/
                     })
                     .then(function() { 
                         $location.path('/books');

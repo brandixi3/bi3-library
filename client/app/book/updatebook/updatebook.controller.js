@@ -29,7 +29,7 @@ angular.module('Bi3DigLib')
   $scope.showConfirm = function(ev,isbn) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
-          .title('Would you like to delete this book?'+isbn)
+          .title('Would you like to delete this book?')
          // .textContent('All .')
           //.ariaLabel('Lucky day')
           .targetEvent(ev)

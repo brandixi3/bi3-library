@@ -16,6 +16,7 @@
                     <th style="width:10%">AUTHOR</th>
                     <th style="width:10%">BORROWED DATE</th>
                     <th style="width:10%">RETURN DATE</th>
+                    <th style="width:10%">ACTUAL RETURN DATE</th>
                     <th style="width:10%">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="loanhistory in returnhistory">
@@ -26,6 +27,7 @@
                     <td>{{loanhistory.bookAuthor}}</td>
                     <td>{{loanhistory.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanhistory.bookReturnDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{loanhistory.actualReturnDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanhistory.fine | number:2}}</td>
                   </tr>
                 </table>
