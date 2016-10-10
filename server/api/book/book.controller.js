@@ -81,8 +81,8 @@ exports.update = function(req, res) {
     if (req.body._id) { delete req.body._id; }
     BookFacade.update(req.params.isbn, req.body, function(err, book) {
         if (err) {
-            return handleError(res, err); }
-        return res.json(200, book);
+            return handleError(res, err); } 
+        return res.json(book);
     });
 };
 

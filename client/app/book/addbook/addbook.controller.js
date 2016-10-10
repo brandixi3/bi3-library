@@ -22,7 +22,7 @@ angular.module('Bi3DigLib')
                         title:$scope.book.title,
                         author:$scope.book.author,
                         publisher:$scope.book.pub,
-                        catagory:$scope.selectedUser.name,
+                        catagory:$scope.book.catagory.name,
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,

@@ -49,3 +49,10 @@
 [1007/105155:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1007/110726:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1007/144608:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1008/202845:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/090742:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/100702:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/130107:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/152056:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/164926:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1010/165507:ERROR:file_io.cc(30)] read: expected 4, observed 0

@@ -18,27 +18,27 @@ angular.module('Bi3DigLib')
            // if (form.$valid) {
            	//alert($scope.book._id);
             
-            console.log($scope.selectedUser.name);
+            //console.log($scope.selectedUser.name);
                 Book.update({
                 		_id:$scope.book._id,
                         isbn:$scope.book.isbn,
                         title:$scope.book.title,
                         author:$scope.book.author,
                         publisher:$scope.book.publisher,
-                        catagory:$scope.selectedUser.name,
+                        catagory:$scope.book.catagory.name,
                         yearOfPublication:$scope.book.yearOfPublication,
                         totalCopies:$scope.book.totalCopies, //1
-                        remainingCopies:$scope.book.totalCopies, //1
+                        remainingCopies:$scope.book.totalCopies - $scope.prevTotalCount  + $scope.book.remainingCopies, //1
                         detail:$scope.book.detail,
                         image:$scope.book.image
                     })
                     .then(function() { 
+                       
                         $location.path('/dashboard');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
                     });
-           // }
         }; 
 
         Book.findByIsbn($stateParams.isbn)
