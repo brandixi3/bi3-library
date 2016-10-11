@@ -8,8 +8,7 @@
                 <h2 style="padding:5px 10px;">Add Book</h2>
             </div>
 
-            <form class="form card-frame" name="form" ng-submit="add(form)" novalidate>
-                
+            <form class="form card-frame" name="form" ng-submit="add(form)" novalidate>               
                 <md-input-container flex>
                     <label>ISBN</label>
                     <input type="text" name="isbn" ng-model="book.isbn" required>
@@ -19,12 +18,12 @@
                     <input type="text" name="title" ng-model="book.title" required>
                 </md-input-container>
                 <md-input-container flex>
-                    <label>About this book</label>
-                    <input type="text" name="about" ng-model="book.about" required>
-                </md-input-container>
-                <md-input-container flex>
                     <label>Author</label>
                     <input type="text" name="author" ng-model="book.author" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>About this book</label>
+                    <input type="text" name="about" ng-model="book.about" required>
                 </md-input-container>
                  <md-input-container flex>
                     <label>Publisher</label>

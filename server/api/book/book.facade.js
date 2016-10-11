@@ -74,38 +74,34 @@ exports.lend = function(item, cb) {
 };
 
 // Updates an existing book in the DB.
-exports.update = function(isbn, item, cb) {
-    
+exports.update = function(isbn, item, cb) {   
     async.waterfall([
-
-    function updateBook(cb) {  
-    if (item._id) { delete item._id; }      
-    BookModel.findOne({$and :[{isbn:isbn} , {archieve: {$ne: true}}] }, function(err, book) {
-        var updated = _.merge(book, item);
-        //++book.remainingCopies;
-        updated.save(function(err) {
-            cb(err, book);
-        });
-    });
-},
-    function updateLend(book, cb) { 
-    LendModel.update({bookIsbn:item.isbn},  
-        
-        {bookTitle : item.title,
-        bookAuthor : item.author,
-        bookPublisher : item.publisher,
-        bookCategory : item.catagory,
-        bookYearOfPublication : item.yearOfPublication},{multi:true},function(err, book){
-            if (err) return handleError(err);            
-                cb(err,book);   
+        function updateBook(cb) { 
+            if (item._id) { delete item._id; }      
+            BookModel.findOne({$and :[{isbn:isbn} , {archieve: {$ne: true}}] }, function(err, book) {
+                var updated = _.merge(book, item);
+                updated.save(function(err) {
+                    cb(err, book);
+                });
             });
-    }
-
-    ],function (err,book) { 
+        },
+        function updateLend(book, cb) { 
+            LendModel.update({bookIsbn:item.isbn},         
+                {bookTitle : item.title,
+                bookAuthor : item.author,
+                bookPublisher : item.publisher,
+                bookCategory : item.catagory,
+                bookYearOfPublication : item.yearOfPublication},
+                {multi:true}, 
+                function(err, book){
+                    if (err) return handleError(err);            
+                    cb(err,book);   
+                });
+        }
+    ],  function(err,book) { 
             cb(err,book);
         }
-
-        );
+    );
 };
 
 
