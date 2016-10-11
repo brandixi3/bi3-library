@@ -7,7 +7,10 @@ angular.module('Bi3DigLib')
         $scope.catagory = [
             { id: 1, name: 'Non-fiction' },
             { id: 2, name: 'Fiction' },
-            { id: 3, name: 'Biographies' }
+            { id: 3, name: 'Biographies' },
+            { id: 4, name: 'Political Science' },
+            { id: 5, name: 'Reference' },
+            { id: 6, name: 'Computer Science' }
         ];       
        
         $scope.update = function(form) {

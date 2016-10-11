@@ -8,7 +8,10 @@ angular.module('Bi3DigLib')
         $scope.catagory = [
             { id: 1, name: 'Non-fiction' },
             { id: 2, name: 'Fiction' },
-            { id: 3, name: 'Biographies' }
+            { id: 3, name: 'Biographies' },
+            { id: 4, name: 'Political Science' },
+            { id: 5, name: 'Reference' },
+            { id: 6, name: 'Computer Science' }
         ];
 
 
@@ -26,11 +29,12 @@ angular.module('Bi3DigLib')
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,
-                        detail:$scope.book.about
+                        detail:$scope.book.about/*,
+                        image:$scope.book.image*/
                     })
                     .then(function() { 
-                        $window.location.reload();
-                        $location.path('/books');
+
+                        $location.path('/bookadmin');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
