@@ -21,13 +21,22 @@ html {
 }
 
 body {
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
     font-family: 'Noto Serif', 'Roboto', 'Helvetica Neue', sans-serif;
     padding-top: 51px;
     background-color: #F5F5F5;
     background-image:url('http://korg.cdn.krishna.org/wp-content/uploads/2012/12/Library.jpg');
-    background-repeat:no-repeat;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
 
-   background-size:cover;
     @media print {
         padding-top: 0;
     }
@@ -130,7 +139,9 @@ h1.quotation-header {
         border-top: 1px solid #eee;
     }
 }
-
+.overflow-auto {
+    overflow: auto;
+}
 
 /* Responsive: Portrait tablets and up */
 

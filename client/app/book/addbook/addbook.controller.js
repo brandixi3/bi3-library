@@ -11,8 +11,6 @@ angular.module('Bi3DigLib')
             { id: 3, name: 'Biographies' }
         ];
 
-
-
         $scope.add = function(form) {
             $scope.submitted = true;
             
@@ -26,7 +24,8 @@ angular.module('Bi3DigLib')
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,
-                        detail:$scope.book.about
+                        detail:$scope.book.about,
+                        dateAdded:new Date()
                     })
                     .then(function() { 
                         $location.path('/books');
