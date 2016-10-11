@@ -20,6 +20,10 @@
                     <input type="text" name="author" ng-model="book.author" required>
                 </md-input-container>
                 <md-input-container flex>
+                    <label>About this book</label>
+                    <input type="text" name="about" ng-model="book.detail" required>
+                </md-input-container>
+                <md-input-container flex>
                     <label>Publisher</label>
                     <input type="text" name="pub" ng-model="book.publisher" >
                 </md-input-container>
@@ -38,14 +42,6 @@
                     <label>Total Copies</label>
                     <input type="text" name="cat" ng-model="book.totalCopies" required>
                 </md-input-container>
-                <md-input-container flex>
-                    <label>About this book</label>
-                    <input type="text" name="about" ng-model="book.detail" required>
-                </md-input-container>
-                 <!-- <md-input-container flex>
-                    <label>Image URL</label>
-                    <input type="text" name="image" ng-model="book.image" required>
-                                 </md-input-container> -->
                 <div class="row">
                     <div class="col-sm-6">
                         <md-button class="md-primary md-raised" type="submit">

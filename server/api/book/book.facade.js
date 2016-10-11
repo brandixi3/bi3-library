@@ -96,8 +96,7 @@ exports.update = function(isbn, item, cb) {
         bookPublisher : item.publisher,
         bookCategory : item.catagory,
         bookYearOfPublication : item.yearOfPublication},{multi:true},function(err, book){
-            if (err) return handleError(err);
-                console.log('The raw response from Mongo was ');             
+            if (err) return handleError(err);            
                 cb(err,book);   
             });
     }

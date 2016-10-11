@@ -21,12 +21,12 @@ angular.module('Bi3DigLib')
                         publisher:$scope.book.publisher,
                         catagory:$scope.book.catagory.name,
                         yearOfPublication:$scope.book.yearOfPublication,
-                        totalCopies:$scope.book.totalCopies, //1
+                        totalCopies:$scope.book.totalCopies, 
                         remainingCopies:$scope.book.totalCopies - $scope.prevTotalCount  + $scope.book.remainingCopies, //1
-                        detail:$scope.book.detail
+                        detail:$scope.book.detail,
+                        dateUpdated:new Date()
                     })
-                    .then(function() { 
-                       
+                    .then(function() {                        
                         $location.path('/dashboard');
                     })
                     .catch(function(err) {
