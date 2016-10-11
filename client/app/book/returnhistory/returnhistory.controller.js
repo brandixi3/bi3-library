@@ -12,5 +12,4 @@ angular.module('Bi3DigLib')
             .catch(function(err) {
                 $scope.errors.other = err.message;
             });
-
     });

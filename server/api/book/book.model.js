@@ -14,10 +14,8 @@ var BookSchema = new Schema({
   remainingCopies: Number,
   detail:String,
   archieve:Boolean,
-  image:String
-    
-
-
+  dateAdded:Date,
+  dateUpdated:Date
 });
 
 module.exports = mongoose.model('Book', BookSchema);
