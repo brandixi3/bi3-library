@@ -30,6 +30,7 @@ angular.module('Bi3DigLib')
                         image:$scope.book.image*/
                     })
                     .then(function() { 
+                        $window.location.reload();
                         $location.path('/books');
                     })
                     .catch(function(err) {

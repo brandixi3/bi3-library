@@ -6,48 +6,51 @@
                 <h2 style="padding:5px 10px;">{{book.title}}</h2>
             </div>
         <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>                            
-        <table>  
-<tr>
-		<td>
-
-			
+        <div flex-gt-xs class="col-sm-12">
+		<div flex-gt-xs class="col-sm-5">
+			<div>
 		    <br><img src="{{bookImgUrl}}" width="250" height="300">
 		    
-                    
-		    </td><td style="width:20%"></td>
-		    <td>
-		    <table>
-				<tr>
-					<td  style="height:50%"><b>Author:</b>
-	      			<br>{{book.author}}
-	      			</td>
-	      		</tr>
-	      		<tr>
-					<td><b>Publisher:</b>
-	      			<br>{{book.publisher}}
-	      			</td>
-	      		</tr>
-	      		<tr>
-					<td><b>Category:</b>
-	      			<br>{{book.catagory}}
-	      			</td>
-	      		</tr>
-	      	</table>
-	      	  <div layout-gt-xs="row">
-      
+		    </div>
+		</div>
+        <div flex-gt-xs class="col-sm-7">
+            <div>
+            	<p style="padding-bottom: 2cm;">
+	            <div>
+	            <p>       
+			    <b>Author:</b>
+		      		<br>{{book.author}}
+		      	</p>	
+		      	</div>
+		      			
+				<div>
+				<p>		
+				<b>Publisher:</b>
+		      		<br>{{book.publisher}}
+		      	</p>
+		      	</div>		
+		      		
+				<div>
+				<p>
+		      	<b>Category:</b>
+		      		<br>{{book.catagory}}
+		      	</p>
+		      	</div>
+		      	</p>
+	      	</div>
+	    	</div>
+	    </div>
 
-	      	</td>
-			     
-		</tr> 
-		<div>
-		<tr><td><h1></h1></td></tr>
-		<tr><td><b>About this book:</b>
-		<br>{{book.detail}}		
-		</td>
-		</tr>
+	    <div flex-gt-xs class="col-sm-12"> 
+	    <div>	
+	    		<p style="padding-top: 0.5cm;">  
+				<b>About this book:</b>
+				<br>{{book.detail}}	
+				</p>
+		</div>	
 		</div>
 
-	  </table> 
+	   
 
 
         <div class="row">
@@ -56,12 +59,12 @@
 		
 
       <div flex-gt-xs class="col-sm-6">
-        <h4>Borrowed Date</h4>
+        <h4 style="padding-left:0.5cm;">Loan Date</h4>
         <md-datepicker ng-model="BorrowedDate" md-placeholder="Enter date" disabled></md-datepicker>
       </div>
     
       <div flex-gt-xs class="col-sm-6">
-        <h4>Return Date</h4>
+        <h4 style="padding-left:0.5cm;">Return Date</h4>
         <p class="help-block" ng-show="form.ReturnDate.$error.required && submitted" >
                       <font color="red">  Return Date is required.</font>
                     </p>
@@ -80,7 +83,7 @@
       <div class="col-sm-6">
         <md-button class="md-primary md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
             Lend Book
-            </button>
+            </md-button>
       </div>
                     <!--div class="col-sm-6">
                         <md-button class="md-primary md-raised" href="/books">

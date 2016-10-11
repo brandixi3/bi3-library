@@ -30,8 +30,6 @@ angular.module('Bi3DigLib')
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
           .title('Would you like to delete this book?')
-         // .textContent('All .')
-          //.ariaLabel('Lucky day')
           .targetEvent(ev)
           .ok('Yes')
           .cancel('Cancel');
@@ -39,7 +37,8 @@ angular.module('Bi3DigLib')
       //$scope.status = 'You decided to get rid of your debt.';
       Book.destroyBook(isbn)
                 .then(function() { 
-                    $location.path('/books');
+                    $window.location.reload();
+                   // $location.path('/bookadmin');
                 })
                 .catch(function(err) {
                     $scope.errors.other = err.message;

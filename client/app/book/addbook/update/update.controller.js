@@ -27,7 +27,7 @@ angular.module('Bi3DigLib')
                     })
                     .then(function() { 
                        
-                        $location.path('/dashboard');
+                        $location.path('/bookadmin');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
