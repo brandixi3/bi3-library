@@ -16,6 +16,11 @@ angular.module('Bi3DigLib')
                     })
                     .then(function() { 
                         $location.path('/books');
+                       /* if ($scope.loggedInUser.role == 'Admin') {
+                            $location.path('/bookadmin');
+                        } else {
+                            $location.path('/books');
+                        }*/
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;

@@ -4,6 +4,7 @@ angular.module('Bi3DigLib')
     .controller('LoginCtrl', function($scope, Auth, $location, $window) {
         $scope.user = {};
         $scope.errors = {};
+        $scope.loggedInUser = {};
 
         $scope.login = function(form) {
             $scope.submitted = true;
@@ -14,7 +15,7 @@ angular.module('Bi3DigLib')
                         password: $scope.user.password
                     })
                     .then(function() { 
-                        $location.path('/dashboard');
+                        $location.path('/books');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;

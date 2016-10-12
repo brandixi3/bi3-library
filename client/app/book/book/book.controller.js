@@ -55,7 +55,7 @@ angular.module('Bi3DigLib')
                 fine: 0.00
             })
             .then(function() { 
-                if ($scope.loggedInUser.role == 'Admin') {
+                if ($scope.loggedInUser.role == 'admin') {
                     $location.path('/bookadmin');
                 } else {
                     $location.path('/books');
