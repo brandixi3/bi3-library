@@ -144,5 +144,36 @@ exports.returnBook = function(item, cb) {
     });
 };
 
+exports.newlyAddedBooks = function(cb) {
+    BookModel.find({})
+        .sort({'dateAdded': -1})
+        .limit(5)
+        .exec(function(err, books) {
+            if (err) return handleError(err);            
+            cb(err,books);
+        });
+};
+
+exports.newlyAddedBooks = function(cb) {
+    BookModel.find({})
+        .sort({'dateAdded': -1})
+        .limit(5)
+        .exec(function(err, books) {
+            if (err) return handleError(err);            
+            cb(err,books);
+        });
+};
+
+exports.findUserOrdersByReturnDate = function(userId, cb) {
+    /*LendModel.find({userId:userId})
+        .sort({'bookReturnDate': 1})
+        .limit(5)
+        .exec(function(err, books) {
+            if (err) return handleError(err);            
+            cb(err,books);
+        });*/
+    LendModel.find({$and:[{userId:userId} , {returned: true}]}, cb);
+};
+
 
 

@@ -1,5 +1,5 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div layout flex class="container books overflow-auto">
+<div layout flex class="container overflow-auto">
     <div flex layout="column">
         <div class="row col-xs-8 col-xs-offset-2">
             <div class="bg-info text-info">
@@ -8,6 +8,7 @@
             <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table" >
                   <tr>
+                    <th style="width:10%"></th>
                     <th style="width:10%">ISBN</th>
                     <th style="width:40%">TITLE</th>
                     <th style="width:15%">AUTHOR</th>
@@ -15,33 +16,32 @@
                     <th style="width:10%">YEAR OF PUBLICATION</th>
                     <th style="width:10%"></th>
                     <th style="width:10%"></th>
-                    <th style="width:10%"></th>
                   </tr>
                   <tr ng-repeat="book in books">
+                    <td>
+                            <div class="">
+                                <a href="#" class="btn icon-color" ng-click="viewBook(book.isbn)">
+                                  <!-- <span class="glyphicon glyphicon-book"></span> --> 
+                                  <i class="material-icons">book</i>
+                                </a>
+                            </div>
+                    </td>
                     <td>{{book.isbn}}</td>
                     <td>{{book.title}}</td>
                     <td>{{book.author}}</td>
                     <td>{{book.publisher}}</td>
                     <td>{{book.yearOfPublication}}</td>
                     <td>
-                            <div class="col-sm-6">
-                                <a href="#" class="btn btn-info" ng-click="viewBook(book.isbn)">
-                                  <!-- <span class="glyphicon glyphicon-book"></span> --> 
-                                  <i class="material-icons">book</i>
-                                </a>
-                            </div>
-                    </td>
-                    <td>
-                           <div class="col-sm-6">
-                                <a href="#" class="btn btn-warning" ng-click="updateBook(book.isbn)">
+                           <div class="">
+                                <a href="#" class="btn icon-color" ng-click="updateBook(book.isbn)">
                                     <i class="material-icons">mode_edit</i>
 <!--                                   <span class="glyphicon glyphicon-pencil"></span>
                                  -->                                </a>
                             </div>
                     </td>
                     <td>
-                           <div class="col-sm-6">
-                                <a href="#" class="btn btn-danger" ng-click="showConfirm($event,book.isbn)">
+                           <div class="">
+                                <a href="#" class="btn icon-color" ng-click="showConfirm($event,book.isbn)">
                                     <i class="material-icons">delete_forever</i>
                                   <!-- <span class="glyphicon glyphicon-remove"></span> -->
                                 </a>

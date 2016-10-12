@@ -28,7 +28,6 @@ angular.module('Bi3DigLib')
       function getMyOrders(userId) {
           return $http.get('/api/books/myorders/'+userId);
       }
-
       function getOrdersHistory(userId) {
           return $http.get('/api/books/myordershistory/'+userId);
       }
@@ -40,6 +39,12 @@ angular.module('Bi3DigLib')
       }
       function getReturnHistoryList() {
           return $http.get('/api/books/returnhistorylist/');
+      }
+      function getNewlyAddedBooks() {
+          return $http.get('/api/books/newlyaddedbooks/');
+      }
+      function getUserOrdersByReturnDate(userId) {
+          return $http.get('/api/books/myordersbyreturndate/'+userId);
       }
 
       return {
@@ -54,6 +59,8 @@ angular.module('Bi3DigLib')
         getReturnBookList:getReturnBookList,
         getOrdersHistory:getOrdersHistory,
         returnBook:returnBook,
-        getReturnHistoryList:getReturnHistoryList
+        getReturnHistoryList:getReturnHistoryList,
+        getNewlyAddedBooks:getNewlyAddedBooks,
+        getUserOrdersByReturnDate:getUserOrdersByReturnDate
       };
 });

@@ -26,8 +26,11 @@ angular.module('Bi3DigLib')
                         detail:$scope.book.detail,
                         dateUpdated:new Date()
                     })
-                    .then(function() {                        
-                        $location.path('/dashboard');
+
+                    .then(function() { 
+                       
+                        $location.path('/bookadmin');
+
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;

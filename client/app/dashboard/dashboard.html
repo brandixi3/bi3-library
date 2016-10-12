@@ -1,9 +1,20 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="container">
+<div layout flex class="container overflow-auto">
+    <div flex layout="column">
+        <div class="row col-xs-8 col-xs-offset-2">
+            <div class="bg-info text-info">
+                <h2 style="padding:5px 10px;">Dashboard</h2>
+            </div>
+            <form class="form card-frame" name="form" novalidate>
 
-    <div class="row" >
-        <div class="bg-info text-info">
-            <h2 style="padding:5px 10px;" >Dashboard</h2>
+            	<h3 style="padding:5px 10px;">Under Construction!</h3>
+				<!-- <div ng-repeat="book in newbooks">
+					{{book.isbn}}
+				</div>
+				<div ng-repeat="loanbook in loanbooks">
+					{{loanbook.bookIsbn}}
+				</div> -->
+			</form>
         </div>
     </div>
 </div>

@@ -71,6 +71,26 @@ exports.showReturnBooksHistory = function(req, res) {
     });
 };
 
+exports.showNewlyAddedBooks = function(req, res) {
+    BookFacade.newlyAddedBooks(function(err, books) {
+        if (err) {
+            return handleError(res, err); }
+        if (!books) {
+            return res.send(404); }
+        return res.json(books);
+    });
+};
+
+exports.showUserOrdersByReturnDate = function(req, res) {
+    BookFacade.findOrdersHistoryByUserId(req.params.userId, function(err, lendbooks) {
+        if (err) {
+            return handleError(res, err); }
+        if (!lendbooks) {
+            return res.send(404); }
+        return res.json(lendbooks);
+    });
+};
+
 exports.save = function(req, res) {
     BookFacade.create(req.body, function(err, book) {
         if (err) {

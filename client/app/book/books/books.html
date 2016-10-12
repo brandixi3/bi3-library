@@ -23,12 +23,18 @@
                     <td>{{book.publisher}}</td>
                     <td>{{book.yearOfPublication}}</td>
                     <td>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm-6">
                                 <a href="#" class="btn btn-info" ng-click="viewBook(book.isbn)">
                                   <span class="glyphicon glyphicon-book"></span> View
                                 </a>
                             </div>
+                        </div> -->
+                        <div class="">
+                            <a href="#" class="btn icon-color" ng-click="viewBook(book.isbn)">
+                              <!-- <span class="glyphicon glyphicon-book"></span> --> 
+                              <i class="material-icons">book</i>
+                            </a>
                         </div>
                     </td>
                   </tr>
