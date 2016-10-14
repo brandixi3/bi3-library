@@ -15,8 +15,7 @@ var BookSchema = new Schema({
   detail:String,
   archieve:Boolean,
   dateAdded:Date,
-  dateUpdated:Date,
-  cover:Buffer
+  dateUpdated:Date
 });
 
 module.exports = mongoose.model('Book', BookSchema);
