@@ -2,7 +2,7 @@
 <div layout flex class="container overflow-auto">
    <div flex layout="column">
       <div class="row col-xs-8 col-xs-offset-2">
-         <div class="bg-info text-info">
+         <div class="form-header">
             <h2 style="padding:5px 10px;">{{book.title}}</h2>
          </div>
          <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
@@ -77,7 +77,7 @@
                   <font color="red">  The book that you have requested is currently on loan. Thank you.</font>
                </p>
                <div class="col-sm-6" style="margin-top: 2%;">
-                  <md-button class="md-primary md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
+                  <md-button class="primary-color md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
                      Lend Book
                   </md-button>
                </div>

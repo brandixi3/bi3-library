@@ -16,7 +16,6 @@ angular.module('Bi3DigLib')
           return $http.post('/api/books/', bookObj);
       }
       function update(bookObj) { 
-       
           return $http.post('/api/books/update/'+bookObj.isbn ,bookObj);
       }
       function destroyBook(isbn) {        

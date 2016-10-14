@@ -2,18 +2,46 @@
 <div layout flex class="container overflow-auto">
     <div flex layout="column">
         <div class="row col-xs-8 col-xs-offset-2">
-            <div class="bg-info text-info">
+            <div class="form-header">
                 <h2 style="padding:5px 10px;">Dashboard</h2>
             </div>
             <form class="form card-frame" name="form" novalidate>
-
-            	<h3 style="padding:5px 10px;">Under Construction!</h3>
-				<!-- <div ng-repeat="book in newbooks">
-					{{book.isbn}}
-				</div>
-				<div ng-repeat="loanbook in loanbooks">
-					{{loanbook.bookIsbn}}
-				</div> -->
+				<div class="bg-warning text-warning">
+            		<h3 style="padding:5px 10px;">Latest Additions</h3>
+            	</div>
+				<div ng-repeat="book in newbooks">
+					<div class="col-xs-6"> 
+						<br>
+						<img class="col-xs-8" style="height:300px;" src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
+						<div class="col-xs-4">{{book.title}}</div>
+					</div>
+				</div>				
+			
+				<div class="">
+            		<h3 class="col-xs-12 bg-warning text-warning" style="padding:5px 10px; margin-top: 10% !important;">My Loans</h3>
+            	</div>
+            	<table ng-table="bookTable" template-pagination="custom/pager" class="table">
+                  <tr>
+                    <th style="width:10%">ISBN</th>
+                    <th style="width:20%">TITLE</th>
+                    <th style="width:15%">AUTHOR</th>
+                    <th style="width:15%">PUBLISHER</th>
+                    <th style="width:10%">YEAR OF PUBLICATION</th>
+                    <th style="width:10%">BORROWED DATE</th>
+                    <th style="width:10%">RETURN DATE</th>
+                    <th style="width:10%">FINE (Rs.)</th>
+                  </tr>
+                  <tr ng-repeat="loanbook in loanbooks">
+                    <td>{{loanbook.bookIsbn}}</td>
+                    <td>{{loanbook.bookTitle}}</td>
+                    <td>{{loanbook.bookAuthor}}</td>
+                    <td>{{loanbook.bookPublisher}}</td>
+                    <td>{{loanbook.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                    <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
+                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
+                  </tr>
+                </table>
 			</form>
         </div>
     </div>

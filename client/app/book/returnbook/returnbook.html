@@ -3,15 +3,15 @@
     <div flex layout="column">
         
         <div class="row col-xs-8 col-xs-offset-2">
-        <div class="bg-info text-info">
+        <div class="form-header">
             <h2>
                 <div class="row">
                     <div class="col-xs-10"  style="padding:10px 30px;">
                         Return Book
                     </div>
                     <div class="col-xs-1">
-                        <md-button class="md-warn md-raised btn-info" ng-click="returnHistory()">
-                            HISTORY
+                        <md-button class="md-raised btn-info" style="background-color: rosybrown;" ng-click="returnHistory()">
+                            HISTORY <i class="material-icons" style="padding-top: 5px;">history</i>
                         </md-button>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <td>
                         <div class="row">
                             <div class="">
-                                <md-button class="md-primary md-raised" ng-click="returnBook(loanbook)">
+                                <md-button class="primary-color md-raised" ng-click="returnBook(loanbook)">
                                     RETURN
                                 </md-button>
                             </div>

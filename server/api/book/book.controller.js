@@ -82,7 +82,7 @@ exports.showNewlyAddedBooks = function(req, res) {
 };
 
 exports.showUserOrdersByReturnDate = function(req, res) {
-    BookFacade.findOrdersHistoryByUserId(req.params.userId, function(err, lendbooks) {
+    BookFacade.findUserOrdersByReturnDate(req.params.userId, function(err, lendbooks) {
         if (err) {
             return handleError(res, err); }
         if (!lendbooks) {

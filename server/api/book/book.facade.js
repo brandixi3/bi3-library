@@ -155,9 +155,9 @@ exports.newlyAddedBooks = function(cb) {
 };
 
 exports.newlyAddedBooks = function(cb) {
-    BookModel.find({})
+    BookModel.find({archieve: {$ne: true}})
         .sort({'dateAdded': -1})
-        .limit(5)
+        .limit(4)
         .exec(function(err, books) {
             if (err) return handleError(err);            
             cb(err,books);
@@ -165,14 +165,14 @@ exports.newlyAddedBooks = function(cb) {
 };
 
 exports.findUserOrdersByReturnDate = function(userId, cb) {
-    /*LendModel.find({userId:userId})
+    console.log(userId);
+    LendModel.find({$and:[{userId:userId} , {returned: {$ne: true}}]})
         .sort({'bookReturnDate': 1})
-        .limit(5)
+        .limit(4)
         .exec(function(err, books) {
             if (err) return handleError(err);            
             cb(err,books);
-        });*/
-    LendModel.find({$and:[{userId:userId} , {returned: true}]}, cb);
+        });
 };
 
 
