@@ -1,0 +1,38 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Return Books</h2>
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Do you want to return this book?</h2>
+        <p>
+          <md-input-container flex>
+                    <label>Details</label>
+                    <input type="text" name="details" ng-model="lend.book" >
+                </md-input-container>
+        </p>
+
+        
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+     
+      <span flex></span>
+      <md-button ng-click="answer(lend.book)">
+       Yes
+      </md-button>
+      <md-button ng-click="answer(lend.book)">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

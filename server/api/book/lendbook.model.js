@@ -19,8 +19,10 @@ var lendbookSchema = new Schema({
   bookBorrowedDate: Date,
   bookReturnDate: Date,
   fine: Number,
+  archieve:Boolean,
   actualReturnDate: Date,
-  returned:Boolean
+  returned:Boolean,
+  returnedDetail:String
 });
 
 module.exports = mongoose.model('lendbook', lendbookSchema);

@@ -13,18 +13,30 @@
                     <label>ISBN</label>
                     <input type="text" name="isbn" ng-model="book.isbn" required>
                 </md-input-container>
+                    <p class="help-block" ng-show="form.isbn.$error.required && submitted" >
+                     <font color="red">  Isbn is required.</font>
+                    </p>
                 <md-input-container flex>
                     <label>Title</label>
                     <input type="text" name="title" ng-model="book.title" required>
                 </md-input-container>
+                    <p class="help-block" ng-show="form.title.$error.required && submitted" >
+                     <font color="red">  Title is required.</font>
+                    </p>
                 <md-input-container flex>
                     <label>Author</label>
                     <input type="text" name="author" ng-model="book.author" required>
                 </md-input-container>
+                    <p class="help-block" ng-show="form.author.$error.required && submitted" >
+                     <font color="red">  Author is required.</font>
+                    </p>
                 <md-input-container flex>
                     <label>About this book</label>
                     <input type="text" name="about" ng-model="book.about" required>
                 </md-input-container>
+                    <p class="help-block" ng-show="form.about.$error.required && submitted" >
+                     <font color="red">  Book details are required.</font>
+                    </p>
                  <md-input-container flex>
                     <label>Publisher</label>
                     <input type="text" name="pub" ng-model="book.pub" >
@@ -33,14 +45,20 @@
                     <md-option ng-value="">Category</md-option>                    
                     <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
                 </md-select>
+                     <p class="help-block" ng-show="book.name === undefined && submitted" >
+                     <font color="red">  Category is required.</font>
+                    </p>
                 <md-input-container flex>
                     <label>Year Of Publication</label>
                     <input type="text" name="cat" ng-model="book.year" >
                 </md-input-container>
                 <md-input-container flex>
                     <label>Total Copies</label>
-                    <input type="text" name="cat" ng-model="book.tCopy" required>
+                    <input type="number" name="copy" ng-model="book.tCopy" min="1" required>
                 </md-input-container>
+                <p class="help-block" ng-show="form.copy.$error.required && submitted" >
+                     <font color="red">  Total number of copies are required.</font>
+                  </p>
                 <div class="row">
                     <div class="col-sm-6">
                         <md-button class="primary-color md-raised" type="submit">

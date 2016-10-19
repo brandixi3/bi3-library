@@ -48,7 +48,7 @@ angular.module('Bi3DigLib')
                 bookTitle: $scope.book.title,
                 bookAuthor: $scope.book.author,
                 bookPublisher: $scope.book.publisher,
-                bookCategory: $scope.book.category,
+                bookCategory: $scope.book.catagory,
                 bookYearOfPublication: $scope.book.yearOfPublication,
                 bookBorrowedDate: $scope.BorrowedDate,
                 bookReturnDate: $scope.ReturnDate,
