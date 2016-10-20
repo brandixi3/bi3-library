@@ -12,8 +12,12 @@
 				<div ng-repeat="book in newbooks">
 					<div class="col-xs-6"> 
 						<br>
-						<img class="col-xs-8" style="height:300px;" src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
-						<div class="col-xs-4">{{book.title}}</div>
+						<img class="col-xs-8" style="height:350px;" src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
+						<div class="col-xs-4"><h4>{{book.title}}</h4></div>
+                        <div class="col-xs-4"><h5>Author :</h5></div>
+                        <div class="col-xs-4" style="margin-top: -10px;">{{book.author}}</div>
+                        <div class="col-xs-4"><h5>Category :</h5></div>
+                        <div class="col-xs-4" style="margin-top: -10px;">{{book.catagory}}</div>
 					</div>
 				</div>				
 			

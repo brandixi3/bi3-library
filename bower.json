@@ -17,6 +17,7 @@
     "angular-messages": "1.4.9",
     "moment": "2.10.6",
     "vaadin-date-picker": "^1.1.4",
+    "angular-prompt": "^1.2.0",
     "angular-material": "^1.1.1"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
     "angular-scenario": "1.2.*"
   },
   "resolutions": {
-    "angular": "1.4.9"
+    "angular": "1.4.9",
+    "angular-material": "^1.1.1"
   }
 }

@@ -17,7 +17,6 @@ angular.module('Bi3DigLib')
         Book.getUserOrdersByReturnDate(Auth.getCurrentUser()._id)
             .then(function(res) {
                 $scope.loanbooks = res.data;
-                console.log(Auth.getCurrentUser()._id);
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;

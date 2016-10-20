@@ -120,7 +120,7 @@ exports.destroyBook = function(req, res) {
     BookFacade.destroyBook(req.params.isbn, function(err, book) {
         if (err) {
             return handleError(res, err); }
-        return res.json(201, book);
+        return res.json(book);
     });
 };
 
