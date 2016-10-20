@@ -36,7 +36,7 @@ angular.module('Bi3DigLib')
                     loanbook.fine = fine > 0 ? fine : 0;
                     loanbook.actualReturnDate = new Date();
                     loanbook.returnedDetail = answer;
-                    alert(loanbook.returnedDetail);
+                    //alert(loanbook.returnedDetail);
                    Book.returnBook(loanbook)
                         .then(function() { 
                             $window.location.reload();

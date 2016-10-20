@@ -85,8 +85,7 @@ exports.update = function(isbn, item, cb) {
                 });
             });
         },
-        function updateLend(book, cb) { 
-            console.log(item.publisher);
+        function updateLend(book, cb) {
             if(item.publisher===undefined){
                 bookPublisher:null;
             }

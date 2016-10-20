@@ -15,7 +15,7 @@ angular.module('Bi3DigLib')
                         password: $scope.user.password
                     })
                     .then(function() { 
-                        $location.path('/books');
+                        $location.path('/');
                        /* if ($scope.loggedInUser.role == 'Admin') {
                             $location.path('/bookadmin');
                         } else {
