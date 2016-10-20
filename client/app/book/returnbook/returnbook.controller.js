@@ -35,11 +35,9 @@ angular.module('Bi3DigLib')
                     var fine = parseFloat((dayDiff)*50).toFixed(2);
                     loanbook.fine = fine > 0 ? fine : 0;
                     loanbook.actualReturnDate = new Date();
-                    alert(answer);
-                    
-                   Book.returnBook(loanbook)/*({
-                        returnedDetail:answer
-                   })*/
+                    loanbook.returnedDetail = answer;
+                    alert(loanbook.returnedDetail);
+                   Book.returnBook(loanbook)
                         .then(function() { 
                             $window.location.reload();
                         })
@@ -61,7 +59,7 @@ angular.module('Bi3DigLib')
             return fine > 0 ? fine : ("N/A");              
         }  
 
-        function DialogController($scope, $mdDialog, Book) {
+        function DialogController($scope, $mdDialog) {
             $scope.hide = function() {
                 $mdDialog.hide();
              };

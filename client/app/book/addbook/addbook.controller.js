@@ -27,7 +27,7 @@ angular.module('Bi3DigLib')
                         yearOfPublication:$scope.book.year,
                         totalCopies:$scope.book.tCopy,
                         remainingCopies:$scope.book.tCopy,
-                        detail:$scope.book.about,
+                        detail:$scope.book.detail,
                         dateAdded:new Date()
                     })
                     .then(function() { 
