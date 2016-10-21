@@ -8,6 +8,7 @@ angular.module('Bi3DigLib')
         Book.find()
             .then(function(res) {
                 $scope.books = res.data;
+                console.log($scope.books);
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;

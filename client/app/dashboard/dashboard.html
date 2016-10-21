@@ -3,37 +3,37 @@
     <div flex layout="column">
         <div class="row col-xs-8 col-xs-offset-2">
             <div class="form-header">
-                <h2 style="padding:5px 10px;">Dashboard</h2>
+                <h2 class="page-heading">Dashboard</h2>
             </div>
             <form class="form card-frame" name="form" novalidate>
 				<div class="bg-warning text-warning">
-            		<h3 style="padding:5px 10px;">Latest Additions</h3>
+            		<h3 class="h3-heading">Latest Additions</h3>
             	</div>
 				<div ng-repeat="book in newbooks">
-					<div class="col-xs-6"> 
+					<div class="col-xs-6" ng-click="viewBook(book.isbn)"> 
 						<br>
-						<img class="col-xs-8" style="height:350px;" src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
+						<img class="col-xs-8 img"  src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
 						<div class="col-xs-4"><h4>{{book.title}}</h4></div>
                         <div class="col-xs-4"><h5>Author :</h5></div>
-                        <div class="col-xs-4" style="margin-top: -10px;">{{book.author}}</div>
+                        <div class="col-xs-4 margin--10" >{{book.author}}</div>
                         <div class="col-xs-4"><h5>Category :</h5></div>
-                        <div class="col-xs-4" style="margin-top: -10px;">{{book.catagory}}</div>
+                        <div class="col-xs-4 margin--10" >{{book.catagory}}</div>
 					</div>
 				</div>				
 			
 				<div class="">
-            		<h3 class="col-xs-12 bg-warning text-warning" style="padding:5px 10px; margin-top: 10% !important;">My Loans</h3>
+            		<h3 class="col-xs-12 bg-warning text-warning h3-heading margin-10">My Loans</h3>
             	</div>
             	<table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
-                    <th style="width:10%">ISBN</th>
-                    <th style="width:20%">TITLE</th>
-                    <th style="width:15%">AUTHOR</th>
-                    <th style="width:15%">PUBLISHER</th>
-                    <th style="width:10%">YEAR OF PUBLICATION</th>
-                    <th style="width:10%">BORROWED DATE</th>
-                    <th style="width:10%">RETURN DATE</th>
-                    <th style="width:10%">FINE (Rs.)</th>
+                    <th class="width-10">ISBN</th>
+                    <th class="width-20">TITLE</th>
+                    <th class="width-15">AUTHOR</th>
+                    <th class="width-15">PUBLISHER</th>
+                    <th class="width-10">YEAR OF PUBLICATION</th>
+                    <th class="width-10">BORROWED DATE</th>
+                    <th class="width-10">RETURN DATE</th>
+                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="loanbook in loanbooks">
                     <td>{{loanbook.bookIsbn}}</td>

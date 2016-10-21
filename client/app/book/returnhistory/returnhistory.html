@@ -4,20 +4,20 @@
         
         <div class="row col-xs-8 col-xs-offset-2">
         <div class="form-header">
-            <h2 style="padding:5px 10px;">Return History</h2>
+            <h2 class="page-heading">Return History</h2>
         </div>
             <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
-                    <th style="width:15%">Name</th>
-                    <th style="width:15%">E-mail</th>
-                    <th style="width:10%">ISBN</th>
-                    <th style="width:20%">TITLE</th>
-                    <th style="width:10%">AUTHOR</th>
-                    <th style="width:10%">BORROWED DATE</th>
-                    <th style="width:10%">RETURN DATE</th>
-                    <th style="width:10%">ACTUAL RETURN DATE</th>
-                    <th style="width:10%">FINE (Rs.)</th>
+                    <th class="width-15">Name</th>
+                    <th class="width-15">E-mail</th>
+                    <th class="width-10">ISBN</th>
+                    <th class="width-20">TITLE</th>
+                    <th class="width-10">AUTHOR</th>
+                    <th class="width-10">BORROWED DATE</th>
+                    <th class="width-10">RETURN DATE</th>
+                    <th class="width-10">ACTUAL RETURN DATE</th>
+                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="loanhistory in returnhistory">
                     <td>{{loanhistory.userName}}</td>

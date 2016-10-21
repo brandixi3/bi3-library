@@ -3,7 +3,7 @@
    <div flex layout="column">
       <div class="row col-xs-8 col-xs-offset-2">
          <div class="form-header">
-            <h2 style="padding:5px 10px;">{{book.title}}</h2>
+            <h2 class="page-heading">{{book.title}}</h2>
          </div>
          <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
             <div flex-gt-xs class="col-sm-12">
@@ -14,7 +14,7 @@
                </div>
                <div flex-gt-xs class="col-sm-7">
                   <div>
-                     <p style="padding-bottom: 10%;">
+                     <p class="bottom">
                      <div>
                         <p>       
                            <b>ISBN:</b>
@@ -51,35 +51,38 @@
             </div>
             <div flex-gt-xs class="col-sm-12">
                <div>
-                  <p style="padding-top: 4%;">  
+                  <p class="top">  
                      <b>About this book:</b>
                      <br>
-                  <p style="margin-top:1%;">{{book.detail}}</p>
+                  <p class="margin-top">{{book.detail}}</p>
                   </p>
                </div>
             </div>
             <div class="row">
                <!-- <b>About this book</b>-->
-               <div flex-gt-xs class="col-sm-6"  style="margin-top: 2%;">
-                  <h4 style="padding-left:4%;">Loan Date</h4>
-                  <md-datepicker ng-model="BorrowedDate" md-placeholder="Enter date" disabled></md-datepicker>
+               <div flex-gt-xs class="col-sm-6 margin"  >
+                  <h4 class="h4-left">Loan Date</h4>
+                     <md-datepicker ng-model="BorrowedDate" md-placeholder="Enter date" disabled>
+                     </md-datepicker> 
                </div>
-               <div flex-gt-xs class="col-sm-6" style="margin-top: 2%;">
-                  <h4 style="padding-left:4%;">Return Date</h4>
-                  <p class="help-block" ng-show="form.ReturnDate.$error.required && submitted" >
-                     <font color="red">  Return Date is required.</font>
-                  </p>
-                  <md-datepicker ng-model="ReturnDate" md-placeholder="Enter date" name="ReturnDate"
-                     md-min-date="minDate" md-max-date="maxDate" required ng-disabled="book.remainingCopies<=0 "></md-datepicker>
+               <div flex-gt-xs class="col-sm-6 margin" >
+                  <h4 class="h4-left">Return Date</h4>                  
+                     <md-datepicker ng-model="ReturnDate" md-placeholder="Enter date" name="ReturnDate"
+                        md-min-date="minDate" md-max-date="maxDate" required ng-disabled="book.remainingCopies<=0 ">
+                     </md-datepicker>
+                        <p class="help-block left" ng-show="form.ReturnDate.$error.required && submitted" >
+                           <font color="red">  Return Date is required.</font>
+                        </p>
                </div>
                </br></br></br></br></br>
-               <p class="help-block" ng-show="book.remainingCopies<=0" style="padding:0px 25px;">
-                  <font color="red">  The book that you have requested is currently on loan. Thank you.</font>
-               </p>
-               <div class="col-sm-6" style="margin-top: 2%;">
-                  <md-button class="primary-color md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
-                     Lend Book
-                  </md-button>
+                        <p class="help-block error" ng-show="book.remainingCopies<=0" >
+                           <font color="red">  The book that you have requested is currently on loan. Thank you.
+                           </font>
+                        </p>
+               <div class="col-sm-6 margin" >
+                     <md-button class="primary-color md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
+                        Lend Book
+                     </md-button>
                </div>
             </div>
          </form>
