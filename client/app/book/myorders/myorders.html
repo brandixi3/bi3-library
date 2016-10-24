@@ -4,19 +4,19 @@
         
         <div class="row col-xs-8 col-xs-offset-2">
         <div class="form-header">
-            <h2 style="padding:5px 10px;">My Loans</h2>
+            <h2 class="page-heading">My Loans</h2>
         </div>
             <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
-                    <th style="width:10%">ISBN</th>
-                    <th style="width:20%">TITLE</th>
-                    <th style="width:15%">AUTHOR</th>
-                    <th style="width:15%">PUBLISHER</th>
-                    <th style="width:10%">YEAR OF PUBLICATION</th>
-                    <th style="width:10%">BORROWED DATE</th>
-                    <th style="width:10%">RETURN DATE</th>
-                    <th style="width:10%">FINE (Rs.)</th>
+                    <th class="width-10">ISBN</th>
+                    <th class="width-20">TITLE</th>
+                    <th class="width-15">AUTHOR</th>
+                    <th class="width-15">PUBLISHER</th>
+                    <th class="width-10">YEAR OF PUBLICATION</th>
+                    <th class="width-10">BORROWED DATE</th>
+                    <th class="width-10">RETURN DATE</th>
+                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="book in orders">
                     <td>{{book.bookIsbn}}</td>
@@ -31,20 +31,20 @@
                 </table>
             </form>
 
-        <div style="margin-top: 60px;" class="form-header">
-            <h2 style="padding:5px 10px;">Loan History</h2>
+        <div  class="form-header margin-heading">
+            <h2 class="page-heading">Loan History</h2>
         </div>
             <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
-                    <th style="width:10%">ISBN</th>
-                    <th style="width:20%">TITLE</th>
-                    <th style="width:15%">AUTHOR</th>
-                    <th style="width:15%">PUBLISHER</th>
-                    <th style="width:10%">YEAR OF PUBLICATION</th>
-                    <th style="width:10%">BORROWED DATE</th>
-                    <th style="width:10%">RETURN DATE</th>
-                    <th style="width:10%">FINE (Rs.)</th>
+                    <th class="width-10">ISBN</th>
+                    <th class="width-20">TITLE</th>
+                    <th class="width-15">AUTHOR</th>
+                    <th class="width-15">PUBLISHER</th>
+                    <th class="width-10">YEAR OF PUBLICATION</th>
+                    <th class="width-10">BORROWED DATE</th>
+                    <th class="width-10">RETURN DATE</th>
+                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="book in ordershistory">
                     <td>{{book.bookIsbn}}</td>

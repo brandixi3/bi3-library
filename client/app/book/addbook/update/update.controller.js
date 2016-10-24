@@ -15,7 +15,7 @@ angular.module('Bi3DigLib')
        
         $scope.update = function(form) {
             $scope.submitted = true;
-
+               if (form.$valid) {
                 Book.update({
                 		_id:$scope.book._id,
                         isbn:$scope.book.isbn,
@@ -38,6 +38,7 @@ angular.module('Bi3DigLib')
                     .catch(function(err) {
                         $scope.errors.other = err.message;
                     });
+            }
         }; 
 
         Book.findByIsbn($stateParams.isbn)

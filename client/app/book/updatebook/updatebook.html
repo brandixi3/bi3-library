@@ -3,49 +3,39 @@
     <div flex layout="column">
         <div class="row col-xs-8 col-xs-offset-2">
             <div class="form-header">
-                <h2 style="padding:5px 10px;">Books</h2>
+                <h2 class="page-heading">Books</h2>
             </div>
             <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table" >
                   <tr>
-                    <th style="width:10%"></th>
-                    <th style="width:10%">ISBN</th>
-                    <th style="width:40%">TITLE</th>
-                    <th style="width:15%">AUTHOR</th>
-                    <th style="width:15%">PUBLISHER</th>
-                    <th style="width:10%">YEAR OF PUBLICATION</th>
-                    <th style="width:10%"></th>
-                    <th style="width:10%"></th>
+                    <!-- <th style="width:10%"></th> -->
+                    <th class="width-10">BOOK</th>
+                    <th class="width-40">TITLE</th>
+                    <th class="width-15">AUTHOR</th>
+                    <th class="width-15">PUBLISHER</th>
+                    <th class="width-10">YEAR OF PUBLICATION</th>
+                    <th class="width-10"></th>
+                    <th class="width-10"></th>
                   </tr>
                   <tr ng-repeat="book in books">
+                    <td ng-click="viewBook(book.isbn)"><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td>
+                    <td ng-click="viewBook(book.isbn)">{{book.title}}</td>
+                    <td ng-click="viewBook(book.isbn)">{{book.author}}</td>
+                    <td ng-click="viewBook(book.isbn)">{{book.publisher}}</td>
+                    <td ng-click="viewBook(book.isbn)">{{book.yearOfPublication}}</td>
                     <td>
-                        <div class="">
-                            <a href="#" class="btn icon-color" ng-click="viewBook(book.isbn)">
-                              <!-- <span class="glyphicon glyphicon-book"></span> --> 
-                              <i class="material-icons">book</i>
+                       <div class="edit" >
+                            <a href="#" class="btn icon-color" ng-click="updateBook(book.isbn)">
+                                <i class="material-icons">mode_edit</i>
                             </a>
                         </div>
                     </td>
-                    <td>{{book.isbn}}</td>
-                    <td>{{book.title}}</td>
-                    <td>{{book.author}}</td>
-                    <td>{{book.publisher}}</td>
-                    <td>{{book.yearOfPublication}}</td>
                     <td>
-                           <div class="">
-                                <a href="#" class="btn icon-color" ng-click="updateBook(book.isbn)">
-                                    <i class="material-icons">mode_edit</i>
-<!--                                   <span class="glyphicon glyphicon-pencil"></span>
-                                 -->                                </a>
-                            </div>
-                    </td>
-                    <td>
-                           <div class="">
-                                <a href="#" class="btn icon-color" ng-click="showConfirm($event,book.isbn)">
-                                    <i class="material-icons">delete_forever</i>
-                                  <!-- <span class="glyphicon glyphicon-remove"></span> -->
-                                </a>
-                            </div>
+                       <div class="">
+                            <a href="#" class="btn icon-color" ng-click="showConfirm($event,book.isbn)">
+                                <i class="material-icons">delete_forever</i>
+                            </a>
+                        </div>
                     </td>
                   </tr>
                 </table>

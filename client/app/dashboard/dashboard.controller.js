@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-	.controller('DashboardCtrl', function($scope, Book, Auth){
+	.controller('DashboardCtrl', function($scope, Book, Auth, $location){
 		$scope.newbooks = {};
 		$scope.loanbooks = {};
         $scope.errors = {};  
@@ -28,5 +28,9 @@ angular.module('Bi3DigLib')
               
             return fine > 0 ? fine : ("N/A");
               
+        }
+
+        $scope.viewBook = function(isbn) {
+            $location.path("/book/"+isbn);
         }
 	});    

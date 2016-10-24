@@ -3,86 +3,85 @@
 <div layout flex class="container overflow-auto">
     <div flex layout="column">
         <div class="row col-xs-4 col-xs-offset-4">
-
             <div class="form-header">
-                <h2 style="padding:5px 10px;">Add Book</h2>
+                <h2 class="page-heading">Add Book</h2>
             </div>
 
             <form class="form card-frame" name="form" ng-submit="add(form)" novalidate > 
-            <div style="width: 100%">
-                <div class="col-sm-6">  
-                <md-input-container>
-                    <label>ISBN</label>
-                    <input type="text" name="isbn" ng-model="book.isbn" required>
-                </md-input-container>
-                    <p class="help-block" ng-show="form.isbn.$error.required && submitted" style="margin-top: -20px;">
-                     <font color="red">  Isbn is required.</font>
-                    </p>
+                <div class="width-100">
+                    <div class="col-sm-6">  
+                        <md-input-container>
+                            <label>ISBN</label>
+                            <input type="text" name="isbn" ng-model="book.isbn" required>
+                        </md-input-container>
+                            <p class="help-block error-margin" ng-show="form.isbn.$error.required && submitted" >
+                             <font color="red">  Isbn is required.</font>
+                            </p>
                     </div>
                     <div class="col-sm-6">
-                <md-input-container style="width: 100%;">
-                <label>Category</label>
-                <md-select ng-model="book.catagory" required>                    
-                    <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
-                </md-select>
-                </md-input-container> 
-                     <p class="help-block" ng-show="book.name === undefined && submitted" >
-                     <font color="red">  Category is required.</font>
-                    </p>
+                        <md-input-container class="width-100">
+                            <label>Category</label>
+                            <md-select ng-model="book.catagory" required>                    
+                                <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
+                            </md-select>
+                        </md-input-container> 
+                             <p class="help-block" ng-show="book.name === undefined && submitted" >
+                             <font color="red">  Category is required.</font>
+                            </p>
                     </div>
+                </div>
+                    <div class="col-sm-12">
+                        <md-input-container  class="width-100">
+                            <label>Title</label>
+                            <input type="text" name="title" ng-model="book.title" required>
+                        </md-input-container>
+                            <p class="help-block error-margin" ng-show="form.title.$error.required && submitted" >
+                             <font color="red">  Title is required.</font>
+                            </p>
                     </div>
-                <div class="col-sm-12">
-                <md-input-container  style="width:100%">
-                    <label>Title</label>
-                    <input type="text" name="title" ng-model="book.title" required>
-                </md-input-container>
-                    <p class="help-block" ng-show="form.title.$error.required && submitted" style="margin-top: -20px;">
-                     <font color="red">  Title is required.</font>
-                    </p>
-                </div>
-                <div class="col-sm-12">
-                <md-input-container flex style="width:100%" class="md-block">
-                    <label>About this book</label>
-                    <textarea ng-model="book.detail" md-maxlength="500" rows="3" md-select-on-focus></textarea>
-                </md-input-container>
-                </div>
-                <div class="col-sm-12">
-                <md-input-container style="width:100%">
-                    <label>Author</label>
-                    <input type="text" name="author" ng-model="book.author" required>
-                </md-input-container>
-                    <p class="help-block" ng-show="form.author.$error.required && submitted" style="margin-top: -20px;" >
-                     <font color="red">  Author is required.</font>
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                 <md-input-container  style="width:100%">
-                    <label>Publisher</label>
-                    <input type="text" name="pub" ng-model="book.pub" >
-                </md-input-container> 
-                </div>                                          
-                <div class="col-sm-6">
-                <md-input-container  style="width:100%">
-                    <label>Year Of Publication</label>
-                    <input type="text" name="cat" ng-model="book.year" >
-                </md-input-container>
-                </div>
-                <div class="col-sm-12" >
-                <md-input-container  style="width: 100%">
-                    <label>Total Copies</label>
-                    <input type="number" name="copy" ng-model="book.tCopy" min="1" required>
-                </md-input-container>
-                <p class="help-block" ng-show="form.copy.$error.required && submitted" style="margin-top: -20px;">
-                     <font color="red">  Total number of copies are required.</font>
-                  </p>
-                  </div>
-                <div class="row">
+                    <div class="col-sm-12">
+                        <md-input-container flex class="width-100" class="md-block">
+                            <label>About this book</label>
+                            <textarea ng-model="book.detail" md-maxlength="500" rows="3" md-select-on-focus></textarea>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12">
+                        <md-input-container class="width-100">
+                            <label>Author</label>
+                            <input type="text" name="author" ng-model="book.author" required>
+                        </md-input-container>
+                            <p class="help-block error-margin" ng-show="form.author.$error.required && submitted"  >
+                             <font color="red">  Author is required.</font>
+                            </p>
+                    </div>
                     <div class="col-sm-6">
-                        <md-button class="primary-color md-raised" type="submit">
-                            ADD
-                        </md-button>
+                        <md-input-container  class="width-100">
+                            <label>Publisher</label>
+                            <input type="text" name="pub" ng-model="book.pub" >
+                        </md-input-container> 
+                    </div>                                          
+                    <div class="col-sm-6">
+                        <md-input-container  class="width-100">
+                            <label>Year Of Publication</label>
+                            <input type="text" name="cat" ng-model="book.year" >
+                        </md-input-container>
                     </div>
-                </div>
+                    <div class="col-sm-12" >
+                        <md-input-container  style="width: 20%">
+                            <label>Total Copies</label>
+                            <input type="number" name="copy" ng-model="book.tCopy" min="1" required>
+                        </md-input-container>
+                            <p class="help-block error-margin" ng-show="form.copy.$error.required && submitted" >
+                                 <font color="red">  Total number of copies are required.</font>
+                            </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <md-button class="primary-color md-raised" type="submit">
+                                ADD
+                            </md-button>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>

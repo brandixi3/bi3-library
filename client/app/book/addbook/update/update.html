@@ -4,7 +4,7 @@
     <div flex layout="column">
         <div class="row col-xs-4 col-xs-offset-4">
             <div class="form-header">
-                <h2 style="padding:10px;">Update Book</h2>
+                <h2 class="page-heading">Update Book</h2>
             </div>
             <form class="form card-frame" name="form" ng-submit="update(form)" novalidate>
                 <div class="width-100">
@@ -18,7 +18,7 @@
                         </p>
                     </div>
                     <div class="col-sm-6">
-                        <md-input-container class="width-100">
+                        <md-input-container class="width-100"> 
                             <label>Category</label>
                             <md-select ng-model="book.catagory" required>                    
                                 <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
@@ -66,7 +66,7 @@
                     </md-input-container>
                 </div>
                 <div class="col-sm-12" >
-                    <md-input-container  class="width-100">
+                    <md-input-container class="width-50">
                         <label>Total Copies</label>
                         <input type="number" name="copy" ng-model="book.totalCopies" min="1" required>
                     </md-input-container>
