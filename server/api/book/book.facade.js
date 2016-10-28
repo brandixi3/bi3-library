@@ -43,14 +43,61 @@ exports.findReturnBooksHistory = function(cb) {
 };
 
 // Creates a new book in the DB.
+    
 exports.create = function(item, cb) {
-    BookModel.create(item, cb);
+    async.waterfall([
+        function find(cb){
+            BookModel.findOne({isbn:item.isbn}, function(err, book){
+                cb(err,book);
+            });
+        },
+        function create(book, cb){
+            if(book===null){
+                 BookModel.create(item, cb);
+            }
+            else if(book.archieve){
+                item.archieve=false;
+                
+                        if(item.publisher===undefined){
+                        item.publisher=null;
+                         }
+                        if(item.detail===undefined){
+                        item.detail=null;
+                         }
+                    
+                        if(item.yearOfPublication===undefined){
+                            item.yearOfPublication=null;
+                          }
+                    
+
+                var updated = _.merge(book, item);
+
+                updated.save(function(err) {
+                    cb(err, book);
+                });
+            } else {
+                cb('ISBN is expected to be unique.');
+                
+            }
+        }
+            
+
+        
+    ],function (err, book) {
+        cb(err, book);
+        });
 };
+
 
 // Creates a new lend in the DB.
 exports.lend = function(item, cb) {
     async.waterfall([
-        function createLend(cb) { 
+        // function validateLend(cb) { 
+        //     LendModel.findOne({$and:[{bookIsbn:item.bookIsbn},{returned:{$ne: true}}]}, function(err, book){
+        //         cb(err, book);
+        //     });
+        // },
+        function createLend(cb) {
             LendModel.create(item, function (err) {
                 cb(err);
             });
@@ -92,6 +139,7 @@ exports.update = function(isbn, item, cb) {
             else{
                 bookPublisher : item.publisher;
             }
+
             if(item.yearOfPublication===undefined){
                 bookYearOfPublication:null;
             }
@@ -119,11 +167,8 @@ exports.destroyBook = function(isbn, cb) {
     
     async.waterfall([
         function fromBook(cb) {
-             BookModel.findOne({$and:[{isbn:isbn} , {archieve: {$ne: true}}]}, function(err, book) {
-                 book.archieve = true;
-                 book.save(function(err) {
-                     cb(err, book);
-                 });
+             BookModel.update({isbn:isbn},{$set:{archieve:true}}, function(err, book) {  
+                     cb(err, book); 
              });
         },
         function fromLend(book,cb) {
@@ -183,7 +228,7 @@ exports.returnBook = function(item, cb) {
     });
 };
 
-exports.newlyAddedBooks = function(cb) {
+/*exports.newlyAddedBooks = function(cb) {
     BookModel.find({})
         .sort({'dateAdded': -1})
         .limit(5)
@@ -191,7 +236,7 @@ exports.newlyAddedBooks = function(cb) {
             if (err) return handleError(err);            
             cb(err,books);
         });
-};
+};*/
 
 exports.newlyAddedBooks = function(cb) {
     BookModel.find({archieve: {$ne: true}})

@@ -11,7 +11,7 @@
                     <div class="col-sm-6">  
                         <md-input-container>
                             <label>ISBN</label>
-                            <input type="text" name="isbn" ng-model="book.isbn" required>
+                            <input type="text" name="isbn" ng-model="book.isbn" ng-readonly="book.isbn">
                         </md-input-container>
                         <p class="help-block error-margin" ng-show="form.isbn.$error.required && submitted">
                             <font color="red">  Isbn is required.</font>
@@ -20,11 +20,11 @@
                     <div class="col-sm-6">
                         <md-input-container class="width-100"> 
                             <label>Category</label>
-                            <md-select ng-model="book.catagory" required>                    
+                            <md-select ng-model="book.catagory" name="category"  required>         
                                 <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
                             </md-select>
                         </md-input-container> 
-                        <p class="help-block" ng-show="book.name === undefined && submitted" >
+                        <p class="help-block" ng-show="form.category.$error.required && submitted" >
                             <font color="red">  Category is required.</font>
                         </p>
                     </div>

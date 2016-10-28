@@ -4,6 +4,7 @@ angular.module('Bi3DigLib')
     .controller('AddBookCtrl', function($scope, Book, $location, $window) {
         $scope.book = {};
         $scope.errors = {};
+        
 
         $scope.catagory = [
             { id: 1, name: 'Non-fiction' },
@@ -18,7 +19,7 @@ angular.module('Bi3DigLib')
             $scope.submitted = true;
             
             if (form.$valid) {
-                Book.save({
+                    Book.save({
                         isbn:$scope.book.isbn,
                         title:$scope.book.title,
                         author:$scope.book.author,
@@ -29,13 +30,18 @@ angular.module('Bi3DigLib')
                         remainingCopies:$scope.book.tCopy,
                         detail:$scope.book.detail,
                         dateAdded:new Date()
+                        
                     })
                     .then(function() { 
                         $location.path('/bookadmin');
                     })
-                    .catch(function(err) {
-                        $scope.errors.other = err.message;
+                    .catch(function(err,data) {
+                         console.log(err,data);
+                         console.log("aaa "+err.data);
+                        $scope.errors = err.data;
+
                     });
+                }
             }
-        }; 
+   
     });

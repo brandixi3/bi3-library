@@ -15,11 +15,13 @@ angular.module('Bi3DigLib')
                         password: $scope.user.password
                     })
                     .then(function() { 
+                        //console.log(_id);
                         $location.path('/');
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
                     });
+
             }
         }; 
     });
