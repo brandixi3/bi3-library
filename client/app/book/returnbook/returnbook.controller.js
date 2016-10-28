@@ -9,6 +9,7 @@ angular.module('Bi3DigLib')
         Book.getReturnBookList()
             .then(function(res) {
                 $scope.returnbooks = res.data;
+               console.log($scope.returnbooks);
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;
@@ -22,6 +23,7 @@ angular.module('Bi3DigLib')
 
         $scope.returnBook = function(ev,loanbook) {
             // Appending dialog to document.body to cover sidenav in docs app
+            console.log($scope.returnbooks);
             $mdDialog.show({
               controller: DialogController,
               templateUrl: 'app/book/returnbook/dialog1.tmpl.html',

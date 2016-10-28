@@ -94,6 +94,7 @@ exports.showUserOrdersByReturnDate = function(req, res) {
 exports.save = function(req, res) {
     BookFacade.create(req.body, function(err, book) {
         if (err) {
+            console.log(err.message);
             return handleError(res, err); }
         return res.json(201, book);
     });
