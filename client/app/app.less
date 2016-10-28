@@ -1,5 +1,13 @@
-@import 'font-awesome/less/font-awesome.less';
-@fa-font-path: '/bower_components/font-awesome/fonts';
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Thin.eot');
+    src: url('../assets/fonts/Roboto-Thin.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/Roboto-Thin.woff2') format('woff2'),
+         url('../assets/fonts/Roboto-Thin.woff') format('woff'),
+         url('../assets/fonts/Roboto-Thin.ttf') format('truetype'),
+         url('../assets/fonts/Roboto-Thin.svg#Roboto-Thin') format('svg');
+}
+
 
 /**
  * App-wide Styles
@@ -27,9 +35,11 @@ body {
     top:0;
     bottom:0;
     font-family: 'Noto Serif', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-style: normal;
     padding-top: 51px;
     background-color: #F5F5F5;
-    background-image:url('http://korg.cdn.krishna.org/wp-content/uploads/2012/12/Library.jpg');
+    background-image:url('../assets/images/Library.jpg');
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;

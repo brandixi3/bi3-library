@@ -133,7 +133,7 @@ exports.lend = function(item, cb) {
                     cb(err, book);
                 });
             });  
-        }
+        } 
         ],function (err,book) {
             cb(err,book);
         });
@@ -199,9 +199,8 @@ exports.destroyBook = function(isbn, cb) {
                     cb(err,book);   
                 });
         }
-        
-         ],function (err, book) {
-        cb(err, book);
+        ],function (err, book) {
+            cb(err, book);
         });
     };
 
