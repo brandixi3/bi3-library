@@ -40,3 +40,4 @@
 [1028/085722:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1028/085945:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1028/090155:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1028/105238:ERROR:file_io.cc(30)] read: expected 4, observed 0

@@ -42,8 +42,27 @@ exports.findReturnBooksHistory = function(cb) {
     LendModel.find({returned: true}, cb);
 };
 
-// Creates a new book in the DB.
-    
+//Get prndingReturnBooks by isbn
+/*exports.findPendingReturnBookByIsbn = function(ev,isbn,cb) {
+    async.waterfall([
+        function find(cb){
+            LendModel.findOne({isbn:isbn},function(err, book){
+                        cb(err,book);
+                    });
+        },
+        function delete(book,cb){
+            if(book!=null){
+                
+            }
+
+        }
+        ],function (err, book) {
+        cb(err, book);
+        });
+
+};*/
+
+// Creates a new book in the DB.    
 exports.create = function(item, cb) {
     async.waterfall([
         function find(cb){

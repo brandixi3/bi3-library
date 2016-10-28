@@ -24,6 +24,9 @@ angular.module('Bi3DigLib')
             $location.path("/update/"+isbn);
         }
 
+       /* $scope.showConfirm = function(ev,isbn) {
+        }*/
+
         $scope.showConfirm = function(ev,isbn) {
             // Appending dialog to document.body to cover sidenav in docs app
                        
