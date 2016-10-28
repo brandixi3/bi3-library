@@ -1,4 +1,3 @@
-
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container overflow-auto">
     <div flex layout="column">
@@ -17,15 +16,18 @@
                             <p class="help-block error-margin" ng-show="form.isbn.$error.required && submitted" >
                              <font color="red">  Isbn is required.</font>
                             </p>
+                            <p class="help-block error-margin" ng-show="submitted" >
+                             <font color="red">  {{errors}} </font>
+                            </p>
                     </div>
                     <div class="col-sm-6">
                         <md-input-container class="width-100">
                             <label>Category</label>
-                            <md-select ng-model="book.catagory" required>                    
+                            <md-select ng-model="book.catagory" name="category" required>                    
                                 <md-option ng-value="book" ng-repeat="book in catagory" >{{ book.name }}</md-option>
                             </md-select>
                         </md-input-container> 
-                             <p class="help-block" ng-show="book.name === undefined && submitted" >
+                             <p class="help-block" ng-show="form.category.$error.required && submitted" >
                              <font color="red">  Category is required.</font>
                             </p>
                     </div>
@@ -75,6 +77,8 @@
                                  <font color="red">  Total number of copies are required.</font>
                             </p>
                     </div>
+                            <p class="help-block">{{ errors.other }}</p>
+
                     <div class="row">
                         <div class="col-sm-6">
                             <md-button class="primary-color md-raised" type="submit">

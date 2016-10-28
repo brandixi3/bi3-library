@@ -67,7 +67,7 @@ exports.lend = function(item, cb) {
                     cb(err, book);
                 });
             });  
-        } 
+        }
         ],function (err,book) {
             cb(err,book);
         });
