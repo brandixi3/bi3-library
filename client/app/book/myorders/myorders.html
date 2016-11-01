@@ -16,7 +16,6 @@
                     <th class="width-10">YEAR OF PUBLICATION</th>
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
-                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="book in orders">
                     <td>{{book.bookIsbn}}</td>
@@ -26,7 +25,6 @@
                     <td>{{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
                     <td>{{book.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{calculateFine(book.bookReturnDate)}}</td>
                   </tr>
                 </table>
             </form>
@@ -44,7 +42,6 @@
                     <th class="width-10">YEAR OF PUBLICATION</th>
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
-                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="book in ordershistory">
                     <td>{{book.bookIsbn}}</td>
@@ -54,7 +51,6 @@
                     <td>{{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
                     <td>{{book.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{book.fine | number:2}}</td>
                   </tr>
                 </table>
             </form>

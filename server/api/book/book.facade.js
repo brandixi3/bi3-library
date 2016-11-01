@@ -44,28 +44,17 @@ exports.findReturnBooksHistory = function(cb) {
 
 //Get pendingReturnBooks by isbn
 exports.findPendingReturnBooksByIsbn = function(isbn,cb) {
-    console.log(isbn);
-        
-            LendModel.find({$and:[{bookIsbn:isbn},{returned:{$ne: true}},{archieve:{$ne: true}}]})
-                    .limit(1)
-                    .exec(function(err, book){  
-                        console.log(book);
-                        console.log(err);
-                    console.log("456");                                     
-                        if(book.length===0){
-                            console.log("abc");
-                            cb(err,book);
-                            
-                        }
-                        else{
-                            console.log("def");
-                            cb(err,book);
-                        }
+    LendModel.find({$and:[{bookIsbn:isbn},{returned:{$ne: true}},{archieve:{$ne: true}}]})
+        .limit(1)
+        .exec(function(err, book){                                                                                  
+            if(book.length===0){
+                cb(err,book);
+            }
+            else{
+                cb(err,book);
+            }
 
-                       // cb(err,book);
-                        
-                    });
-        
+        });
         
 };
 
@@ -85,44 +74,36 @@ exports.create = function(item, cb) {
                 item.archieve=false;
                 
                         if(item.publisher===undefined){
-                        item.publisher=null;
-                         }
+                            item.publisher=null;
+                        }
                         if(item.detail===undefined){
-                        item.detail=null;
-                         }
+                            item.detail=null;
+                        }
                     
                         if(item.yearOfPublication===undefined){
                             item.yearOfPublication=null;
-                          }
-                    
+                        }                    
 
                 var updated = _.merge(book, item);
 
                 updated.save(function(err) {
                     cb(err, book);
                 });
-            } else {
-                cb('ISBN is expected to be unique.');
-                
             }
-        }
-            
-
+            else {
+                cb('ISBN is expected to be unique.');               
+            }
+        }         
         
     ],function (err, book) {
         cb(err, book);
-        });
+      });
 };
 
 
 // Creates a new lend in the DB.
 exports.lend = function(item, cb) {
-    async.waterfall([
-        // function validateLend(cb) { 
-        //     LendModel.findOne({$and:[{bookIsbn:item.bookIsbn},{returned:{$ne: true}}]}, function(err, book){
-        //         cb(err, book);
-        //     });
-        // },
+    async.waterfall([        
         function createLend(cb) {
             LendModel.create(item, function (err) {
                 cb(err);
@@ -130,20 +111,20 @@ exports.lend = function(item, cb) {
         },
         function updateRemainingCopies(cb) {          
             BookModel.findOne({isbn:item.bookIsbn}, function(err, book) {
-             if(book.remainingCopies>0){   
-                book.remainingCopies--;
-            }
-            else{
-                book.remainingCopies=0;
-            }
-                book.save(function(err) {
-                    cb(err, book);
-                });
+                if(book.remainingCopies>0){   
+                    book.remainingCopies--;
+                }
+                else{
+                    book.remainingCopies=0;
+                }
+                    book.save(function(err) {
+                        cb(err, book);
+                    });
             });  
         }
-        ],function (err,book) {
+    ],function (err,book) {
             cb(err,book);
-        });
+      });
 };
 
 // Updates an existing book in the DB.
@@ -159,19 +140,19 @@ exports.update = function(isbn, item, cb) {
             });
         },
         function updateLend(book, cb) {
-            if(item.publisher===undefined){
-                bookPublisher:null;
-            }
-            else{
-                bookPublisher : item.publisher;
-            }
+                if(item.publisher===undefined){
+                    bookPublisher:null;
+                }
+                else{
+                    bookPublisher : item.publisher;
+                }
 
-            if(item.yearOfPublication===undefined){
-                bookYearOfPublication:null;
-            }
-            else{
-                bookYearOfPublication :item.yearOfPublication;
-            }
+                if(item.yearOfPublication===undefined){
+                    bookYearOfPublication:null;
+                }
+                else{
+                    bookYearOfPublication :item.yearOfPublication;
+                }
             LendModel.update({bookIsbn:item.isbn},         
                 {bookTitle : item.title,
                 bookAuthor : item.author,
@@ -189,8 +170,7 @@ exports.update = function(isbn, item, cb) {
 };
 
 
-exports.destroyBook = function(isbn, cb) {
-    
+exports.destroyBook = function(isbn, cb) {    
     async.waterfall([
         function fromBook(cb) {
              BookModel.update({isbn:isbn},{$set:{archieve:true}}, function(err, book) {  
@@ -206,10 +186,10 @@ exports.destroyBook = function(isbn, cb) {
                     cb(err,book);   
                 });
         }
-        ],function (err, book) {
+    ],  function (err, book) {
             cb(err, book);
         });
-    };
+};
 
 
 exports.returnBook = function(item, cb) {
@@ -227,17 +207,8 @@ exports.returnBook = function(item, cb) {
                 });
             });
          },
-        // function updateRemainingCopies(book, cb) { 
-        //     LendModel.findOne({_id: itemId}, function(err, book) {
-        //         var updated = _.merge(book, item);
-                
-        //         updated.save(function(err) {
-        //             cb(err, book);
-        //         });
-        //     });
-        // },
-         function updateLendDetails(book,cb) { 
-           // if (item._id) { delete item._id; }      
+        
+        function updateLendDetails(book,cb) {               
             LendModel.findOne({_id: itemId}, function(err, book) {
                 var updated = _.merge(book, item);
                 updated.returned = true;
@@ -246,22 +217,11 @@ exports.returnBook = function(item, cb) {
                 });
             });
         }
-
         
     ],function (err, book) {
         cb(err, book);
     });
 };
-
-/*exports.newlyAddedBooks = function(cb) {
-    BookModel.find({})
-        .sort({'dateAdded': -1})
-        .limit(5)
-        .exec(function(err, books) {
-            if (err) return handleError(err);            
-            cb(err,books);
-        });
-};*/
 
 exports.newlyAddedBooks = function(cb) {
     BookModel.find({archieve: {$ne: true}})
@@ -274,7 +234,6 @@ exports.newlyAddedBooks = function(cb) {
 };
 
 exports.findUserOrdersByReturnDate = function(userId, cb) {
-    console.log(userId);
     LendModel.find({$and:[{userId:userId} , {returned: {$ne: true}}]})
         .sort({'bookReturnDate': 1})
         .limit(4)

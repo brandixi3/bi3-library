@@ -27,7 +27,6 @@ angular.module('Bi3DigLib')
         $scope.showConfirm = function(ev,isbn) {
             Book.findPendingReturnBookByIsbn (isbn)
             .then(function(res) {
-                console.log(res.data);
                 if(res.data.length===0){
                     var confirm = $mdDialog.confirm()
                       .title('Would you like to delete this book?')
@@ -49,7 +48,7 @@ angular.module('Bi3DigLib')
                     }
 
                 else{
-                   $mdDialog.show(
+                    $mdDialog.show(
                       $mdDialog.alert()
                         .parent(angular.element(document.querySelector('#popupContainer')))
                         .clickOutsideToClose(true)
@@ -58,16 +57,11 @@ angular.module('Bi3DigLib')
                         .ariaLabel('Alert Dialog Demo')
                         .ok('ok')
                         .targetEvent(ev)
-                      );
-                    }
+                    );
+                }
 
-                });
-                        
-            
-            /*.catch(function(err) {
-                $scope.errors.other = err.message;
-                 });*/
-                   
+            });                      
+              
         }
 
     });

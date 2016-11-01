@@ -27,7 +27,7 @@
                     <th class="width-10">AUTHOR</th>
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
-                    <th class="width-10">FINE (Rs.)</th>
+                    <!-- <th class="width-10">FINE (Rs.)</th> -->
                     <th></th>
                   </tr>
                   <tr ng-repeat="loanbook in returnbooks">
@@ -38,7 +38,7 @@
                     <td>{{loanbook.bookAuthor}}</td>
                     <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
+                    <!-- <td>{{calculateFine(loanbook.bookReturnDate)}}</td> -->
                     <td>
                         <div class="row">
                             <div class="">

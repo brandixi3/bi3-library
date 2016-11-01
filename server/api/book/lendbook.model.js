@@ -18,7 +18,7 @@ var lendbookSchema = new Schema({
   bookYearOfPublication: String,
   bookBorrowedDate: Date,
   bookReturnDate: Date,
-  fine: Number,
+  // fine: Number,
   archieve:Boolean,
   actualReturnDate: Date,
   returned:Boolean,

@@ -33,7 +33,6 @@
                     <th class="width-10">YEAR OF PUBLICATION</th>
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
-                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="loanbook in loanbooks">
                     <td>{{loanbook.bookIsbn}}</td>
@@ -43,7 +42,6 @@
                     <td>{{loanbook.bookYearOfPublication | date:'MMM yyyy'}}</td>
                     <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
                   </tr>
                 </table>
 			</form>
