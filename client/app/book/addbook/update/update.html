@@ -73,6 +73,10 @@
                     <p class="help-block error-margin" ng-show="form.copy.$error.required && submitted">
                         <font color="red">  Total number of copies are required.</font>
                     </p>
+                    <p class="help-block error-margin" ng-show="book.totalCopies<=book.remainingCopies 
+                    ">
+                        <font color="red">This type books already lend.</font>
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">

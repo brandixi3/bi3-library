@@ -42,25 +42,32 @@ exports.findReturnBooksHistory = function(cb) {
     LendModel.find({returned: true}, cb);
 };
 
-//Get prndingReturnBooks by isbn
-/*exports.findPendingReturnBookByIsbn = function(ev,isbn,cb) {
-    async.waterfall([
-        function find(cb){
-            LendModel.findOne({isbn:isbn},function(err, book){
-                        cb(err,book);
+//Get pendingReturnBooks by isbn
+exports.findPendingReturnBooksByIsbn = function(isbn,cb) {
+    console.log(isbn);
+        
+            LendModel.find({$and:[{bookIsbn:isbn},{returned:{$ne: true}},{archieve:{$ne: true}}]})
+                    .limit(1)
+                    .exec(function(err, book){  
+                        console.log(book);
+                        console.log(err);
+                    console.log("456");                                     
+                        if(book.length===0){
+                            console.log("abc");
+                            cb(err,book);
+                            
+                        }
+                        else{
+                            console.log("def");
+                            cb(err,book);
+                        }
+
+                       // cb(err,book);
+                        
                     });
-        },
-        function delete(book,cb){
-            if(book!=null){
-                
-            }
-
-        }
-        ],function (err, book) {
-        cb(err, book);
-        });
-
-};*/
+        
+        
+};
 
 // Creates a new book in the DB.    
 exports.create = function(item, cb) {

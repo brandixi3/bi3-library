@@ -39,6 +39,9 @@ angular.module('Bi3DigLib')
       function getReturnHistoryList() {
           return $http.get('/api/books/returnhistorylist/');
       }
+      function findPendingReturnBookByIsbn(isbn) {
+          return $http.get('/api/books/returnbookbyisbn/'+isbn);
+      }
       function getNewlyAddedBooks() {
           return $http.get('/api/books/newlyaddedbooks/');
       }
@@ -59,6 +62,7 @@ angular.module('Bi3DigLib')
         getOrdersHistory:getOrdersHistory,
         returnBook:returnBook,
         getReturnHistoryList:getReturnHistoryList,
+        findPendingReturnBookByIsbn,
         getNewlyAddedBooks:getNewlyAddedBooks,
         getUserOrdersByReturnDate:getUserOrdersByReturnDate
       };

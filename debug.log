@@ -41,3 +41,11 @@
 [1028/085945:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1028/090155:ERROR:file_io.cc(30)] read: expected 4, observed 0
 [1028/105238:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1028/121623:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1028/121926:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1028/122150:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1028/125455:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1031/091011:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1031/092614:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1101/093457:ERROR:file_io.cc(30)] read: expected 4, observed 0
+[1101/093938:ERROR:file_io.cc(30)] read: expected 4, observed 0

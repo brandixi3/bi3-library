@@ -61,6 +61,16 @@ exports.showPendingReturnBooks = function(req, res) {
     });
 };
 
+exports.showPendingReturnBooksByIsbn = function(req, res) {
+    BookFacade.findPendingReturnBooksByIsbn(req.params.isbn, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        if (!book) {
+            return res.send(404); }
+        return res.json(book);
+    });
+};
+
 exports.showReturnBooksHistory = function(req, res) {
     BookFacade.findReturnBooksHistory(function(err, book) {
         if (err) {

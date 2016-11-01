@@ -9,6 +9,7 @@ var router = express.Router();
 router.get('/', auth.isAuthenticated(), controller.index);
 router.get('/myordersbyreturndate/:userId', auth.isAuthenticated(), controller.showUserOrdersByReturnDate);
 router.get('/returnbooklist/', auth.hasRole('admin'), controller.showPendingReturnBooks);
+router.get('/returnbookbyisbn/:isbn', auth.hasRole('admin'), controller.showPendingReturnBooksByIsbn);
 router.get('/returnhistorylist/', auth.hasRole('admin'), controller.showReturnBooksHistory);
 router.get('/newlyaddedbooks/', auth.isAuthenticated(), controller.showNewlyAddedBooks);
 router.post('/returnbook/', auth.hasRole('admin'), controller.returnBook);

@@ -24,28 +24,51 @@ angular.module('Bi3DigLib')
             $location.path("/update/"+isbn);
         }
 
-       /* $scope.showConfirm = function(ev,isbn) {
-        }*/
-
         $scope.showConfirm = function(ev,isbn) {
-            // Appending dialog to document.body to cover sidenav in docs app
-                       
-            console.log("sss "+isbn);
-            var confirm = $mdDialog.confirm()
-                  .title('Would you like to delete this book?')
-                  .targetEvent(ev)
-                  .ok('Yes')
-                  .cancel('Cancel');
-                $mdDialog.show(confirm).then(function() {
-                    Book.destroyBook(isbn)
-                        .then(function() { 
-                            $window.location.reload();
-                        })
-                        .catch(function(err) {
-                            $scope.errors.other = err.message;
+            Book.findPendingReturnBookByIsbn (isbn)
+            .then(function(res) {
+                console.log(res.data);
+                if(res.data.length===0){
+                    var confirm = $mdDialog.confirm()
+                      .title('Would you like to delete this book?')
+                      .targetEvent(ev)
+                      .ok('Yes')
+                      .cancel('Cancel');
+                    $mdDialog.show(confirm).then(function() {
+                        Book.destroyBook(isbn)
+                            .then(function() { 
+                                $window.location.reload();
+                            })
+                            .catch(function(err) {
+                                $scope.errors.other = err.message;
+                            });
+                        }, function() {
+                            $scope.status = 'You decided to keep your debt.';
                         });
-                    }, function() {
-                        $scope.status = 'You decided to keep your debt.';
-                    });
-        };
+
+                    }
+
+                else{
+                   $mdDialog.show(
+                      $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('This book is alredy lend.')
+                        // .textContent('This book is alredy lend.')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('ok')
+                        .targetEvent(ev)
+                      );
+                    }
+
+                });
+                        
+            
+            /*.catch(function(err) {
+                $scope.errors.other = err.message;
+                 });*/
+                   
+        }
+
     });
+        
