@@ -1,3 +1,31 @@
 .error-margin {
 	margin-top: -20px;
 }
+
+md-switch .md-bar {
+    background-color: #777; /* set not selected bar color */
+}
+
+md-switch.md-checked .md-bar {
+    background-color: lightseagreen; /* set selected bar color */
+}
+
+md-switch[disabled] .md-bar {
+    background-color: lightseagreen; /* set disabled bar color */
+}
+
+/* 
+ * The switch:
+ */
+
+md-switch .md-thumb {
+    color: #999; /* not selected switch color */
+}
+
+md-switch.md-checked .md-thumb {
+    background-color: lightseagreen; /* selected switch color */
+}
+
+md-switch[disabled] .md-thumb {
+    background-color: rgb(255,255,255); /* disabled switch color */
+}

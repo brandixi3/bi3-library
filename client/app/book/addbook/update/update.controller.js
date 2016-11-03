@@ -3,6 +3,7 @@ angular.module('Bi3DigLib')
 
         $scope.book = {};
         $scope.errors = {};
+        $scope.button =  {};
         
         $scope.catagory = [
             { id: 1, name: 'Non-fiction' },
@@ -16,6 +17,15 @@ angular.module('Bi3DigLib')
         $scope.update = function(form) {
             $scope.submitted = true;
                if (form.$valid) {
+                if($scope.button.Donations==true){
+                    $scope.donatedBy=$scope.book.donatedBy;
+                    $scope.donationDetail=$scope.book.donationDetail;
+                }
+
+                else{
+                    $scope.donatedBy=undefined;
+                    $scope.donationDetail=undefined;
+                }
                 Book.update({
                 		_id:$scope.book._id,
                         isbn:$scope.book.isbn,
@@ -24,7 +34,9 @@ angular.module('Bi3DigLib')
                         publisher:$scope.book.publisher,
                         catagory:$scope.book.catagory.name,
                         yearOfPublication:$scope.book.yearOfPublication,
-                        totalCopies:$scope.book.totalCopies, 
+                        totalCopies:$scope.book.totalCopies,
+                        donatedBy:$scope.donatedBy,
+                        donationDetail:$scope.donationDetail, 
                         remainingCopies:$scope.book.totalCopies - $scope.prevTotalCount  + $scope.book.remainingCopies, //1
                         detail:$scope.book.detail,
                         dateUpdated:new Date()
@@ -49,6 +61,17 @@ angular.module('Bi3DigLib')
                     return $scope.book.catagory === item.name; 
                 });
                 $scope.prevTotalCount = res.data[0].totalCopies;
+                if($scope.book.donatedBy==undefined){
+                    $scope.button = {
+                        Donations: false
+                    };
+
+                }
+                else{
+                    $scope.button = {
+                        Donations: true
+                    };
+                }
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;

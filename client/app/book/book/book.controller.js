@@ -23,6 +23,7 @@ angular.module('Bi3DigLib')
     Book.findByIsbn($stateParams.isbn)
         .then(function(res) {
             $scope.book = res.data[0];
+            console.log("aa "+$scope.book.totalCopies);
             $scope.bookImgUrl = 'http://images.amazon.com/images/P/' + $scope.book.isbn + '.jpg';
         })
         .catch(function(err) {

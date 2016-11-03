@@ -15,7 +15,8 @@ var BookSchema = new Schema({
   remainingCopies: Number,
   detail:String,
   archieve:Boolean,
-  deleteIsbn:String,
+  donatedBy:String,
+  donationDetail:String,
   dateAdded:Date,
   dateUpdated:Date
 });

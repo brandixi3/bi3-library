@@ -15,7 +15,7 @@
                <div flex-gt-xs class="col-sm-7">
                   <div>
                      <p class="bottom">
-                     <div>
+                     <div >
                         <p>       
                            <b>ISBN:</b>
                            <br>{{book.isbn}}
@@ -27,7 +27,7 @@
                            <br>{{book.author}}
                         </p>
                      </div>
-                     <div>
+                     <div ng-if="book.publisher">
                         <p>		
                            <b>Publisher:</b>
                            <br>{{book.publisher}}
@@ -39,7 +39,7 @@
                            <br>{{book.catagory}}
                         </p>
                      </div>
-                     <div>
+                     <div ng-if="book.yearOfPublication">
                         <p>
                            <b>Year of Publication:</b>
                            <br>{{book.yearOfPublication}}
@@ -50,11 +50,27 @@
                </div>
             </div>
             <div flex-gt-xs class="col-sm-12">
-               <div>
+               <div ng-if="book.detail">
                   <p class="top">  
                      <b>About this book:</b>
                      <br>
                   <p class="margin-top">{{book.detail}}</p>
+                  </p>
+               </div>
+            </div>
+            <div flex-gt-xs class="col-sm-12">
+               <div ng-if="book.donatedBy">
+                  <p >  
+                     <b>Donated by:</b>
+                     <br>{{book.donatedBy}}                  
+                  </p>
+               </div>
+            </div>
+            <div flex-gt-xs class="col-sm-12">
+               <div ng-if="book.donationDetail">
+                  <p>  
+                     <b>Details about donation:</b>
+                     <br>{{book.donationDetail}}                  
                   </p>
                </div>
             </div>

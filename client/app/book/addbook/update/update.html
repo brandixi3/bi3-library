@@ -78,6 +78,30 @@
                         <font color="red">This type books already lend.</font>
                     </p>
                 </div>
+                <div class="col-sm-12 card-frame">
+                    <div class="col-sm-12 "  >
+                        <md-input-container class="col-sm-12">
+                            <div class="col-sm-12">
+                             <h5 class="col-sm-6 " style="float: left; top: 15px;left:-40px; ">Donation : </h5>
+                             <md-switch  class="col-sm-6"  style="float: left;left:-70px;"  ng-model="button.Donations" >   
+                             </md-switch>
+                             </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12"  ng-if="button.Donations">
+                        <md-input-container  style="width: 45%">
+                            <label>Donated by</label>
+                            <input type="text" name="donatedby" ng-model="book.donatedBy" >
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12" ng-if="button.Donations">
+                        <md-input-container  style="width: 100%">
+                            <label>Detail</label>
+                            <textarea rows="3" md-maxlength="500" ng-model="book.donationDetail" >
+                            </textarea>
+                        </md-input-container>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <md-button class="primary-color md-raised" type="submit">
