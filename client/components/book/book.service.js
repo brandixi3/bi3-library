@@ -27,6 +27,9 @@ angular.module('Bi3DigLib')
       function getMyOrders(userId) {
           return $http.get('/api/books/myorders/'+userId);
       }
+      function getMyOrderedBook(userId,isbn) {
+          return $http.get('/api/books/myorderedBook/'+userId+'/'+isbn);
+      }
       function getOrdersHistory(userId) {
           return $http.get('/api/books/myordershistory/'+userId);
       }
@@ -58,6 +61,7 @@ angular.module('Bi3DigLib')
         update:update,
         destroyBook:destroyBook,
         getMyOrders:getMyOrders,
+        getMyOrderedBook:getMyOrderedBook,
         getReturnBookList:getReturnBookList,
         getOrdersHistory:getOrdersHistory,
         returnBook:returnBook,

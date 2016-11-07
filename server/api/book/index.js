@@ -16,6 +16,7 @@ router.post('/returnbook/', auth.hasRole('admin'), controller.returnBook);
 router.get('/:id', controller.show);
 router.get('/isbn/:isbn', controller.showByIsbn);
 router.get('/myorders/:userId', auth.isAuthenticated(), controller.showMyOrdersByUserId);
+router.get('/myorderedBook/:userId/:isbn', auth.isAuthenticated(), controller.showMyOrderedBookByUserId);
 router.get('/myordershistory/:userId', auth.isAuthenticated(), controller.showOrdersHistoryByUserId);
 router.post('/', auth.hasRole('admin'), controller.save);
 router.post('/lend/', controller.lend);

@@ -9,6 +9,7 @@ angular.module('Bi3DigLib')
         Book.getMyOrders(Auth.getCurrentUser()._id)
             .then(function(res) {
                 $scope.orders = res.data;
+                
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;

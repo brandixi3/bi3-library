@@ -27,6 +27,11 @@ exports.findMyOrdersByUserId = function(userId, cb) {
     LendModel.find({$and:[{userId:userId} , {returned: {$ne: true}}]}, cb);
 };
 
+// Get book ordered books by userId
+exports.findMyOrderedBookByUserId = function(userId,isbn, cb) {
+    LendModel.find({$and:[{userId:userId} ,{bookIsbn:isbn}, {returned: {$ne: true}}]}, cb);
+};
+
 // Get book orders by userId
 exports.findOrdersHistoryByUserId = function(userId, cb) {
     LendModel.find({$and:[{userId:userId} , {returned: true}]}, cb);
@@ -103,13 +108,35 @@ exports.create = function(item, cb) {
 
 // Creates a new lend in the DB.
 exports.lend = function(item, cb) {
-    async.waterfall([        
-        function createLend(cb) {
-            LendModel.create(item, function (err) {
-                cb(err);
+    async.waterfall([ 
+        function bookCount(cb){
+            LendModel.count({$and:[{userId:item.userId} ,{returned: {$ne: true}}]}, function(err,count){
+                if (count >=2) {
+                    cb('You have already lend two book.');
+                } else {
+                    cb(err);
+                }                
             });
         },
-        function updateRemainingCopies(cb) {          
+
+        function findBorrowedBooks(cb){
+            LendModel.findOne({$and:[{userId:item.userId} ,{bookIsbn:item.bookIsbn}, {returned: {$ne: true}}]}, function(err, book){
+                if (book != null) {
+                    cb('You have already lend this book.');
+                } else {
+                    cb(err,book);
+                }                
+            });
+        },
+    
+
+        function createLend(book,cb) {
+            LendModel.create(item, function (err) {
+                cb(err,book);
+            });
+       
+        },
+        function updateRemainingCopies(book,cb) {
             BookModel.findOne({isbn:item.bookIsbn}, function(err, book) {
                 if(book.remainingCopies>0){   
                     book.remainingCopies--;
@@ -120,7 +147,8 @@ exports.lend = function(item, cb) {
                     book.save(function(err) {
                         cb(err, book);
                     });
-            });  
+            }); 
+           
         }
     ],function (err,book) {
             cb(err,book);

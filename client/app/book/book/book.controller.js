@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('BookCtrl', function($scope, Book, Auth, $stateParams, $location) {
+    .controller('BookCtrl', function($scope, Book, Auth,$mdDialog, $stateParams, $location) {
 
     $scope.book = {};
     $scope.errors = {};
     $scope.bookImgUrl = {};
     $scope.loggedInUser = {};
+    $scope.returnBook = {};
+    $scope.orders = {};
+
 
 
     $scope.BorrowedDate = new Date();
@@ -21,18 +24,20 @@ angular.module('Bi3DigLib')
     $scope.BorrowedDate.getDate() + 7 );
 
     Book.findByIsbn($stateParams.isbn)
-        .then(function(res) {
-            $scope.book = res.data[0];
-            console.log("aa "+$scope.book.totalCopies);
-            $scope.bookImgUrl = 'http://images.amazon.com/images/P/' + $scope.book.isbn + '.jpg';
+        .then(function(res) {            
+            $scope.book = res.data[0];            
+            $scope.bookImgUrl = 'http://images.amazon.com/images/P/' + $scope.book.isbn +'.jpg';
         })
         .catch(function(err) {
             $scope.errors.other = err.message;
         });
+        
 
-    $scope.lendBook = function(form) {
+
+    $scope.lendBook = function(ev,form) {
         $scope.submitted = true;
         $scope.loggedInUser = Auth.getCurrentUser();
+
 
         if (form.$valid) {
             var returnDate = new Date();
@@ -62,8 +67,18 @@ angular.module('Bi3DigLib')
                     $location.path('/books');
                 }
             })
-            .catch(function(err) {
-                $scope.errors.other = err.message;
+            .catch(function(err,data) {
+                $scope.errors = err.data;
+                    $mdDialog.show(
+                      $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title($scope.errors)
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('ok')
+                        .targetEvent(ev)
+                    );                        
+
             });
         }
     };

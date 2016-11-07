@@ -41,6 +41,16 @@ exports.showMyOrdersByUserId = function(req, res) {
     });
 };
 
+exports.showMyOrderedBookByUserId = function(req, res) {
+    BookFacade.findMyOrderedBookByUserId(req.params.userId,req.params.isbn, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        if (!book) {
+            return res.send(404); }
+        return res.json(book);
+    });
+};
+
 exports.showOrdersHistoryByUserId = function(req, res) {
     BookFacade.findOrdersHistoryByUserId(req.params.userId, function(err, book) {
         if (err) {

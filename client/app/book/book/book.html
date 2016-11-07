@@ -5,7 +5,7 @@
          <div class="form-header">
             <h2 class="page-heading">{{book.title}}</h2>
          </div>
-         <form class="form card-frame" name="form" ng-submit="lendBook(form)" novalidate>
+         <form class="form card-frame" name="form" ng-submit="lendBook($event,form)" novalidate>
             <div flex-gt-xs class="col-sm-12">
                <div flex-gt-xs class="col-sm-5">
                   <div>
@@ -94,9 +94,9 @@
                         <p class="help-block error" ng-show="book.remainingCopies<=0" >
                            <font color="red">  The book that you have requested is currently on loan. Thank you.
                            </font>
-                        </p>
+                        </p>                      
                <div class="col-sm-6 margin" >
-                     <md-button class="primary-color md-raised" ng-disabled="book.remainingCopies<=0 " type="submit" >
+                     <md-button class="primary-color md-raised" ng-disabled="book.remainingCopies<=0  " type="submit" >
                         Lend Book
                      </md-button>
                </div>
