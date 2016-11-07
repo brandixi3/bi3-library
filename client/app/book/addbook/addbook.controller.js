@@ -43,6 +43,7 @@ angular.module('Bi3DigLib')
                         donationDetail:$scope.donationDetail,
                         remainingCopies:$scope.book.tCopy,
                         detail:$scope.book.detail,
+                        image:'http://images.amazon.com/images/P/' + $scope.book.isbn +'.jpg',
                         dateAdded:new Date()
                         
                     })

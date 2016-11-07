@@ -17,7 +17,7 @@
                     <th class="width-10"></th>
                   </tr>
                   <tr ng-repeat="book in books">
-                    <td ng-click="viewBook(book.isbn)"><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td>
+                    <td ng-click="viewBook(book.isbn)"><img src="{{book.image}}" width="75" height="100"></td>
                     <td ng-click="viewBook(book.isbn)">{{book.title}}</td>
                     <td ng-click="viewBook(book.isbn)">{{book.author}}</td>
                     <td ng-click="viewBook(book.isbn)">{{book.publisher}}</td>

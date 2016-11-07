@@ -19,9 +19,7 @@ var BookSchema = new Schema({
   donationDetail:String,
   dateAdded:Date,
   dateUpdated:Date,
-  image: { type: String,
-    default: 'http://www.usborne.com/images/catalogue/custom-pages/write-your-own/write-your-own-story-book.jpg'
- }
+  image: String
 });
 
  BookSchema.plugin(uniqueValidator, { message: 'ISBN is expected to be unique.' });
