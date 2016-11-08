@@ -13,9 +13,9 @@ module.exports = function(app) {
   app.use('/api/books', require('./api/book'));  
 
   app.use('/auth', require('./auth'));
-  //app.use('/book', require('./book'));
+  require('./images')(app);
    
-  app.route('/:url(api|book|auth|components|app|bower_components|assets)/*')
+  app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
  
   app.route('/*')

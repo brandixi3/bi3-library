@@ -12,7 +12,7 @@
 				<div ng-repeat="book in newbooks">
 					<div class="col-xs-6" ng-click="viewBook(book.isbn)"> 
 						<br>
-						<img class="col-xs-8 img"  src="{{book.image}}">
+						<img class="col-xs-8 img"  src="//localhost:9000/isbn-images?isbn={{book.isbn}}">
 						<div class="col-xs-4"><h4>{{book.title}}</h4></div>
                         <div class="col-xs-4"><h5>Author :</h5></div>
                         <div class="col-xs-4 margin--10" >{{book.author}}</div>
