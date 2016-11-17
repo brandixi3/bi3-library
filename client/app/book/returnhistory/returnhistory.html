@@ -1,13 +1,34 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div layout flex class="container overflow-auto">
+<div layout flex class="container overflow-auto ">
     <div flex layout="column">
         
-        <div class="row col-xs-8 col-xs-offset-2">
-        <div class="form-header">
-            <h2 class="page-heading">Return History</h2>
+        <div class="row col-xs-8 col-xs-offset-2 ">
+        <div class="form-header ">
+            <h2 class="page-heading ">Return History</h2>
         </div>
-            <form class="form card-frame" name="form" novalidate>
-                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
+           
+            <form class="form card-frame btn-frame frame" name="form" novalidate>
+                <table  ng-table="tableParams"  class="table"  show-filter="true">
+                <tr ng-repeat="loanbook in $data">
+                    <td title="'NAME'" filter="{ userName: 'text'}" class="width-10" sortable="'userName'">
+                            {{loanbook.userName}}</td>
+                    <td title="'EMAIL'" filter="{ userEmail: 'text'}" class="width-15" sortable="'userEmail'">
+                            {{loanbook.userEmail}}</td>
+                    <td  title="'ISBN'" filter="{bookIsbn: 'text'}" class="width-10" sortable="'bookIsbn'">
+                            {{loanbook.bookIsbn}}</td>
+                    <td  title="'TITLE'" filter="{bookTitle: 'text'}" class="width-20" sortable="'bookTitle'">
+                            {{loanbook.bookTitle}}</td>
+                    <td  title="'AUTHOR'" filter="{ bookAuthor: 'text'}"  class="width-10"sortable="'bookAuthor'">
+                        {{loanbook.bookAuthor}}</td>
+                    <td  title="'BORROWED DATE'" filter="{ bookBorrowedDate: 'text'}" class="width-10" sortable="'bookBorrowedDate:'">
+                        {{loanbook.bookBorrowedDate | date:'yyyy-MM-dd'}}</td>
+                    <td  title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}" class="width-10" sortable="'bookReturnDate'">
+                        {{calculateDate(loanbook.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
+                    <td  title="'ACTUAL RETURN DATE'" filter="{ actualReturnDate: 'text'}" style="width: 50px;" class="width-50" sortable="'actualReturnDate'">
+                        {{calActualDate(loanbook.actualReturnDate) | date:'yyyy-MM-dd'}}</td>
+                    
+                </tr>
+                <!-- <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
                     <th class="width-15">Name</th>
                     <th class="width-15">E-mail</th>
@@ -17,7 +38,7 @@
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
                     <th class="width-10">ACTUAL RETURN DATE</th>
-                    <!-- <th class="width-10">FINE (Rs.)</th> -->
+                    <th class="width-10">FINE (Rs.)</th>
                   </tr>
                   <tr ng-repeat="loanhistory in returnhistory">
                     <td>{{loanhistory.userName}}</td>
@@ -28,8 +49,8 @@
                     <td>{{loanhistory.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanhistory.bookReturnDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanhistory.actualReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <!-- <td>{{loanhistory.fine | number:2}}</td> -->
-                  </tr>
+                    <td>{{loanhistory.fine | number:2}}</td>
+                  </tr> -->
                 </table>
             </form>
         </div>

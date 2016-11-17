@@ -5,7 +5,9 @@ angular.module('Bi3DigLib')
 		$scope.newbooks = {};
 		$scope.loanbooks = {};
         $scope.errors = {};  
-
+        
+        $scope.myInterval = 3000;
+        
 		Book.getNewlyAddedBooks()
             .then(function(res) {
                 $scope.newbooks = res.data;
@@ -22,6 +24,7 @@ angular.module('Bi3DigLib')
                 $scope.errors.other = err.message;
             });       
 
+        
         
         $scope.viewBook = function(isbn) {
             $location.path("/book/"+isbn);

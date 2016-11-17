@@ -7,6 +7,9 @@ var async = require('async');
 var BookModel = require('./book.model');
 var LendModel = require('./lendbook.model');
 
+var nodemailer = require('nodemailer');
+var moment = require('moment');
+
 // Get list of book
 exports.findAll = function(cb) {
     BookModel.find({archieve: {$ne: true}},cb);
@@ -111,7 +114,7 @@ exports.lend = function(item, cb) {
     async.waterfall([ 
         function bookCount(cb){
             LendModel.count({$and:[{userId:item.userId} ,{returned: {$ne: true}}]}, function(err,count){
-                if (count >=2) {
+                if (count >=12) {
                     cb('You have already lend two book.');
                 } else {
                     cb(err);
@@ -149,7 +152,44 @@ exports.lend = function(item, cb) {
                     });
             }); 
            
-        }
+        }/*,
+        function mail(book, cb){
+            var smtpConfig = {
+                host: 'smtp.office365.com',
+                port: 587,
+                auth: {
+                    user: 'thisala@brandix.com',
+                    pass: 'bi3@0925~'
+                },
+                secureConnection: false, // TLS requires secureConnection to be false
+                tls: {
+                    ciphers:'SSLv3'
+                }
+            };
+
+            // create reusable transporter object using the default SMTP transport
+            var transporter = nodemailer.createTransport(smtpConfig);
+
+            // setup e-mail data with unicode symbols
+            var mailOptions = {
+                from: '"Thisal Abeysooriya" <thisala@brandix.com>',
+                to: 'thisala@brandix.com', // list of receivers
+                subject: 'Successfully borrowed "' + item.bookTitle + '" book from bi3 Library.', // Subject line
+                //text: '', // plaintext body
+                html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully borrowed the "<b>' + item.bookTitle + '</b>" by ' + item.bookAuthor + '. </br></br>Please be kind enough to return the book on or before <b>' + moment(item.bookReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.</br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br>' // html body
+            };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log('Message Errored: ' + error);
+                    cb(error);
+                } else {
+                    console.log('Message Sent: ' + info.response);
+                    cb(error, book);
+                }
+            });
+        }*/
     ],function (err,book) {
             cb(err,book);
       });
@@ -244,8 +284,45 @@ exports.returnBook = function(item, cb) {
                     cb(err, book);
                 });
             });
+        }/*,
+        function mail(book, cb){
+            var smtpConfig = {
+                host: 'smtp.office365.com',
+                port: 587,
+                auth: {
+                    user: 'thisala@brandix.com',
+                    pass: 'bi3@0925~'
+                },
+                secureConnection: false, // TLS requires secureConnection to be false
+                tls: {
+                    ciphers:'SSLv3'
+                }
+            };
+
+            // create reusable transporter object using the default SMTP transport
+            var transporter = nodemailer.createTransport(smtpConfig);
+
+            // setup e-mail data with unicode symbols
+            var mailOptions = {
+                from: '"Thisal Abeysooriya" <thisala@brandix.com>',
+                to: 'thisala@brandix.com', // list of receivers
+                subject: 'Successfully returned "' + item.bookTitle + '" book to bi3 Library.', // Subject line
+                //text: '', // plaintext body
+                html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully returned the "<b>' + item.bookTitle + '</b>" book on <b>' + moment(item.actualReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.</br></br><b>Note:</b></br>' + item.returnedDetail + '</br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br>' // html body
+            };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log('Message Errored: ' + error);
+                    cb(error);
+                } else {
+                    console.log('Message Sent: ' + info.response);
+                    cb(error, book);
+                }
+            });
         }
-        
+        */
     ],function (err, book) {
         cb(err, book);
     });

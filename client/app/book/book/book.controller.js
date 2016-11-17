@@ -57,7 +57,7 @@ angular.module('Bi3DigLib')
                 bookCategory: $scope.book.catagory,
                 bookYearOfPublication: $scope.book.yearOfPublication,
                 bookBorrowedDate: $scope.BorrowedDate,
-                bookReturnDate: $scope.ReturnDate,
+                bookReturnDate: $scope.ReturnDate  ,
                 fine: 0.00
             })
             .then(function() { 

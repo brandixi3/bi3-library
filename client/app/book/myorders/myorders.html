@@ -6,9 +6,25 @@
         <div class="form-header">
             <h2 class="page-heading">My Loans</h2>
         </div>
-            <form class="form card-frame" name="form" novalidate>
-                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
-                  <tr>
+            <form class="form card-frame btn-frame" name="form" novalidate>
+                <table  ng-table="tableParams"  class="table" show-filter="true">
+                <tr ng-repeat="book in $data">
+                <td title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
+                        {{book.bookIsbn}}</td>
+                <td  title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
+                        {{book.bookTitle}}</td>
+                    <td  title="'AUTHOR'" filter="{ bookAuthor: 'text'}" sortable="'bookAuthor'">
+                        {{book.bookAuthor}}</td>
+                    <td  title="'PUBLISHER'" filter="{ bookPublisher: 'text'}" sortable="'bookPublisher'">
+                        {{book.bookPublisher}}</td>
+                    <td  title="'YEAR OF PUBLICATION'" filter="{ bookYearOfPublication: 'text'}" sortable="'bookYearOfPublication'">
+                       {{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                    <td  title="'BORROWED DATE'" filter="{bookBorrowedDate: 'text'}" sortable="'bookBorrowedDate'">
+                        {{calBorrowedDate(book.bookBorrowedDate )| date:'yyyy-MM-dd'}}</td>
+                    <td  title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}"  sortable="'bookReturnDate'">
+                        {{calculateDate(book.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
+                </tr>
+                  <!-- <tr>
                     <th class="width-10">ISBN</th>
                     <th class="width-20">TITLE</th>
                     <th class="width-15">AUTHOR</th>
@@ -25,14 +41,32 @@
                     <td>{{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
                     <td>{{book.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                  </tr>
+                  </tr> -->
                 </table>
             </form>
 
         <div  class="form-header margin-heading">
             <h2 class="page-heading">Loan History</h2>
         </div>
-            <form class="form card-frame" name="form" novalidate>
+        <form class="form card-frame btn-frame" name="form" novalidate>
+                <table  ng-table="table"  class="table" show-filter="true">
+                <tr ng-repeat="book in $data">
+                <td ng-click="viewBook(book.isbn)" title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
+                        {{book.bookIsbn}}</td>
+                <td ng-click="viewBook(book.isbn)" title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
+                        {{book.bookTitle}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'AUTHOR'" filter="{ bookAuthor: 'text'}" sortable="'bookAuthor'">
+                        {{book.bookAuthor}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'PUBLISHER'" filter="{ bookPublisher: 'text'}" sortable="'bookPublisher'">
+                        {{book.bookPublisher}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'YEAR OF PUBLICATION'" filter="{ bookYearOfPublication: 'text'}" sortable="'bookYearOfPublication'">
+                       {{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'BORROWED DATE'" filter="{ bookBorrowedDate: 'text'}" sortable="'bookBorrowedDate:'">
+                        {{calBorrowedDate(book.bookBorrowedDate )| date:'yyyy-MM-dd'}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}" sortable="'bookReturnDate'">
+                        {{calculateDate(book.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
+                </tr>
+            <!-- <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
                     <th class="width-10">ISBN</th>
@@ -53,7 +87,7 @@
                     <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
                   </tr>
                 </table>
-            </form>
+            </form> -->
         </div>
     </div>
 </div>

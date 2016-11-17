@@ -17,7 +17,7 @@
                 </div>
             </h2>
         </div>
-            <form class="form card-frame" name="form" novalidate>
+            <!-- <form class="form card-frame" name="form" novalidate>
                 <table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
                     <th class="width-15">Name</th>
@@ -27,7 +27,7 @@
                     <th class="width-10">AUTHOR</th>
                     <th class="width-10">BORROWED DATE</th>
                     <th class="width-10">RETURN DATE</th>
-                    <!-- <th class="width-10">FINE (Rs.)</th> -->
+                    <th class="width-10">FINE (Rs.)</th>
                     <th></th>
                   </tr>
                   <tr ng-repeat="loanbook in returnbooks">
@@ -38,7 +38,7 @@
                     <td>{{loanbook.bookAuthor}}</td>
                     <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <!-- <td>{{calculateFine(loanbook.bookReturnDate)}}</td> -->
+                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
                     <td>
                         <div class="row">
                             <div class="">
@@ -47,9 +47,39 @@
                                 </md-button>
                             </div>
                         </div>
-
+            
+                         
+                    </td> -->
+                    <form class="form card-frame btn-frame" name="form" novalidate>
+                <table  ng-table="tableParams"  class="table" show-filter="true">
+                <tr ng-repeat="loanbook in $data">
+                    <td title="'NAME'" filter="{ userName: 'text'}" sortable="'userName'">
+                            {{loanbook.userName}}</td>
+                    <td title="'EMAIL'" filter="{ userEmail: 'text'}" sortable="'userEmail'">
+                            {{loanbook.userEmail}}</td>
+                    <td  title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
+                            {{loanbook.bookIsbn}}</td>
+                    <td  title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
+                            {{loanbook.bookTitle}}</td>
+                    <td  title="'AUTHOR'" filter="{ bookAuthor: 'text'}" sortable="'bookAuthor'">
+                        {{loanbook.bookAuthor}}</td>
+                    <td  title="'BORROWED DATE'" filter="{ bookBorrowedDate: 'text'}" sortable="'bookBorrowedDate:'">
+                        {{calBorrowedDate(loanbook.bookBorrowedDate )| date:'yyyy-MM-dd'}}</td>
+                    <td  title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}"  sortable="'bookReturnDate'">
+                        {{calculateDate(loanbook.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="">
+                                <md-button class="primary-color md-raised btn-color" ng-click="returnBook($event,loanbook)">
+                                    RETURN
+                                </md-button>
+                            </div>
+                        </div>
+            
                          
                     </td>
+                    
+                
                   </tr>
                 </table>
             </form>

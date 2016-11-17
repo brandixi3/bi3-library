@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('UpdateBookCtrl', function($scope, Book, $location, $window,$mdDialog,$mdMedia) {
-        $scope.books = {};
+    .controller('UpdateBookCtrl', function($scope, Book, $location, $window,$mdDialog,$mdMedia, NgTableParams) {
+        $scope.book = {};
         $scope.errors = {};
         $scope.status = '  ';
         $scope.customFullscreen = false;
@@ -10,7 +10,10 @@ angular.module('Bi3DigLib')
 
         Book.find()
             .then(function(res) {
-                $scope.books = res.data;
+                var data = res.data;
+                $scope.tableParams = new NgTableParams({ count: 5 }, {counts: [5, 10, 20],
+                dataset: data
+                });
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;

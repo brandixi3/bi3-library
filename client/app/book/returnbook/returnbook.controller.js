@@ -1,15 +1,17 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('ReturnBookCtrl', function($scope, Book, $location, $mdDialog, $window,$mdMedia) {
+    .controller('ReturnBookCtrl', function($scope, Book, $location, $mdDialog, $window,$mdMedia, NgTableParams) {
         $scope.returnbooks = {};
         $scope.errors = {};
         $scope.details = '';
 
         Book.getReturnBookList()
             .then(function(res) {
-                $scope.returnbooks = res.data;
-               console.log($scope.returnbooks.length);
+                var data = res.data;
+                $scope.tableParams = new NgTableParams({ count: 5 }, {counts: [5, 10, 20],
+                dataset: data
+                });
             })
             .catch(function(err) {
                 $scope.errors.other = err.message;
@@ -18,6 +20,26 @@ angular.module('Bi3DigLib')
         $scope.returnHistory = function() {
             $location.path("/returnhistory");
         }
+
+        $scope.calBorrowedDate = function(borrowedDate) {
+            console.log(borrowedDate);
+            $scope.borrowedDate = new Date(borrowedDate);                       
+        
+            return $scope.borrowedDate;
+              
+            }
+
+        $scope.calculateDate = function(returnDate) {
+            $scope.returnDate = new Date(returnDate);
+                $scope.newReturnDate = new Date(
+                $scope.returnDate.getFullYear(),
+                $scope.returnDate.getMonth(),
+                $scope.returnDate.getDate() - 1);
+                       
+              
+            return $scope.newReturnDate;
+              
+            }
 
 
 

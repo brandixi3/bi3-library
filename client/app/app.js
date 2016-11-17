@@ -7,7 +7,9 @@ angular.module('Bi3DigLib', [
         'ngMessages',
         'ui.bootstrap',
         'ngMaterial',
-        'simple-slideshow'
+        'ngTable',
+        'ui.bootstrap',
+        'ngAnimate'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
