@@ -22,12 +22,9 @@ angular.module('Bi3DigLib')
         }
 
         $scope.calBorrowedDate = function(borrowedDate) {
-            console.log(borrowedDate);
-            $scope.borrowedDate = new Date(borrowedDate);                       
-        
+            $scope.borrowedDate = new Date(borrowedDate);                     
             return $scope.borrowedDate;
-              
-            }
+        }
 
         $scope.calculateDate = function(returnDate) {
             $scope.returnDate = new Date(returnDate);
@@ -36,10 +33,8 @@ angular.module('Bi3DigLib')
                 $scope.returnDate.getMonth(),
                 $scope.returnDate.getDate() - 1);
                        
-              
-            return $scope.newReturnDate;
-              
-            }
+            return $scope.newReturnDate;          
+       }
 
 
 

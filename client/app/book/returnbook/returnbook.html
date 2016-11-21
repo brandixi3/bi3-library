@@ -1,56 +1,25 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container overflow-auto">
     <div flex layout="column">
-        
-        <div class="row col-xs-8 col-xs-offset-2">
+        <div class="row">
+        <div class="col-xs-12 ">
         <div class="form-header">
-            <h2>
+            <h4>
                 <div class="row">
-                    <div class="col-xs-10 h2-heading">
+                    <div class="col-xs-10 h4-heading">
                         Return Book
                     </div>
                     <div class="col-xs-1">
-                        <md-button class="md-raised btn-info background-col" style="background-color: rosybrown;" ng-click="returnHistory()">
-                            HISTORY <i class="material-icons icon-top" >history</i>
-                        </md-button>
+                        
                     </div>
+                    <md-button class="md-icon-button btn-info background-col btn-color" style="background-color: rosybrown; border-radius:3px; width:84px; height:8px;margin-left:2.3cm;" ng-click="returnHistory()">
+                            <sup>History</sup><i class="material-icons"  >history</i>
+                        </md-button>
                 </div>
-            </h2>
+            </h4>
         </div>
-            <!-- <form class="form card-frame" name="form" novalidate>
-                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
-                  <tr>
-                    <th class="width-15">Name</th>
-                    <th class="width-15">E-mail</th>
-                    <th class="width-10">ISBN</th>
-                    <th class="width-20">TITLE</th>
-                    <th class="width-10">AUTHOR</th>
-                    <th class="width-10">BORROWED DATE</th>
-                    <th class="width-10">RETURN DATE</th>
-                    <th class="width-10">FINE (Rs.)</th>
-                    <th></th>
-                  </tr>
-                  <tr ng-repeat="loanbook in returnbooks">
-                    <td>{{loanbook.userName}}</td>
-                    <td>{{loanbook.userEmail}}</td>
-                    <td>{{loanbook.bookIsbn}}</td>
-                    <td>{{loanbook.bookTitle}}</td>
-                    <td>{{loanbook.bookAuthor}}</td>
-                    <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{calculateFine(loanbook.bookReturnDate)}}</td>
-                    <td>
-                        <div class="row">
-                            <div class="">
-                                <md-button class="primary-color md-raised" ng-click="returnBook($event,loanbook)">
-                                    RETURN
-                                </md-button>
-                            </div>
-                        </div>
             
-                         
-                    </td> -->
-                    <form class="form card-frame btn-frame" name="form" novalidate>
+            <form class="form card-frame btn-frame" name="form" novalidate>
                 <table  ng-table="tableParams"  class="table" show-filter="true">
                 <tr ng-repeat="loanbook in $data">
                     <td title="'NAME'" filter="{ userName: 'text'}" sortable="'userName'">
@@ -74,15 +43,17 @@
                                     RETURN
                                 </md-button>
                             </div>
-                        </div>
-            
+                        </div>           
                          
-                    </td>
-                    
+                    </td>                   
                 
+                  </tr>
+                  <tr >
+                    <td colspan="7" ng-show="$data.length==0"><center><h4 class="page-heading">No data available.  </h4></center></td>   
                   </tr>
                 </table>
             </form>
         </div>
+    </div>
     </div>
 </div>

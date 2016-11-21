@@ -4,33 +4,36 @@
         <div class="row ">
         <div class="col-md-12 ">
             <div class="form-header">
-                <h3 class="page-heading">Dashboard</h3>
+                <h4 class="page-heading">Dashboard</h4>
             </div>
             <form class="form card-frame" name="form" novalidate>
 				<div class="bg-warning text-warning">
             		<h3 class="h3-heading">Latest Additions</h3>
             	</div>
-                <div ng-repeat="book in newbooks">
+                
+                <div ng-repeat="book in newbooks" >
                         <div class="col-xs-3" ng-click="viewBook(book.isbn)"> 
                         
                         <div class="row-md-3 title-height"><h4>{{book.title}}</h4></div>
                         <div><img  class="col-md-6 img"  src="//localhost:9000/isbn-images?isbn={{book.isbn}}">
                         <!-- <div class="col-xs-4"><h4>{{book.title}}</h4></div> -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 " >
                         <div class="col-md-12"><h5>Author :</h5></div>
                         <div class="col-md-12 margin--10 " >{{book.author}}</div>
                         <div class="col-md-12"><h5>Category :</h5></div>
                         <div class="col-md-12 margin--10" >{{book.catagory}}</div>
                         <div class="col-md-12" ng-if="book.donatedBy"><h5>Donated by :</h5></div>
-                        <div class="col-md-12 margin--10" >{{book.donatedBy}}</div>
+                        <div class="col-md-12 margin--10">{{book.donatedBy}}</div>
                         </div>
                         
                         </div>
                     </div>
+                </div>
+                <div class="bottom">
                 </div>    
 
 				<div class="">
-            		<h3 class="col-xs-12 bg-warning text-warning h3-heading margin-10">My Loans</h3>
+            		<h3 class="col-xs-12 bg-warning text-warning h3-heading ">My Loans</h3>
             	</div>
             	<table ng-table="bookTable" template-pagination="custom/pager" class="table">
                   <tr>
@@ -43,13 +46,17 @@
                     <th class="width-10">RETURN DATE</th>
                   </tr>
                   <tr ng-repeat="loanbook in loanbooks">
+                            
                     <td>{{loanbook.bookIsbn}}</td>
-                    <td>{{loanbook.bookTitle}}</td>
-                    <td>{{loanbook.bookAuthor}}</td>
-                    <td>{{loanbook.bookPublisher}}</td>
-                    <td>{{loanbook.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                    <td >{{loanbook.bookTitle}}</td>
+                    <td style="text-align:center;  vertical-align:middle;">{{loanbook.bookAuthor}}</td>
+                    <td style="text-align:center;  vertical-align:middle;">{{loanbook.bookPublisher}}</td>
+                    <td style="text-align:center;  vertical-align:middle;">{{loanbook.bookYearOfPublication }}</td>
                     <td>{{loanbook.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
                     <td>{{loanbook.bookReturnDate | date:'MM/dd/yyyy'}}</td>
+                  </tr>
+                  <tr >
+                    <td colspan="7" ng-show="loanbooks.length==0"><center><h4 class="page-heading">No data available.  </h4></center></td>   
                   </tr>
                 </table>
 			</form>

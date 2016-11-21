@@ -1,93 +1,58 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container overflow-auto">
     <div flex layout="column">
-        
-        <div class="row col-xs-8 col-xs-offset-2">
+        <div class="row ">
+        <div class="col-xs-12 ">
         <div class="form-header">
-            <h2 class="page-heading">My Loans</h2>
+            <h4 class="page-heading">My Loans</h4>
         </div>
             <form class="form card-frame btn-frame" name="form" novalidate>
                 <table  ng-table="tableParams"  class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                <td title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
+                    <td title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
                         {{book.bookIsbn}}</td>
-                <td  title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
+                    <td  title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
                         {{book.bookTitle}}</td>
                     <td  title="'AUTHOR'" filter="{ bookAuthor: 'text'}" sortable="'bookAuthor'">
                         {{book.bookAuthor}}</td>
                     <td  title="'PUBLISHER'" filter="{ bookPublisher: 'text'}" sortable="'bookPublisher'">
                         {{book.bookPublisher}}</td>
                     <td  title="'YEAR OF PUBLICATION'" filter="{ bookYearOfPublication: 'text'}" sortable="'bookYearOfPublication'">
-                       {{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                       {{book.bookYearOfPublication }}</td>
                     <td  title="'BORROWED DATE'" filter="{bookBorrowedDate: 'text'}" sortable="'bookBorrowedDate'">
                         {{calBorrowedDate(book.bookBorrowedDate )| date:'yyyy-MM-dd'}}</td>
                     <td  title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}"  sortable="'bookReturnDate'">
                         {{calculateDate(book.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
                 </tr>
-                  <!-- <tr>
-                    <th class="width-10">ISBN</th>
-                    <th class="width-20">TITLE</th>
-                    <th class="width-15">AUTHOR</th>
-                    <th class="width-15">PUBLISHER</th>
-                    <th class="width-10">YEAR OF PUBLICATION</th>
-                    <th class="width-10">BORROWED DATE</th>
-                    <th class="width-10">RETURN DATE</th>
+                  <tr >
+                    <td colspan="7" ng-show="$data.length==0"><center><h4 class="page-heading">No data available.  </h4></center></td>   
                   </tr>
-                  <tr ng-repeat="book in orders">
-                    <td>{{book.bookIsbn}}</td>
-                    <td>{{book.bookTitle}}</td>
-                    <td>{{book.bookAuthor}}</td>
-                    <td>{{book.bookPublisher}}</td>
-                    <td>{{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
-                    <td>{{book.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                  </tr> -->
                 </table>
             </form>
 
         <div  class="form-header margin-heading">
-            <h2 class="page-heading">Loan History</h2>
+            <h4 class="page-heading">Loan History</h4>
         </div>
         <form class="form card-frame btn-frame" name="form" novalidate>
                 <table  ng-table="table"  class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                <td ng-click="viewBook(book.isbn)" title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
+                    <td ng-click="viewBook(book.isbn)" title="'ISBN'" filter="{bookIsbn: 'text'}" sortable="'bookIsbn'">
                         {{book.bookIsbn}}</td>
-                <td ng-click="viewBook(book.isbn)" title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
+                    <td ng-click="viewBook(book.isbn)" title="'TITLE'" filter="{bookTitle: 'text'}" sortable="'bookTitle'">
                         {{book.bookTitle}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'AUTHOR'" filter="{ bookAuthor: 'text'}" sortable="'bookAuthor'">
                         {{book.bookAuthor}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'PUBLISHER'" filter="{ bookPublisher: 'text'}" sortable="'bookPublisher'">
                         {{book.bookPublisher}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'YEAR OF PUBLICATION'" filter="{ bookYearOfPublication: 'text'}" sortable="'bookYearOfPublication'">
-                       {{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
+                       {{book.bookYearOfPublication }}</td>
                     <td ng-click="viewBook(book.isbn)" title="'BORROWED DATE'" filter="{ bookBorrowedDate: 'text'}" sortable="'bookBorrowedDate:'">
                         {{calBorrowedDate(book.bookBorrowedDate )| date:'yyyy-MM-dd'}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}" sortable="'bookReturnDate'">
                         {{calculateDate(book.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
                 </tr>
-            <!-- <form class="form card-frame" name="form" novalidate>
-                <table ng-table="bookTable" template-pagination="custom/pager" class="table">
-                  <tr>
-                    <th class="width-10">ISBN</th>
-                    <th class="width-20">TITLE</th>
-                    <th class="width-15">AUTHOR</th>
-                    <th class="width-15">PUBLISHER</th>
-                    <th class="width-10">YEAR OF PUBLICATION</th>
-                    <th class="width-10">BORROWED DATE</th>
-                    <th class="width-10">RETURN DATE</th>
-                  </tr>
-                  <tr ng-repeat="book in ordershistory">
-                    <td>{{book.bookIsbn}}</td>
-                    <td>{{book.bookTitle}}</td>
-                    <td>{{book.bookAuthor}}</td>
-                    <td>{{book.bookPublisher}}</td>
-                    <td>{{book.bookYearOfPublication | date:'MMM yyyy'}}</td>
-                    <td>{{book.bookBorrowedDate | date:'MM/dd/yyyy'}}</td>
-                    <td>{{book.bookReturnDate | date:'MM/dd/yyyy'}}</td>
-                  </tr>
-                </table>
-            </form> -->
+            
+        </div>
         </div>
     </div>
 </div>

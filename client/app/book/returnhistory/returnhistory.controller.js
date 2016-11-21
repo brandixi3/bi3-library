@@ -28,16 +28,5 @@ angular.module('Bi3DigLib')
               
             }
 
-        $scope.calActualDate = function(actualDate) {
-            console.log("aa");
-            $scope.actualReturnDate = new Date(actualDate);
-                $scope.newReturnDate = new Date(
-                $scope.actualReturnDate.getFullYear(),
-                $scope.actualReturnDate.getMonth(),
-                $scope.actualReturnDate.getDate() - 1);
-                       
-              
-            return $scope.newReturnDate;
-              
-            }
+        
     });

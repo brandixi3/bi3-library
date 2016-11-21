@@ -1,14 +1,15 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div layout flex class="container books overflow-auto">
     <div flex layout="column">
-        <div class="row col-xs-8 col-xs-offset-2">
+    <div class="row ">
+        <div class="col-xs-12">
             <div class="form-header">
-                <h2 class="page-heading">Books</h2>
+                <h4 class="page-heading">Books</h4>
             </div>
-            <form class="form card-frame" name="form" novalidate>
+            <form class="form card-frame btn-frame" name="form" novalidate>
             <table ng-table="tableParams" class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                    <td ng-click="viewBook(book.isbn)" title="'BOOK'">BOOK<img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
+                    <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
                     <td ng-click="viewBook(book.isbn)" title="'TITLE'" filter="{ title: 'text'}" sortable="'title'">
                         {{book.title}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'AUTHOR'" filter="{ author: 'text'}" sortable="'author'">
@@ -18,35 +19,13 @@
                     <td ng-click="viewBook(book.isbn)" title="'YEAR OF PUBLICATION'" filter="{ yearOfPublication: 'text'}" sortable="'yearOfPublication'">
                         {{book.yearOfPublication}}</td>
                 </tr>
+                <tr >
+                    <td colspan="7" ng-show="$data.length==0"><center><h4 class="page-heading">No data available.  </h4></center></td>   
+                </tr>
             </table>
-
-                <!-- <table ng-table="bookTable" template-pagination="custom/pager" class="table">
-                  <tr>
-                    <th class="width-10">BOOK</th>
-                    <th class="width-40">TITLE</th>
-                    <th class="width-15">AUTHOR</th>
-                    <th class="width-15">PUBLISHER</th>
-                    <th class="width-10">YEAR OF PUBLICATION</th>
-                    <th class="width-10"></th>
-                  </tr>
-                  <tr ng-repeat="book in books">
-                    <td ng-click="viewBook(book.isbn)"><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
-                    <td ng-click="viewBook(book.isbn)">{{book.title}}</td>
-                    <td ng-click="viewBook(book.isbn)">{{book.author}}</td>
-                    <td ng-click="viewBook(book.isbn)">{{book.publisher}}</td>
-                    <td ng-click="viewBook(book.isbn)">{{book.yearOfPublication}}</td>
-                    <td>
-                        
-                        <div class="">
-                            <a href="#" class="btn icon-color" ng-click="viewBook(book.isbn)">
-                              <span class="glyphicon glyphicon-book"></span> 
-                              <i class="material-icons">book</i>
-                            </a>
-                        </div>
-                    </td>
-                  </tr>
-                </table> -->
+                
             </form>
+        </div>
         </div>
     </div>
 </div>
