@@ -9,11 +9,13 @@
       </button>
       <!-- <img src="https://www.joyent.com/content/about/customers/41-brandix-i3/header.png" style="margin-top: 5px; margin-right:20px; float:left;" width="80" height="40"> -->
       <img src="../assets/images/header.png" style="margin-top: 5px; margin-right:20px; float:left;" width="80" height="40">      
-      <a href="/" class="navbar-brand element.style" >Library Portal</a>
+      <a href="/" class="navbar-brand element.style" >Library Portal</a>      
     </div>
+    
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main"> 
-
+     <!--  <p  ng-show="isLoggedIn()"> --><p ng-show="isLoggedIn()" class="navbar-text btn-color"><font color="black">Welcome! </font>  {{getCurrentUser().name }}</p> <!-- </p> -->
       <ul class="nav navbar-nav navbar-right">
+      <!-- <li  ng-show="isLoggedIn()"><p class="navbar-text btn-color"><font color="black">Welcome! </font>  {{getCurrentUser().name }}</p> </li> -->
       <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">  Login  </a></li>
       <li ng-hide="isLoggedIn()"><a href="" ng-click="SignUp()">  Sign Up  </a></li>
       <li ng-show="isLoggedIn() && !isAdmin()"><a href="" ng-click="view()">  View Books  </a></li>
@@ -21,7 +23,7 @@
       <li ng-show="isLoggedIn() && isAdmin()" ><a href="" ng-click="addbook()">Add Book</a></li>
       <li ng-show="isLoggedIn()" ><a href="" ng-click="myorders()">My Loans</a></li>
       <li ng-show="isLoggedIn() && isAdmin()" ><a href="" ng-click="returnbook()">Return Book</a></li>
-        <li class="hide" ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
+        <!-- <li  ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().email }}</p> </li> -->
         <li class="hide" ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
         <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
       </ul>

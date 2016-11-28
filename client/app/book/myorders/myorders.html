@@ -51,6 +51,9 @@
                     <td ng-click="viewBook(book.isbn)" title="'RETURN DATE'" filter="{ bookReturnDate: 'text'}" sortable="'bookReturnDate'">
                         {{calculateDate(book.bookReturnDate) | date:'yyyy-MM-dd'}}</td>
                 </tr>
+                <tr >
+                    <td colspan="7" ng-show="$data.length==0"><center><h4 class="page-heading">No data available.  </h4></center></td>   
+                  </tr>
             
         </div>
         </div>
