@@ -153,6 +153,14 @@ exports.returnBook = function(req, res) {
     });
 };
 
+exports.collect = function(req, res) {
+    BookFacade.collect(req.body, function(err, book) {
+        if (err) {
+            return handleError(res, err); }
+        return res.json(201, book);
+    });
+};
+
 function handleError(res, err) {
     return res.send(500, err);
 }

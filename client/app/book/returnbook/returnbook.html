@@ -39,11 +39,15 @@
                     <td>
                         <div class="row">
                             <div class="">
-                                <md-button class="primary-color md-raised btn-color" ng-click="returnBook($event,loanbook)">
+                                <md-button  ng-show="loanbook.collected" class="primary-color md-raised btn-color " ng-click="returnBook($event,loanbook)">
                                     RETURN
                                 </md-button>
+                                <md-button ng-hide="loanbook.collected" class="btn-background  md-raised btn-color" ng-click="showConfirm($event,loanbook)">
+                                    COLLECT
+                                </md-button>
                             </div>
-                        </div>           
+                        </div>   
+
                          
                     </td>                   
                 

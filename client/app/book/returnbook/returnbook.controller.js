@@ -4,6 +4,7 @@ angular.module('Bi3DigLib')
     .controller('ReturnBookCtrl', function($scope, Book, $location, $mdDialog, $window,$mdMedia, NgTableParams) {
         $scope.returnbooks = {};
         $scope.errors = {};
+        $scope.error = {};
         $scope.details = '';
 
         Book.getReturnBookList()
@@ -36,6 +37,25 @@ angular.module('Bi3DigLib')
             return $scope.newReturnDate;          
        }
 
+        $scope.showConfirm = function(ev,loanbook) {                            
+                    var confirm = $mdDialog.confirm()
+                      .title('Would you like to collect this book?')
+                      .targetEvent(ev)
+                      .ok('Yes')
+                      .cancel('Cancel');
+                    $mdDialog.show(confirm).then(function() {
+                        Book.collect(loanbook)
+                            .then(function() { 
+                                $window.location.reload();
+                            })
+                            .catch(function(err) {
+                                $scope.error.other = err.message;
+                            });
+                        }, function() {
+                            $scope.status = 'You decided to keep your debt.';
+                        });                                
+              
+        }
 
 
         $scope.returnBook = function(ev,loanbook) {

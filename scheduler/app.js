@@ -29,13 +29,13 @@ cron.schedule('10 13 * * *', function() {
 				cb(err, lendbooks);
 
 			});
-	    }/*,
+	    },
 	    function sendMail(lendbooks, cb) {
 	    	lendbooks.forEach(function(lendbook){
 				console.log(lendbook);
 	    		var smtpConfig = {
 				    host: 'smtp.office365.com',
-				    port: 587,
+				    port: 23,
 				    auth: {
 				        user: 'thisala@brandix.com',
 				        pass: 'bi3@0925~'
@@ -69,7 +69,7 @@ cron.schedule('10 13 * * *', function() {
 	            });
 
 			});
-	    }	*/
+	    }	
 	],  function (err, lendbook) {
 		console.log('End.');
 	});

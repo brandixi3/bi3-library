@@ -24,6 +24,9 @@ angular.module('Bi3DigLib')
       function lendBook(lendBookObj) { 
           return $http.post('/api/books/lend/', lendBookObj);
       }
+      function collect(loanbookObj) {
+          return $http.post('/api/books/collect/', loanbookObj);
+      }
       function getMyOrders(userId) {
           return $http.get('/api/books/myorders/'+userId);
       }
@@ -58,6 +61,7 @@ angular.module('Bi3DigLib')
         find:find,
         save:save,
         lendBook:lendBook,
+        collect:collect,
         update:update,
         destroyBook:destroyBook,
         getMyOrders:getMyOrders,

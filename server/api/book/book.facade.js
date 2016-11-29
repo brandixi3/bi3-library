@@ -66,6 +66,18 @@ exports.findPendingReturnBooksByIsbn = function(isbn,cb) {
         
 };
 
+exports.collect = function(item,cb) {
+    console.log("item :"+item);
+    LendModel.findOne({_id: item._id}, function(err, book){
+                var updated = _.merge(book, item);
+                updated.collected = true;
+                updated.save(function(err) {
+                    cb(err, book);
+                });
+            });
+        
+};
+
 // Creates a new book in the DB.    
 exports.create = function(item, cb) {
     async.waterfall([
@@ -151,8 +163,7 @@ exports.lend = function(item, cb) {
                         cb(err, book);
                     });
             }); 
-           
-        }/*,
+                   }/*,
         function mail(book, cb){
             var smtpConfig = {
                 host: 'smtp.office365.com',
@@ -167,16 +178,17 @@ exports.lend = function(item, cb) {
                 }
             };
 
+
             // create reusable transporter object using the default SMTP transport
             var transporter = nodemailer.createTransport(smtpConfig);
 
             // setup e-mail data with unicode symbols
             var mailOptions = {
                 from: '"Thisal Abeysooriya" <thisala@brandix.com>',
-                to: 'thisala@brandix.com', // list of receivers
+                to: 't-pamodyad@brandix.com', // list of receivers
                 subject: 'Successfully borrowed "' + item.bookTitle + '" book from bi3 Library.', // Subject line
                 //text: '', // plaintext body
-                html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully borrowed the "<b>' + item.bookTitle + '</b>" by ' + item.bookAuthor + '. </br></br>Please be kind enough to return the book on or before <b>' + moment(item.bookReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.</br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br>' // html body
+                html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully borrowed the "<b>' + item.bookTitle + '</b>" by ' + item.bookAuthor + '. </br></br>Please be kind enough to return the book on or before <b>' + moment(item.bookReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.<p></br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br></p>' // html body
             };
 
             // send mail with defined transport object
@@ -288,7 +300,7 @@ exports.returnBook = function(item, cb) {
         function mail(book, cb){
             var smtpConfig = {
                 host: 'smtp.office365.com',
-                port: 587,
+                port: 23,
                 auth: {
                     user: 'thisala@brandix.com',
                     pass: 'bi3@0925~'
@@ -321,8 +333,8 @@ exports.returnBook = function(item, cb) {
                     cb(error, book);
                 }
             });
-        }
-        */
+        }*/
+        
     ],function (err, book) {
         cb(err, book);
     });

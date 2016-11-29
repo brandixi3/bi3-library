@@ -13,6 +13,7 @@ router.get('/returnbookbyisbn/:isbn', auth.hasRole('admin'), controller.showPend
 router.get('/returnhistorylist/', auth.hasRole('admin'), controller.showReturnBooksHistory);
 router.get('/newlyaddedbooks/', auth.isAuthenticated(), controller.showNewlyAddedBooks);
 router.post('/returnbook/', auth.hasRole('admin'), controller.returnBook);
+router.post('/collect/', auth.hasRole('admin'), controller.collect);
 router.get('/:id', controller.show);
 router.get('/isbn/:isbn', controller.showByIsbn);
 router.get('/myorders/:userId', auth.isAuthenticated(), controller.showMyOrdersByUserId);

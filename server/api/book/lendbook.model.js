@@ -21,6 +21,7 @@ var lendbookSchema = new Schema({
   // fine: Number,
   archieve:Boolean,
   actualReturnDate: Date,
+  collected:Boolean,
   returned:Boolean,
   returnedDetail:String
 });

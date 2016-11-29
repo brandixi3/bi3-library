@@ -13,7 +13,7 @@
     </div>
     
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main"> 
-     <!--  <p  ng-show="isLoggedIn()"> --><p ng-show="isLoggedIn()" class="navbar-text btn-color"><font color="black">Welcome! </font>  {{getCurrentUser().name }}</p> <!-- </p> -->
+     
       <ul class="nav navbar-nav navbar-right">
       <!-- <li  ng-show="isLoggedIn()"><p class="navbar-text btn-color"><font color="black">Welcome! </font>  {{getCurrentUser().name }}</p> </li> -->
       <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">  Login  </a></li>
@@ -25,7 +25,8 @@
       <li ng-show="isLoggedIn() && isAdmin()" ><a href="" ng-click="returnbook()">Return Book</a></li>
         <!-- <li  ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().email }}</p> </li> -->
         <li class="hide" ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a  style="left: 20px;">{{getCurrentUser().name }}  <!-- <i class="material-icons" style="font-size: 18px">power_settings_new</i> --></a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()" style="padding-bottom: 0.5px">  <i class="material-icons" style="font-size: 18px">power_settings_new</i></a></li>
       </ul>
     </div>
   </div>
