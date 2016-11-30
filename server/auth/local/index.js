@@ -9,7 +9,7 @@ var router = express.Router();
 router.post('/', function(req, res, next) {
   passport.authenticate('ldapauth', function (err, user, info) {
     var error = err || info;
-  console.log("111111199 ",user);
+  
     if (error) return res.json(401, error);
     if (!user) return res.json(404, {message: 'Something went wrong, please try again.'});
 

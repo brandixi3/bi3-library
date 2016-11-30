@@ -16,8 +16,8 @@
      
       <ul class="nav navbar-nav navbar-right">
       <!-- <li  ng-show="isLoggedIn()"><p class="navbar-text btn-color"><font color="black">Welcome! </font>  {{getCurrentUser().name }}</p> </li> -->
-      <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">  Login  </a></li>
-      <li ng-hide="isLoggedIn()"><a href="" ng-click="SignUp()">  Sign Up  </a></li>
+      <!-- <li ng-hide="isLoggedIn()"><a href="" ng-click="login()">  Login  </a></li> -->
+     <!--  <li ng-hide="isLoggedIn()"><a href="" ng-click="SignUp()">  Sign Up  </a></li> -->
       <li ng-show="isLoggedIn() && !isAdmin()"><a href="" ng-click="view()">  View Books  </a></li>
       <li ng-show="isLoggedIn() && isAdmin()"><a href="" ng-click="adminView()">  View Books  </a></li>
       <li ng-show="isLoggedIn() && isAdmin()" ><a href="" ng-click="addbook()">Add Book</a></li>

@@ -71,14 +71,7 @@ module.exports = function() {
   console.log("gdgd ");
       passport.use(new LdapStrategy({
         
-      server: {
-        url: 'ldap://10.227.19.12:389',  
-        bindDn: 'CN=Bi3 Teamwork,OU=Users,OU=BI3,OU=Brandix Users,DC=brandixlk,DC=org ',
-        bindCredentials: 'TW@Brandix',
-        searchBase: 'OU=Users,OU=Bi3,OU=Brandix Users,DC=brandixlk,DC=org',
-        searchFilter: '(mail={{username}})',
-        searchAttributes: ['mail','displayName']
-      },    
+      
       usernameField: 'email',
       passwordField: 'password'
       }, loginSuccess
