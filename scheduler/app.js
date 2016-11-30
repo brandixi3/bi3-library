@@ -38,7 +38,7 @@ cron.schedule('10 13 * * *', function() {
 				    port: 23,
 				    auth: {
 				        user: 'thisala@brandix.com',
-				        pass: 'bi3@0925~'
+				        pass: 'bi3@0915#'
 				    },
 				    secureConnection: false, // TLS requires secureConnection to be false
 				    tls: {

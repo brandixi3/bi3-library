@@ -31,7 +31,6 @@ angular.module('Bi3DigLib')
           return cb();
         }).
         error(function(err) {
-          console.log("ERR : "+err);
           this.logout();
           deferred.reject(err);
           return cb(err);
@@ -62,13 +61,11 @@ angular.module('Bi3DigLib')
 
         return User.save(user,
           function(data) {
-            console.dir("dta "+data);
             $cookieStore.put('token', data.token);
             currentUser = User.get();
             return cb(user);
           },
           function(err) {
-            console.dir("sd: "+err);
             this.logout();
             return cb(err);
           }.bind(this)).$promise;

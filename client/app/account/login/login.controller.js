@@ -10,11 +10,7 @@ angular.module('Bi3DigLib')
             $scope.submitted = true;
 
             if (form.$valid) {
-                /*Auth.login({
-                        email: $scope.user.email,
-                        password: $scope.user.password
-                    })*/
-                    Auth.login({
+                Auth.login({
                         email: $scope.user.email,
                         password: $scope.user.password
                     })

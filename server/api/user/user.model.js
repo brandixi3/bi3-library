@@ -56,7 +56,7 @@ UserSchema
  */
 
 // Validate empty email
-/*UserSchema
+UserSchema
   .path('email')
   .validate(function(email) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
@@ -93,7 +93,7 @@ var validatePresenceOf = function(value) {
 /**
  * Pre-save hook
  */
-/*UserSchema
+UserSchema
   .pre('save', function(next) {
     if (!this.isNew) return next();
 
@@ -102,7 +102,7 @@ var validatePresenceOf = function(value) {
     else
       next();
   });
-*/
+
 /**
  * Methods
  */
