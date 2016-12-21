@@ -170,7 +170,7 @@ exports.lend = function(item, cb) {
                 port: 587,
                 auth: {
                     user: 'thisala@brandix.com',
-                    pass: 'bi3@0915#'
+                    pass: 'bi3@0925~'
                 },
                 secureConnection: false, // TLS requires secureConnection to be false
                 tls: {
@@ -303,7 +303,7 @@ exports.returnBook = function(item, cb) {
                 port: 23,
                 auth: {
                     user: 'thisala@brandix.com',
-                    pass: 'bi3@0915#'
+                    pass: 'bi3@0925~'
                 },
                 secureConnection: false, // TLS requires secureConnection to be false
                 tls: {

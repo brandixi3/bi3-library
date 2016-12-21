@@ -96,7 +96,7 @@ angular.module('Bi3DigLib')
                 $scope.newReturnDate = new Date(
                 $scope.returnDate.getFullYear(),
                 $scope.returnDate.getMonth(),
-                $scope.returnDate.getDate() - 1);
+                $scope.returnDate.getDate() );
                        
               
             return $scope.newReturnDate;

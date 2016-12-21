@@ -15,7 +15,8 @@
                         <div class="col-xs-3" ng-click="viewBook(book.isbn)"> 
                         
                         <div class="row-md-3 title-height"><h4>{{book.title}}</h4></div>
-                        <div><img  class="col-md-6 img"  src="//localhost:9000/isbn-images?isbn={{book.isbn}}">
+                        <div><!-- <img  class="col-md-6 img"  src="//localhost:9000/isbn-images?isbn={{book.isbn}}"> -->
+                        <img  class="col-md-6 img"  src="http://images.amazon.com/images/P/{{book.isbn}}.jpg">
                         <!-- <div class="col-xs-4"><h4>{{book.title}}</h4></div> -->
                         <div class="col-md-6 " >
                         <div class="col-md-12"><h5>Author :</h5></div>

@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('BooksCtrl', function($scope, Book, $location, $window, NgTableParams) {
+    .controller('BooksCtrl', function($scope, Book, $location, $window,  NgTableParams) {
         $scope.books = {};
         $scope.errors = {};
-
-        
+               
         Book.find()
             .then(function(res) {
                 var data = res.data;

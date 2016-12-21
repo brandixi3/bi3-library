@@ -9,13 +9,14 @@
             <form class="form card-frame btn-frame" name="form" novalidate>
                 <table ng-table="tableParams"  class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                    <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
+                    <!-- <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td> -->
+                    <td ng-click="viewBook(book.isbn)" ><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td>
                     <td ng-click="viewBook(book.isbn)" class="width-40" title="'TITLE'" filter="{ title: 'text'}" sortable="'title'">
                         {{book.title}}</td>
+                    <td ng-click="viewBook(book.isbn)" title="'CATEGORY'" filter="{ catagory: 'text'}" sortable="'catagory'">
+                        {{book.catagory}}</td>
                     <td ng-click="viewBook(book.isbn)" class="width-15" title="'AUTHOR'" filter="{ author: 'text'}" sortable="'author'">
                         {{book.author}}</td>
-                    <td ng-click="viewBook(book.isbn)" class="width-15" title="'PUBLISHER'" filter="{ publisher: 'text'}" sortable="'publisher'">
-                        {{book.publisher}}</td>
                     <td ng-click="viewBook(book.isbn)" class="width-10" title="'YEAR OF PUBLICATION'" filter="{ yearOfPublication: 'text'}" sortable="'yearOfPublication'">
                         {{book.yearOfPublication}}</td>
 

@@ -9,7 +9,8 @@
             <form class="form card-frame btn-frame" name="form" novalidate>
             <table ng-table="tableParams" class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                    <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
+                    <!-- <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td> -->
+                    <td ng-click="viewBook(book.isbn)" ><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td>
                     <td ng-click="viewBook(book.isbn)" title="'TITLE'" filter="{ title: 'text'}" sortable="'title'">
                         {{book.title}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'CATEGORY'" filter="{ catagory: 'text'}" sortable="'catagory'">

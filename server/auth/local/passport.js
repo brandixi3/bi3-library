@@ -1,7 +1,7 @@
 var passport = require('passport');
-// var LocalStrategy = require('passport-local').Strategy;
+/*var LocalStrategy = require('passport-local').Strategy;
 
-/*exports.setup = function (User, config) {
+exports.setup = function (User, config) {
   passport.use(new LocalStrategy({
       usernameField: 'email',
       passwordField: 'password'
@@ -22,7 +22,6 @@ var passport = require('passport');
       });
     }
   ));
-
 };*/
 
 var LdapStrategy = require('passport-ldapauth');
@@ -34,13 +33,13 @@ const util = require('util')
 
 
 var loginSuccess = function(userLdap, done) {
-    var role='';
+    /*var role='';
       if(userLdap.displayName=='Bi3 Teamwork'){
           role= 'admin';
         }
       else{
           role='user';
-        }
+        }*/
   
 // alternative shortcut
         User.findOne({
@@ -54,7 +53,7 @@ var loginSuccess = function(userLdap, done) {
         if (!user) {
               user = new User({
               name: userLdap.displayName,
-              role: role,
+              role: 'user',
               email: userLdap.mail,
               provider: 'ldap'
           });
@@ -69,16 +68,16 @@ var loginSuccess = function(userLdap, done) {
     };
 
 module.exports = function() {
-  console.log("gdgd ");
-      passport.use(new LdapStrategy({
+       passport.use(new LdapStrategy({
         server: {
-        url: 'ldap://10.228.20.12:389',  
-        bindDn: 'CN=Bi3 Teamwork,OU=User,OU=BI3,OU=Brandix Users,DC=brandixlk,DC=org ',
-        bindCredentials: 'TW@brandix',
-        searchBase: 'OU=Users,OU=Bi3,OU=Brandix User,DC=brandix,DC=org',
-        searchFilter: '(mail={{username}})',
-        searchAttributes: ['mail','displayName']
+         url: 'ldap://10.228.20.12:389',  
+         bindDn: 'CN=Bi3 Teamwork,OU=User,OU=BI3,OU=Brandix Users,DC=brandixlk,DC=org ',
+         bindCredentials: 'TW@brandix',
+         searchBase: 'OU=Users,OU=Bi3,OU=Brandix User,DC=brandix,DC=org',
+         searchFilter: '(mail={{username}})',
+         searchAttributes: ['mail','displayName']
       },    
+        
       
       usernameField: 'email',
       passwordField: 'password'
@@ -98,5 +97,4 @@ module.exports = function() {
         done(err, user);
         });
     });
-
 };

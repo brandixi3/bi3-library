@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('Bi3DigLib')
-    .controller('UpdateBookCtrl', function($scope, Book, $location, $window,$mdDialog,$mdMedia, NgTableParams) {
+    .controller('UpdateBookCtrl', function($scope, Book, $location, $window,$mdDialog,$mdMedia,  NgTableParams) {
         $scope.book = {};
         $scope.errors = {};
         $scope.status = '  ';
         $scope.customFullscreen = false;
         $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+        
 
         Book.find()
             .then(function(res) {
