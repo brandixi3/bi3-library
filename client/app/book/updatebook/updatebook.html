@@ -9,8 +9,8 @@
             <form class="form card-frame btn-frame" name="form" novalidate>
                 <table ng-table="tableParams"  class="table" show-filter="true">
                 <tr ng-repeat="book in $data">
-                    <!-- <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td> -->
-                    <td ng-click="viewBook(book.isbn)" ><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td>
+                    <td ng-click="viewBook(book.isbn)" ><img src="//localhost:9000/isbn-images?isbn={{book.isbn}}" width="75" height="100"></td>
+                    <!-- <td ng-click="viewBook(book.isbn)" ><img src="http://images.amazon.com/images/P/{{book.isbn}}.jpg" width="75" height="100"></td> -->
                     <td ng-click="viewBook(book.isbn)" class="width-40" title="'TITLE'" filter="{ title: 'text'}" sortable="'title'">
                         {{book.title}}</td>
                     <td ng-click="viewBook(book.isbn)" title="'CATEGORY'" filter="{ catagory: 'text'}" sortable="'catagory'">
@@ -23,14 +23,16 @@
                     <td>
                        <div class="edit" >
                             <a href="#" class="btn icon-color" ng-click="updateBook(book.isbn)">
-                                <i class="material-icons">mode_edit</i>
+                                <!-- <i class="material-icons">mode_edit</i> -->
+                                <img src="assets/images/New folder/edit.svg" style="width: 24px" >
                             </a>
                         </div>
                     </td>
                     <td>
                        <div class="">
                             <a href="#" class="btn icon-color" ng-click="showConfirm($event,book.isbn)">
-                                <i class="material-icons">delete_forever</i>
+                                <!-- <i class="material-icons">delete_forever</i> -->
+                                <img src="assets/images/New folder/delete.svg" style="width:24px;">
                             </a>
                         </div>
                     </td>

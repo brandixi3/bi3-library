@@ -70,7 +70,7 @@ angular.module('Bi3DigLib')
         getOrdersHistory:getOrdersHistory,
         returnBook:returnBook,
         getReturnHistoryList:getReturnHistoryList,
-        findPendingReturnBookByIsbn,
+        findPendingReturnBookByIsbn:findPendingReturnBookByIsbn,
         getNewlyAddedBooks:getNewlyAddedBooks,
         getUserOrdersByReturnDate:getUserOrdersByReturnDate
       };

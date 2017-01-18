@@ -70,12 +70,12 @@ var loginSuccess = function(userLdap, done) {
 module.exports = function() {
        passport.use(new LdapStrategy({
         server: {
-         url: 'ldap://10.228.20.12:389',  
-         bindDn: 'CN=Bi3 Teamwork,OU=User,OU=BI3,OU=Brandix Users,DC=brandixlk,DC=org ',
-         bindCredentials: 'TW@brandix',
-         searchBase: 'OU=Users,OU=Bi3,OU=Brandix User,DC=brandix,DC=org',
-         searchFilter: '(mail={{username}})',
-         searchAttributes: ['mail','displayName']
+        url: 'ldap://10.227.19.12:389',  
+        bindDn: 'CN=Bi3 Teamwork,OU=Users,OU=BI3,OU=Brandix Users,DC=brandixlk,DC=org ',
+        bindCredentials: 'TW@Brandix',
+        searchBase: 'OU=Users,OU=Bi3,OU=Brandix Users,DC=brandixlk,DC=org',
+        searchFilter: '(mail={{username}})',
+        searchAttributes: ['mail','displayName']
       },    
         
       

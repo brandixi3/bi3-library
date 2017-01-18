@@ -32,13 +32,13 @@ cron.schedule('10 13 * * *', function() {
 	    },
 	    function sendMail(lendbooks, cb) {
 	    	lendbooks.forEach(function(lendbook){
-				console.log(lendbook);
+				console.log(lendbooks.userEmail);
 	    		var smtpConfig = {
 				    host: 'smtp.office365.com',
-				    port: 23,
+				    port: 587,
 				    auth: {
-				        user: 'thisala@brandix.com',
-				        pass: 'bi3@0925~'
+				        user: 'Bi3-Teamwork@brandix.com',
+				        pass: 'Library@123'
 				    },
 				    secureConnection: false, // TLS requires secureConnection to be false
 				    tls: {
@@ -50,8 +50,8 @@ cron.schedule('10 13 * * *', function() {
 
 	            // setup e-mail data with unicode symbols
 	            var mailOptions = {
-	                from: '"Thisal Abeysooriya" <thisala@brandix.com>',
-	                to: 'dreadweeper@gmail.com', // list of receivers
+	                from: '"Ruwanthi Peiris" <RuwanthiP@brandix.com>',
+	                to: lendbooks.userEmail, // list of receivers
 	                subject: 'Successfully emailed.', // Subject line
 	                //text: '', // plaintext body
 	                html:  'Dear <b>' + item.userName + '</b>,</br></br>You have to return the "<b>' + item.bookTitle + '</b>" book on <b>' + moment(item.actualReturnDate-1).format("DD/MM/YYYY") + '</b> to Bi3 Library.</br></br><b>Note:</b></br>' + item.returnedDetail + '</br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br>' // html body

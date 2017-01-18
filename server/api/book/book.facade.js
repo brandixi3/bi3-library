@@ -163,14 +163,15 @@ exports.lend = function(item, cb) {
                         cb(err, book);
                     });
             }); 
-                   }/*,
+                   },
         function mail(book, cb){
+            console.log("Item is "+item.userEmail);
             var smtpConfig = {
                 host: 'smtp.office365.com',
                 port: 587,
                 auth: {
-                    user: 'thisala@brandix.com',
-                    pass: 'bi3@0925~'
+                    user: 'Bi3-Teamwork@brandix.com',
+                    pass: 'Library@123'
                 },
                 secureConnection: false, // TLS requires secureConnection to be false
                 tls: {
@@ -184,8 +185,8 @@ exports.lend = function(item, cb) {
 
             // setup e-mail data with unicode symbols
             var mailOptions = {
-                from: '"Thisal Abeysooriya" <thisala@brandix.com>',
-                to: 't-pamodyad@brandix.com', // list of receivers
+                from: '"Ruwanthi Peiris" <RuwanthiP@brandix.com>',
+                to: item.userEmail, // list of receivers
                 subject: 'Successfully borrowed "' + item.bookTitle + '" book from bi3 Library.', // Subject line
                 //text: '', // plaintext body
                 html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully borrowed the "<b>' + item.bookTitle + '</b>" by ' + item.bookAuthor + '. </br></br>Please be kind enough to return the book on or before <b>' + moment(item.bookReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.<p></br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br></p>' // html body
@@ -201,7 +202,7 @@ exports.lend = function(item, cb) {
                     cb(error, book);
                 }
             });
-        }*/
+        }
     ],function (err,book) {
             cb(err,book);
       });
@@ -296,14 +297,15 @@ exports.returnBook = function(item, cb) {
                     cb(err, book);
                 });
             });
-        }/*,
+        },
         function mail(book, cb){
+            console.log("jp "+ book.userEmail);
             var smtpConfig = {
                 host: 'smtp.office365.com',
-                port: 23,
+                port: 587,
                 auth: {
-                    user: 'thisala@brandix.com',
-                    pass: 'bi3@0925~'
+                    user: 'Bi3-Teamwork@brandix.com',
+                    pass: 'Library@123'
                 },
                 secureConnection: false, // TLS requires secureConnection to be false
                 tls: {
@@ -316,8 +318,8 @@ exports.returnBook = function(item, cb) {
 
             // setup e-mail data with unicode symbols
             var mailOptions = {
-                from: '"Thisal Abeysooriya" <thisala@brandix.com>',
-                to: 'thisala@brandix.com', // list of receivers
+                from: '"Ruwanthi Peiris" <RuwanthiP@brandix.com>',
+                to: book.userEmail, // list of receivers
                 subject: 'Successfully returned "' + item.bookTitle + '" book to bi3 Library.', // Subject line
                 //text: '', // plaintext body
                 html: 'Dear <b>' + item.userName + '</b>,</br></br>You have successfully returned the "<b>' + item.bookTitle + '</b>" book on <b>' + moment(item.actualReturnDate).format("DD/MM/YYYY") + '</b> to Bi3 Library.</br></br><b>Note:</b></br>' + item.returnedDetail + '</br></br></br>Thank You.</br></br>Best Regards,</br>Thisal Abeysooriya</br></br></br>' // html body
@@ -333,7 +335,7 @@ exports.returnBook = function(item, cb) {
                     cb(error, book);
                 }
             });
-        }*/
+        }
         
     ],function (err, book) {
         cb(err, book);

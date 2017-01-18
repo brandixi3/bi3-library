@@ -233,7 +233,8 @@ module.exports = function (grunt) {
           src: [
             '<%= yeoman.dist %>/public/{,*/}*.js',
             '<%= yeoman.dist %>/public/{,*/}*.css',
-            '<%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%= yeoman.dist %>/public/assets/images/{,*/}',
+			//*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/public/assets/fonts/*'
           ]
         }
@@ -272,12 +273,14 @@ module.exports = function (grunt) {
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.client %>/assets/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/public/assets/images'
-        }]
+        files: [
+		// {
+          // expand: true,
+          // cwd: '<%= yeoman.client %>/assets/images',
+          // src: '{,*/}*.{png,jpg,jpeg,gif}',
+          // dest: '<%= yeoman.dist %>/public/assets/images'
+        // }
+		]
       }
     },
 
@@ -352,7 +355,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'bower_components/**/*',
-            'assets/images/{,*/}*.{webp}',
+            'assets/images/{,*/}*',
             'assets/fonts/**/*',
             'index.html'
           ]
@@ -643,14 +646,14 @@ module.exports = function (grunt) {
     'injector:less', 
     'concurrent:dist',
     'injector',
-    'wiredep',
+    //'wiredep',
     'useminPrepare',
     'autoprefixer',
     'ngtemplates',
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    //'cdnify',
     'cssmin',
     'uglify',
     'rev',
